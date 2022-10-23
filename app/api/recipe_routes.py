@@ -17,7 +17,7 @@ def get_all_recipes():
 
 
 @recipe_routes.route("/<int:recipeId>")
-# @login_required
+@login_required
 def get_recipe(recipeId):
     recipe = Recipe.query.get(recipeId)
     if recipe == None:
