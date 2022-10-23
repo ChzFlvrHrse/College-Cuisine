@@ -115,7 +115,7 @@ def edit_ingredient(recipeId, ingredientId):
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@recipe_routes.route("<int:recipeId>/ingredient/<int:ingredientId>/delete", methods=["DELETE"])
+@recipe_routes.route("/<int:recipeId>/ingredient/<int:ingredientId>/delete", methods=["DELETE"])
 @login_required
 def delete_ingredient(recipeId, ingredientId):
     ingredient = Ingredient.query.get(ingredientId)
@@ -126,7 +126,7 @@ def delete_ingredient(recipeId, ingredientId):
     "statusCode": "200"
     }
 
-@recipe_routes.route("<int:recipeId>/review/new", methods=['POST'])
+@recipe_routes.route("/<int:recipeId>/review/new", methods=['POST'])
 @login_required
 def create_review(recipeId):
     form = ReviewForm()
@@ -148,7 +148,7 @@ def create_review(recipeId):
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@recipe_routes.routes("<int:recipeId>/review/<int:reviewId>/edit", methods=["PUT"])
+@recipe_routes.route("/<int:recipeId>/review/<int:reviewId>/edit", methods=["PUT"])
 @login_required
 def edit_review(recipeId, reviewId):
     form = ReviewForm()
@@ -166,7 +166,7 @@ def edit_review(recipeId, reviewId):
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@recipe_routes.routes("<int:recipeId>/review/<int:reviewId>/delete", methods=["DELETE"])
+@recipe_routes.route("/<int:recipeId>/review/<int:reviewId>/delete", methods=["DELETE"])
 @login_required
 def delete_review(recipeId, reviewId):
     review = Review.query.get(reviewId)

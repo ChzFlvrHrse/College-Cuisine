@@ -12,4 +12,3 @@ category_routes = Blueprint('cateogory', __name__)
 def get_category(categoryId):
     category_recipes = Recipe.query.get(Recipe.categoryId == categoryId)
     return category_recipes.to_dict()
-
