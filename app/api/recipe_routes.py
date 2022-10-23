@@ -9,14 +9,14 @@ from app.models import Recipe, Ingredient, Review, db
 
 recipe_routes = Blueprint('recipe', __name__)
 
-@recipe_routes.route("/")
+@recipe_routes.route("/", methods=["GET"])
 def get_all_recipes():
     all_recipes = Recipe.query.all()
     recipes = {"recipes": [recipe.to_dict() for recipe in all_recipes]}
     return recipes
 
-
-@recipe_routes.route("/<int:recipeId>")
+# Get Recipe based on id
+@recipe_routes.route("/<int:recipeId>", methods=["GET"])
 @login_required
 def get_recipe(recipeId):
     recipe = Recipe.query.get(recipeId)
@@ -24,6 +24,7 @@ def get_recipe(recipeId):
         return "Recipe is not available"
     return recipe.to_dict()
 
+# New Recipe
 @recipe_routes.route("/new", methods=["POST"])
 @login_required
 def create_recipe():
@@ -47,6 +48,7 @@ def create_recipe():
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+# Edit Recipe
 @recipe_routes.route("/<int:recipeId>/edit", methods=["PUT"])
 @login_required
 def edit_recipe(recipeId):
@@ -67,8 +69,8 @@ def edit_recipe(recipeId):
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-
-@recipe_routes.route("/<int:recipeId>/delete", methods=['GET', 'DELETE'])
+#Delete Recipe
+@recipe_routes.route("/<int:recipeId>/delete", methods=['DELETE'])
 @login_required
 def delete_recipe(recipeId):
     recipe = Recipe.query.get(recipeId)
@@ -79,6 +81,7 @@ def delete_recipe(recipeId):
         "satusCode": "200"
     }
 
+#New Ingredient
 @recipe_routes.route("/<int:recipeId>/ingredient/new", methods=["POST"])
 @login_required
 def create_ingredient(recipeId):
