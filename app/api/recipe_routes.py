@@ -69,7 +69,7 @@ def edit_recipe(recipeId):
 
 
 @recipe_routes.route("/<int:recipeId>/delete", methods=['GET', 'DELETE'])
-# @login_required
+@login_required
 def delete_recipe(recipeId):
     recipe = Recipe.query.get(recipeId)
     db.session.delete(recipe)
@@ -127,6 +127,7 @@ def delete_ingredient(recipeId, ingredientId):
     }
 
 @recipe_routes.route("<int:recipeId>/review/new", methods=['POST'])
+@login_required
 def create_review(recipeId):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -148,6 +149,7 @@ def create_review(recipeId):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @recipe_routes.routes("<int:recipeId>/review/<int:reviewId>/edit", methods=["PUT"])
+@login_required
 def edit_review(recipeId, reviewId):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -165,6 +167,7 @@ def edit_review(recipeId, reviewId):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @recipe_routes.routes("<int:recipeId>/review/<int:reviewId>/delete", methods=["DELETE"])
+@login_required
 def delete_review(recipeId, reviewId):
     review = Review.query.get(reviewId)
     db.session.delete(review)
