@@ -7,7 +7,7 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.VARCHAR(75), nullable=False)
 
-    recipes = db.relationship("Recipe", backref="cateogory")
+    recipes = db.relationship("Recipe", backref="category")
 
     def to_dict(self):
         return {

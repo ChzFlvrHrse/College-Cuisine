@@ -2,8 +2,8 @@ from flask import Blueprint, render_template, request
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 from app.forms.recipe_form import RecipeForm
-
-from app.models import Recipe, db
+from app.forms.ingredient_form import IngredientForm
+from app.models import Recipe, Ingredient, db
 
 recipe_routes = Blueprint('recipe', __name__)
 
@@ -44,7 +44,6 @@ def create_recipe():
         return new_recipe.to_dict()
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    return render_template("test.html", recipe=form)
 
 @recipe_routes.route("/<int:recipeId>/edit", methods=["PUT"])
 @login_required
@@ -67,8 +66,8 @@ def edit_recipe(recipeId):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@recipe_routes.route("/<int:recipeId>/delete", methods=['DELETE'])
-@login_required
+@recipe_routes.route("/<int:recipeId>/delete", methods=['GET', 'DELETE'])
+# @login_required
 def delete_recipe(recipeId):
     recipe = Recipe.query.get(recipeId)
     db.session.delete(recipe)
@@ -76,4 +75,51 @@ def delete_recipe(recipeId):
     return {
         "Message": "Recipe successfully deleted",
         "satusCode": "200"
+    }
+
+@recipe_routes.route("/<int:recipeId>/ingredient/new", methods=["POST"])
+@login_required
+def create_ingredient(recipeId):
+    form = IngredientForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+
+        new_ingredient = Ingredient(
+            ingredient=data['ingredient'],
+            recipeId=recipeId
+        )
+
+        db.session.add(new_ingredient)
+        db.session.commit()
+        return new_ingredient.to_dict()
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@recipe_routes.route("/<int:recipeId>/ingredient/<int:ingredientId>/edit", methods=["PUT"])
+@login_required
+def edit_ingredient(recipeId, ingredientId):
+    form = IngredientForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        old_ingredient = Ingredient.query.get(ingredientId)
+        data = form.data
+
+        old_ingredient.ingredient = data['ingredient']
+
+        db.session.commit()
+
+        return old_ingredient.to_dict()
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@recipe_routes.route("<int:recipeId>/ingredient/<int:ingredientId>/delete", methods=["DELETE"])
+@login_required
+def delete_ingredient(recipeId, ingredientId):
+    ingredient = Ingredient.query.get(ingredientId)
+    db.session.delete(ingredient)
+    db.session.commit()
+    return {
+    "Message": "like successfully deleted",
+    "statusCode": "200"
     }
