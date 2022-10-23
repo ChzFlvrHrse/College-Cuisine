@@ -8,6 +8,7 @@ from app.models import Recipe, db
 
 category_routes = Blueprint('category', __name__)
 
+# Get Recipe based on Category id
 @category_routes.route("/<int:categoryId>", methods=["GET"])
 @login_required
 def get_category(categoryId):
