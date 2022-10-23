@@ -1,9 +1,11 @@
+from distutils.dep_util import newer
 from flask import Blueprint, render_template, request
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 from app.forms.recipe_form import RecipeForm
 from app.forms.ingredient_form import IngredientForm
-from app.models import Recipe, Ingredient, db
+from app.forms.review_form import ReviewForm
+from app.models import Recipe, Ingredient, Review, db
 
 recipe_routes = Blueprint('recipe', __name__)
 
@@ -15,7 +17,7 @@ def get_all_recipes():
 
 
 @recipe_routes.route("/<int:recipeId>")
-@login_required
+# @login_required
 def get_recipe(recipeId):
     recipe = Recipe.query.get(recipeId)
     if recipe == None:
@@ -73,7 +75,7 @@ def delete_recipe(recipeId):
     db.session.delete(recipe)
     db.session.commit()
     return {
-        "Message": "Recipe successfully deleted",
+        "Message": "recipe successfully deleted",
         "satusCode": "200"
     }
 
@@ -120,6 +122,54 @@ def delete_ingredient(recipeId, ingredientId):
     db.session.delete(ingredient)
     db.session.commit()
     return {
-    "Message": "like successfully deleted",
+    "Message": "ingredient successfully deleted",
+    "statusCode": "200"
+    }
+
+@recipe_routes.route("<int:recipeId>/review/new", methods=['POST'])
+def create_review(recipeId):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+
+        new_review = Review(
+            review=data['review'],
+            rating=data['rating'],
+            userId=current_user,
+            recipeId=recipeId
+        )
+
+        db.session.add(new_review)
+        db.session.commit()
+
+        return new_review.to_dict()
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@recipe_routes.routes("<int:recipeId>/review/<int:reviewId>/edit", methods=["PUT"])
+def edit_review(recipeId, reviewId):
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        old_review = Review.query.get(reviewId)
+        data = form.data
+
+        old_review.review = data['review']
+        old_review.rating = data['rating']
+
+        db.session.commit()
+
+        return old_review.to_dict()
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@recipe_routes.routes("<int:recipeId>/review/<int:reviewId>/delete", methods=["DELETE"])
+def delete_review(recipeId, reviewId):
+    review = Review.query.get(reviewId)
+    db.session.delete(review)
+    db.session.commit()
+    return {
+    "Message": "review successfully deleted",
     "statusCode": "200"
     }
