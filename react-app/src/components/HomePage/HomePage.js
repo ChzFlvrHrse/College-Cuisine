@@ -9,7 +9,7 @@ export function HomePage() {
         return (
             <>
                 <div className="background">
-
+                    
                 </div>
             </>
         )

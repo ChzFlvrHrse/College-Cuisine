@@ -1,6 +1,14 @@
-.background {
-    display: flex;
-    background-image: url(https://simply-delicious-food.com/wp-content/uploads/2019/07/Pancake-board-2.jpg);
-    height: 100%;
-    width: 100%;
+/* body {
+    display: grid;
+    background: url(https://simply-delicious-food.com/wp-content/uploads/2019/07/Pancake-board-2.jpg);
+    background-size: cover;
+
+} */
+
+body {
+    background: url(sheelah-brennan-ISOMpKCO_oo-unsplash.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
