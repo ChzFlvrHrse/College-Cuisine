@@ -34,5 +34,5 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'recipes': [recipe.to_dict() for recipe in self.recipes],
-            'reviews': [review.to_dict() for review in self.review]
+            'reviews': [review.to_dict() for review in self.reviews]
         }
