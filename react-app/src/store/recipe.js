@@ -67,7 +67,7 @@ export const newRecipeThunk = (name, description, instruction, imageUrl, userId,
     });
     if (response.ok) {
       const createRecipe = await response.json();
-      dispatch(newImage(createRecipe))
+      dispatch(newRecipe(createRecipe))
       return createRecipe;
     }
 };
@@ -85,10 +85,46 @@ export const updateRecipeThunk = (name, description, instruction, imageUrl, user
 };
 
 export const deleteRecipeThunk = (recipeId) => async (dispatch) => {
-    const response = await fetch(`/api/recipe/${recipeId}`)
+    const response = await fetch(`/api/recipe/${recipeId}/delete`)
 
     if (response.ok) {
         const deleted = await response.json();
         dispatch(deleteRecipe(deleted))
     }
 }
+
+const initialState = {}
+const recipeReducer = (state = initialState, action) => {
+    switch (action.Type) {
+        case GET_RECIPES: {
+            const newState = {};
+            action.recipes.recipes.forEach(recipe => {
+                newState[recipe.id] = recipe;
+            })
+            return newState
+        }
+        case GET_ONE_RECIPE: {
+             const newState = {...action.recipeId};
+             return newState;
+        }
+        case NEW_RECIPE: {
+            const newState = {...state}
+            newState[action.recipe.id] = action.recipe
+            return newState
+        }
+        case UPDATE_RECIPE: {
+            const newState = {...state}
+            newState[action.recipe.id] = action.recipe
+            return newState
+        }
+        case DELETE_RECIPE: {
+            const newState = {...state}
+            delete newState[action.recipeId]
+            return newState
+        }
+        default:
+            return state
+    }
+}
+
+export default recipeReducer
