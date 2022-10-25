@@ -24,6 +24,7 @@ class Recipe(db.Model):
             "name": self.name,
             "description": self.description,
             "instructions": self.instructions,
+            "imageUrl": self.imageUrl,
             'userId': self.userId,
             'categoryId': self.categoryId,
             'created_at': self.created_at,

@@ -38,7 +38,7 @@ def create_recipe():
             description=data['description'],
             instructions=data['instructions'],
             imageUrl=data['imageUrl'],
-            userId=current_user,
+            userId=current_user.id,
             categoryId=data['categoryId']
         )
 
@@ -47,6 +47,7 @@ def create_recipe():
         return new_recipe.to_dict()
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 # Edit Recipe
 @recipe_routes.route("/<int:recipeId>/edit", methods=["PUT"])
@@ -143,7 +144,7 @@ def create_review(recipeId):
         new_review = Review(
             review=data['review'],
             rating=data['rating'],
-            userId=current_user,
+            userId=current_user.id,
             recipeId=recipeId
         )
 

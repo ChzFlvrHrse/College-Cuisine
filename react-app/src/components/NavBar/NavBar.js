@@ -1,6 +1,6 @@
 import "./NavBar.css"
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from "react-redux";
 
@@ -43,6 +43,7 @@ const NavBar = () => {
           </div>
         </div>
         <div id="login-signup">
+          <Link id="login" to='/recipe/add'>Add Recipe+</Link>
           <LogoutButton />
           {/* <NavLink to='/users' exact={true} activeClassName='active'>
             Users

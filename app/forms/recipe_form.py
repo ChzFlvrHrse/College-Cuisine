@@ -1,7 +1,6 @@
 from unicodedata import category
 from wsgiref.validate import validator
 from flask_wtf import FlaskForm
-from sqlalchemy import Integer
 from wtforms import StringField, TextAreaField, SubmitField, IntegerField
 from wtforms.validators import DataRequired, ValidationError
 
@@ -14,7 +13,7 @@ class RecipeForm(FlaskForm):
     name = StringField("name", validators=[DataRequired()])
     description = TextAreaField('description', validators=[DataRequired()])
     instructions = TextAreaField('instruction', validators=[DataRequired()])
-    imageUrl = StringField('imageUrl')
+    imageUrl = StringField('imageUrl', validators=[valid_image])
     userId = IntegerField("userId", validators=[DataRequired()])
     categoryId = IntegerField("categoryId", validators=[DataRequired()])
     submit = SubmitField("submit")
