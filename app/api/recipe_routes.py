@@ -63,12 +63,14 @@ def edit_recipe(recipeId):
         old_recipe.description = data['description']
         old_recipe.instructions = data['instructions']
         old_recipe.imageUrl = data['imageUrl']
+        old_recipe.cateogryId=data['categoryId']
 
         db.session.commit()
 
         return old_recipe.to_dict()
     if form.errors:
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return form.errors
 
 #Delete Recipe
 @recipe_routes.route("/<int:recipeId>/delete", methods=['DELETE'])

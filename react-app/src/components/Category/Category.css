@@ -19,3 +19,9 @@
 #cat-label {
     display: flex;
 }
+
+
+#lower-container {
+    display: flex;
+    justify-content: space-around;
+}

@@ -72,11 +72,11 @@ export const newRecipeThunk = (name, description, instructions, imageUrl, userId
     }
 };
 
-export const updateRecipeThunk = (name, description, instruction, imageUrl, userId, categoryId, recipeId) => async (dispatch) => {
+export const updateRecipeThunk = (name, description, instructions, imageUrl, userId, categoryId, recipeId) => async (dispatch) => {
     const response = await fetch(`/api/recipe/${recipeId}/edit`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({name, description, instruction, imageUrl, userId, categoryId}),
+      body: JSON.stringify({name, description, instructions, imageUrl, userId, categoryId}),
     });
     if (response.ok) {
       const updatedRecipe = await response.json();
@@ -85,7 +85,9 @@ export const updateRecipeThunk = (name, description, instruction, imageUrl, user
 };
 
 export const deleteRecipeThunk = (recipeId) => async (dispatch) => {
-    const response = await fetch(`/api/recipe/${recipeId}/delete`)
+    const response = await fetch(`/api/recipe/${recipeId}/delete`, {
+        method: "DELETE"
+    });
 
     if (response.ok) {
         const deleted = await response.json();
@@ -114,7 +116,7 @@ const recipeReducer = (state = initialState, action) => {
         }
         case UPDATE_RECIPE: {
             const newState = {...state}
-            newState[action.recipe.id] = action.recipe
+            newState[action.updated.id] = action.updated
             return newState
         }
         case DELETE_RECIPE: {

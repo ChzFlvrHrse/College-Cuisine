@@ -1,22 +1,22 @@
-import { newRecipeThunk, getAllRecipesThunk } from "../../store/recipe";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect, useParams } from "react-router-dom";
+import { getOneRecipeThunk, updateRecipeThunk } from "../../store/recipe";
+import "./EditRecipe.css"
 
-import "./AddRecipe.css"
+export default function EditRecipe() {
+    const { recipeId } = useParams();
 
-export default function AddRecipe() {
+    const currRecipe = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user);
-    const userId = user.id;
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [instructions, setInstructions] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [category, setCategory] = useState("");
-    const [errorValidators, setErrorValidators] = useState([])
 
-    const dispatch = useDispatch()
-    const history = useHistory();
+    const userId = user.id;
+    const [name, setName] = useState(currRecipe.name);
+    const [description, setDescription] = useState(currRecipe.description);
+    const [instructions, setInstructions] = useState(currRecipe.instructions);
+    const [imageUrl, setImageUrl] = useState(currRecipe.imageUrl);
+    const [category, setCategory] = useState(currRecipe.categoryId);
+    const [errorValidators, setErrorValidators] = useState([])
 
     useEffect(() => {
         const errors = []
@@ -30,10 +30,12 @@ export default function AddRecipe() {
 
     }, [name, description, instructions, category])
 
-    if (!user) {
-        alert("You must be signed in to add a recipe")
-        return <Redirect to="/" />;
-    }
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    useEffect(() => {
+        dispatch(getOneRecipeThunk(recipeId))
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -42,9 +44,9 @@ export default function AddRecipe() {
             return alert("There was something wrong with your recipe")
         }
 
-        await dispatch(newRecipeThunk(name, description, instructions, imageUrl, userId, category)).then(() => dispatch(getAllRecipesThunk()));
+        await dispatch(updateRecipeThunk(name, description, instructions, imageUrl, userId, category, recipeId)).then(() => dispatch(getOneRecipeThunk(recipeId)));
 
-        history.push(`/`)
+        history.push(`/recipe/${recipeId}`)
     }
 
     return (

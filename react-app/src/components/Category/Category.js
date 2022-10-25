@@ -15,6 +15,10 @@ export default function Category() {
         dispatch(getAllRecipesThunk())
     }, []);
 
+    const recipesArr = Object.values(recipes)
+    const recipeType = recipesArr.filter(recipe => recipe.categoryId == categoryId)
+    // console.log(recipeType)
+
     return (
         <>
             <div id="category-container">
@@ -25,8 +29,12 @@ export default function Category() {
                     </div>
                 </div>
                 <div>
-                    <div>
-                        hello
+                    <div id="lower-container">
+                        {recipeType.map(recipe => (
+                            <div key={recipe.id}>
+                                <Link to={`/recipe/${recipe.id}`}>{recipe.name}</Link>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -66,7 +66,7 @@ const NavBar = () => {
                 <Link to="/category/Healthy/6">Healthy</Link>
               </div>
               <div className="cat-link">
-                <Link to="/cateogry/Snack/7">Snack</Link>
+                <Link to="/category/Snack/7">Snack</Link>
               </div>
             </div>
           </div>

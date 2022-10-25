@@ -11,6 +11,8 @@ import { authenticate } from './store/session';
 import { HomePage } from './components/HomePage/HomePage';
 import AddRecipe from './components/AddRecipe/AddRecipe';
 import Category from './components/Category/Category';
+import RecipeDetails from './components/RecipeDetails/RecipeDetails';
+import EditRecipe from './components/EditRecipe/EditRecipe';
 
 
 function App() {
@@ -46,6 +48,12 @@ function App() {
         </Route>
         <Route exact path="/category/:categoryType/:categoryId">
           <Category />
+        </Route>
+        <Route exact path="/recipe/:recipeId">
+          <RecipeDetails />
+        </Route>
+        <Route exact path="/recipe/:recipeId/edit">
+          <EditRecipe />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
