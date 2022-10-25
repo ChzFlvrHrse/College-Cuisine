@@ -5,6 +5,8 @@ import { deleteRecipeThunk, getOneRecipeThunk } from '../../store/recipe';
 import "./RecipeDetails.css"
 
 export default function RecipeDetails() {
+    const [ingredientsState, setIngredientsState] = useState(false)
+
     const { recipeId } = useParams();
     const recipe = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user)
@@ -18,12 +20,14 @@ export default function RecipeDetails() {
     const cat = categories[recipe.categoryId];
     const catId = recipe.categoryId;
 
+    let ingredientsArr;
+
     useEffect((e) => {
         dispatch(getOneRecipeThunk(recipeId))
-    }, [dispatch]);
+    }, [dispatch, ingredientsArr, ingredientsState]);
 
-    let ingredientsArr = [...recipe.ingredients]
-    console.log(ingredientsArr)
+    ingredientsArr = recipe.ingredients
+    console.log(recipe)
 
     const onDelete = async (e) => {
         e.preventDefault()
@@ -34,6 +38,7 @@ export default function RecipeDetails() {
 
         history.push(`/category/${cat}/${catId}`)
     }
+
 
     return (
         <>
@@ -56,7 +61,7 @@ export default function RecipeDetails() {
                     <div className="border-2"></div>
                     <div id="category-name">
                         <div className='category'>
-                        Category:
+                            Category:
                         </div>
                         <div id='cat'>
                             {cat}
@@ -73,17 +78,34 @@ export default function RecipeDetails() {
                     </div>
                     <div className='border-3'></div>
                 </div>
-                <div>
-                    <div>
-                        <div className='category'>
-                            Ingredients:
+                <div id="ingredients-reviews">
+                    <div id='ingredients-container'>
+                        <div>
+                            <div className='ingredients'>
+                                Ingredients:
+                            </div>
                         </div>
+                        <div>
+                            {ingredientsArr?.map(ingr => (
+                                <div className='ingr' key={ingr.id}>{ingr.ingredient}</div>
+                            ))}
+                        </div>
+                        <div className='border-3'></div>
                     </div>
-                    <div>
-                        {recipe.ingredients.map(ingr => (
-                            <div key={ingr.id}>{ingr.ingredient}</div>
-                        ))}
+                    <div id='reviews-container'>
+                        <div className='instructions'>
+                            Instructions:
+                        </div>
+                        <div>
+                            {recipe.instructions}
+                        </div>
+                        <div className='border-3'></div>
+                        <div className='reviews'>
+                                Reviews:
+                        </div>
+                        <div>
 
+                        </div>
                     </div>
                 </div>
             </div>

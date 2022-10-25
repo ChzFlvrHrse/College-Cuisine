@@ -2,7 +2,7 @@ import "./HomePage.css";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipesThunk, getOneRecipeThunk } from "../../store/recipe";
+import { getAllRecipesThunk } from "../../store/recipe";
 
 export function HomePage() {
     const user = useSelector(state => state.session.user);
