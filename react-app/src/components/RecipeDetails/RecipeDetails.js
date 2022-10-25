@@ -6,6 +6,7 @@ import { newReviewThunk, updateReviewThunk, deleteReviewThunk } from '../../stor
 import { Modal } from '../../context/Modal';
 import "./RecipeDetails.css"
 import DeleteRecipe from '../DeleteReicpe/DeleteRecipe';
+import EditRecipe from '../EditRecipe/EditRecipe';
 
 export default function RecipeDetails() {
     const [ingredientsState, setIngredientsState] = useState(false);
@@ -13,6 +14,7 @@ export default function RecipeDetails() {
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(0);
     const [showModal, setShowModal] = useState(false);
+    const [showModalEdit, setShowModalEdit] = useState(false);
 
     const { recipeId } = useParams();
     const recipe = useSelector(state => state.recipe);
@@ -74,7 +76,7 @@ export default function RecipeDetails() {
                         </div>
                     </div>
                     <div className='btns'>
-                        {userId == recipe.userId ? <i class="fa-solid fa-pen-to-square"></i> : <></>}
+                        {userId == recipe.userId ? <i class="fa-solid fa-pen-to-square" ></i> : <></>}
                         {userId == recipe.userId ? <i
                             onClick={() => {
                                 setShowModal(true);

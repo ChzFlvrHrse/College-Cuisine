@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteRecipeThunk } from "../../store/recipe";
 import { useHistory } from "react-router-dom";
-import './DeleteComment.css'
+import './DeleteRecipe.css'
 
 export default function DeleteRecipe({ recipeId, setShowModal }) {
     const dispatch = useDispatch();

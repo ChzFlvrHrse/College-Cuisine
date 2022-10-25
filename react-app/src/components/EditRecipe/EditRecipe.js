@@ -4,8 +4,8 @@ import { useHistory, Redirect, useParams } from "react-router-dom";
 import { getOneRecipeThunk, updateRecipeThunk } from "../../store/recipe";
 import "./EditRecipe.css"
 
-export default function EditRecipe() {
-    const { recipeId } = useParams();
+export default function EditRecipe({recipeId, setShowModalEdit}) {
+    // const { recipeId } = useParams();
 
     const currRecipe = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user);
