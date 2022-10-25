@@ -76,7 +76,7 @@ export default function RecipeDetails() {
                         </div>
                     </div>
                     <div className='btns'>
-                        {userId == recipe.userId ? <i class="fa-solid fa-pen-to-square" ></i> : <></>}
+                        {userId == recipe.userId ? <Link to={`/recipe/${recipeId}/edit`}><i class="fa-solid fa-pen-to-square" ></i></Link> : <></>}
                         {userId == recipe.userId ? <i
                             onClick={() => {
                                 setShowModal(true);
