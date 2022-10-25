@@ -1,0 +1,21 @@
+#category-container {
+    display: grid;
+    justify-content: flex-start;
+    align-items: center;
+    color: #e33d26;
+    background-color: white;
+    margin: 0 10rem;
+}
+
+#inner-container {
+    display: flex;
+}
+
+.cat-type {
+    padding-left: .5rem;
+    color: #666666;
+}
+
+#cat-label {
+    display: flex;
+}

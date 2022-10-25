@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import { HomePage } from './components/HomePage/HomePage';
 import AddRecipe from './components/AddRecipe/AddRecipe';
+import Category from './components/Category/Category';
 
 
 function App() {
@@ -40,8 +41,11 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route to="/recipe/add">
+        <Route exact path="/recipe/add">
           <AddRecipe />
+        </Route>
+        <Route exact path="/category/:categoryType/:categoryId">
+          <Category />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

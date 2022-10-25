@@ -1,12 +1,12 @@
 import "./NavBar.css"
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
-  console.log(user)
+  const [category, setCategory] = useState("");
 
   if (!user) {
     return (
@@ -44,6 +44,32 @@ const NavBar = () => {
         </div>
         <div id="login-signup">
           <Link id="login" to='/recipe/add'>Add Recipe+</Link>
+          <div className="dropdown">
+            <div id="login" className="drop">Categories</div>
+            <div className="dropdown-content">
+              <div className="cat-link">
+                <Link to="/category/Breakfast/1">Breakfast</Link>
+              </div>
+              <div className="cat-link">
+                <Link to="/category/Lunch/2">Lunch</Link>
+              </div>
+              <div className="cat-link">
+                <Link to="/category/Dinner/3">Dinner</Link>
+              </div>
+              <div className="cat-link">
+                <Link to="/category/Beverages/4">Beverages</Link>
+              </div>
+              <div className="cat-link">
+                <Link to="/category/Dessert/5">Dessert</Link>
+              </div>
+              <div className="cat-link">
+                <Link to="/category/Healthy/6">Healthy</Link>
+              </div>
+              <div className="cat-link">
+                <Link to="/cateogry/Snack/7">Snack</Link>
+              </div>
+            </div>
+          </div>
           <LogoutButton />
           {/* <NavLink to='/users' exact={true} activeClassName='active'>
             Users

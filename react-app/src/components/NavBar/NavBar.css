@@ -8,6 +8,7 @@
     z-index: 5;
     height: 4rem;
     width: 1005;
+    /* border-bottom: #e33d26; */
 }
 
 #left-nav {
@@ -43,6 +44,46 @@
 #login:hover, #signup:hover {
     color: black;
     border-bottom: solid #e33d26;
+}
+
+#login-signup {
+    display: flex;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: #e33d26;
+    min-width: 8rem;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    display: flex;
+    color: #e33d26;
+    font-size: 1.2rem;
+}
+
+.dropdown-content a:hover {
+    background-color: #e33d26;
+    color: white;
+    width: max-content;
+    transform: scale(1.2);
+}
+
+a {
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    color: white;
+}
+
+.dropdown:hover .drop {
+    cursor: pointer;
 }
 
 /* #login:active {
