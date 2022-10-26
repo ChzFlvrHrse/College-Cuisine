@@ -6,7 +6,6 @@ import { newReviewThunk, updateReviewThunk, deleteReviewThunk } from '../../stor
 import { Modal } from '../../context/Modal';
 import "./RecipeDetails.css"
 import DeleteRecipe from '../DeleteReicpe/DeleteRecipe';
-import EditRecipe from '../EditRecipe/EditRecipe';
 import DeleteReview from '../DeleteReview/DeleteReview';
 import EditReview from '../EditReview/EditReview';
 
