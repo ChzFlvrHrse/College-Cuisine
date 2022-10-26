@@ -7,14 +7,17 @@ import { Modal } from '../../context/Modal';
 import "./RecipeDetails.css"
 import DeleteRecipe from '../DeleteReicpe/DeleteRecipe';
 import EditRecipe from '../EditRecipe/EditRecipe';
+import DeleteReview from '../DeleteReview/DeleteReview';
 
 export default function RecipeDetails() {
     const [ingredientsState, setIngredientsState] = useState(false);
     const [recipeState, setRecipeState] = useState("")
+    const [reviewState, setReviewState] = useState("")
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [showModalEdit, setShowModalEdit] = useState(false);
+    const [showModalDeleteReview, setShowModalDeleteReview] = useState(false);
 
     const { recipeId } = useParams();
     const recipe = useSelector(state => state.recipe);
@@ -38,7 +41,6 @@ export default function RecipeDetails() {
 
     ingredientsArr = recipe.ingredients
     reviewsArr = recipe.reviews
-    console.log(reviewsArr)
 
     const submitReview = async (e) => {
         e.preventDefault()
@@ -133,24 +135,25 @@ export default function RecipeDetails() {
                                 <div className='rating-edit-delete'>
                                     {userId == recipe.userId ? <i class="fa-solid fa-pen-to-square"></i> : <></>}
                                     {userId == recipe.userId ? <i
-                                        // onClick={() => {
-                                        //     setShowModal(true);
-                                        //     setRecipeState(recipe)
-                                        // }}
-                                        // className="delete-recipe"
-                                        // title="delete"
+                                        onClick={() => {
+                                            setShowModalDeleteReview(true);
+                                            setReviewState(review)
+                                        }}
+                                        className="delete-review"
+                                        title="delete"
                                         class="fa-solid fa-delete-left"
                                     ></i> : <></>}
-                                    {/* {showModal && (
+                                    {showModalDeleteReview && (
                                         <Modal
-                                            onClose={() => setShowModal(false)}
+                                            onClose={() => setShowModalDeleteReview(false)}
                                         >
-                                            <DeleteRecipe
+                                            <DeleteReview
+                                                reviewId={review.id}
                                                 recipeId={recipeId}
-                                                setShowModal={setShowModal}
+                                                setShowModal={setShowModalDeleteReview}
                                             />
                                         </Modal>
-                                    )} */}
+                                    )}
                                     <div>Stars</div>
                                 </div>
                                 <div className='border-3'></div>
