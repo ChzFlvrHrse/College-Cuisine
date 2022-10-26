@@ -1,16 +1,5 @@
-/* body {
-    display: grid;
-    background: url(https://simply-delicious-food.com/wp-content/uploads/2019/07/Pancake-board-2.jpg);
-    background-size: cover;
-
-} */
-
 body {
-    background: url(sheelah-brennan-ISOMpKCO_oo-unsplash.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-color: white;
 }
 
 #outer-div {
@@ -32,4 +21,84 @@ body {
 #cuisine {
     color: whitesmoke;
     font-size: 2rem;
+}
+
+#homepage-container {
+    display: flex;
+    background: white;
+    /* margin: 0rem 10rem; */
+}
+
+.top-container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.featured-link {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.featured {
+    object-fit: cover;
+    height: 47rem;
+    width: 100%;
+}
+
+.on-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    margin-bottom: 19.5rem;
+    margin-left: 1rem;
+    background-color: #f4564d;
+    z-index: 2;
+    flex-wrap: wrap;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 4rem;
+    color: white;
+    font-family: nyt-karnak-display-130124,nyt-stymie,Georgia,"Times New Roman",serif;;
+}
+
+.on-top-2 {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    background-color: white;
+    height: 18rem;
+    width: 21rem;
+    margin-left: 4rem;
+    margin-bottom: 4rem;
+    margin-right: 4rem;
+}
+
+#recipe-name {
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin-bottom: -4rem;
+    font-family: nyt-cheltenham,Georgia,"Times New Roman",serif;
+    color: black;
+}
+
+#recipe-dscription {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    /* margin-top: -8rem; */
+    font-family: nyt-cheltenham,Georgia,"Times New Roman",serif;
+    color: black;
 }

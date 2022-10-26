@@ -2,11 +2,11 @@ import "./HomePage.css";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipesThunk } from "../../store/recipe";
+import { getAllRecipesThunk, getOneRecipeThunk } from "../../store/recipe";
 
 export function HomePage() {
     const user = useSelector(state => state.session.user);
-    const allRecipes = useSelector(state => state.recipe)
+    const allRecipes = useSelector(state => state.recipe);
 
     const dispatch = useDispatch()
 
@@ -14,8 +14,9 @@ export function HomePage() {
         dispatch(getAllRecipesThunk())
     }, []);
 
+
     const allRecipesArr = Object.values(allRecipes);
-    console.log(allRecipesArr[0])
+    const firstRecipe = allRecipesArr[0];
 
     if (!user) {
         return (
@@ -35,14 +36,28 @@ export function HomePage() {
     } else {
         return (
             <>
-                <div id="outer-div">
-                    <div className="splash">
-                        <div>
-                            <h3 id='cuisine'>Let's Eat {user.username}!</h3>
-                        </div>
-                        <div>
-                            <h4>N$0 Money N$0 Problem!</h4>
-                        </div>
+                <div id="homepage-container">
+                    <div className="top-container">
+                        <Link to={`/recipe/${firstRecipe?.id}`} className="featured-link">
+                            <img className="featured" src={firstRecipe?.imageUrl} />
+                            <div className="on-top">
+                                <div id="recipe-of-the-day">
+                                    <div>Recipe</div>
+                                    <div>of the Day</div>
+                                </div>
+                            </div>
+                            <div className="on-top-2">
+                                <div id="recipe-name">
+                                    {firstRecipe?.name}
+                                </div>
+                                <div id='recipe-dscription'>
+                                    {firstRecipe?.description}
+                                </div>
+                                <div id='recipe-owner'>
+                                    {firstRecipe?.username}
+                                </div>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </>

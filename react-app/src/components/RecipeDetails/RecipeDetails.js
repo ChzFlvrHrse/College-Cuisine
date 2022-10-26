@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { deleteRecipeThunk, getOneRecipeThunk } from '../../store/recipe';
-import { newReviewThunk, updateReviewThunk, deleteReviewThunk } from '../../store/review';
+import { getOneRecipeThunk } from '../../store/recipe';
+import { newReviewThunk } from '../../store/review';
 import { Modal } from '../../context/Modal';
 import "./RecipeDetails.css"
 import DeleteRecipe from '../DeleteReicpe/DeleteRecipe';
@@ -10,7 +10,7 @@ import DeleteReview from '../DeleteReview/DeleteReview';
 import EditReview from '../EditReview/EditReview';
 
 export default function RecipeDetails() {
-    const [ingredientsState, setIngredientsState] = useState(false);
+    // const [ingredientsState, setIngredientsState] = useState("");
     const [recipeState, setRecipeState] = useState("")
     const [reviewState, setReviewState] = useState("")
     const [review, setReview] = useState("");
@@ -37,7 +37,7 @@ export default function RecipeDetails() {
 
     useEffect((e) => {
         dispatch(getOneRecipeThunk(recipeId))
-    }, [dispatch, ingredientsArr, ingredientsState, reviewsArr]);
+    }, [dispatch, ingredientsArr, reviewsArr]);
 
     ingredientsArr = recipe.ingredients
     reviewsArr = recipe.reviews
