@@ -8,6 +8,7 @@ import "./RecipeDetails.css"
 import DeleteRecipe from '../DeleteReicpe/DeleteRecipe';
 import EditRecipe from '../EditRecipe/EditRecipe';
 import DeleteReview from '../DeleteReview/DeleteReview';
+import EditReview from '../EditReview/EditReview';
 
 export default function RecipeDetails() {
     const [ingredientsState, setIngredientsState] = useState(false);
@@ -133,7 +134,30 @@ export default function RecipeDetails() {
                                 <div className='review-user'>{user.username}</div>
                                 <div key={review.id}>{review.review}</div>
                                 <div className='rating-edit-delete'>
-                                    {userId == recipe.userId ? <i class="fa-solid fa-pen-to-square"></i> : <></>}
+                                    {userId == recipe.userId ? <i
+                                        onClick={() => {
+                                            setShowModalEdit(true)
+                                            setReviewState(review)
+                                        }}
+                                        title="edit"
+                                        class="fa-solid fa-pen-to-square"
+                                    ></i> : <></>}
+                                    {showModalEdit && (
+                                        <Modal
+                                            onClose={() => {
+                                                setShowModalEdit(false);
+                                                setReviewState(review)
+                                            }}
+                                        >
+                                            <EditReview
+                                                reviewId={review.id}
+                                                recipeId={recipeId}
+                                                userId={userId}
+                                                setShowModalEdit={setShowModalEdit}
+                                                oldReview={review}
+                                            />
+                                        </Modal>
+                                    )}
                                     {userId == recipe.userId ? <i
                                         onClick={() => {
                                             setShowModalDeleteReview(true);

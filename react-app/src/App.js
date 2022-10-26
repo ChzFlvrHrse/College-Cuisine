@@ -14,7 +14,7 @@ import Category from './components/Category/Category';
 import RecipeDetails from './components/RecipeDetails/RecipeDetails';
 import EditRecipe from './components/EditRecipe/EditRecipe';
 import DeleteReview from './components/DeleteReview/DeleteReview';
-
+import EditReview from './components/EditReview/EditReview';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +58,9 @@ function App() {
         </Route>
         <Route>
           <DeleteReview />
+        </Route>
+        <Route>
+          <EditReview />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
