@@ -59,11 +59,11 @@ export const getOneRecipeThunk = (recipeId) => async (dispatch) => {
     }
 }
 
-export const newRecipeThunk = (name, description, instructions, imageUrl, userId, categoryId) => async (dispatch) => {
+export const newRecipeThunk = (name, description, instructions, imageUrl, userId, username, categoryId) => async (dispatch) => {
     const response = await fetch("/api/recipe/new", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({name, description, instructions, imageUrl, userId, categoryId})
+      body: JSON.stringify({name, description, instructions, imageUrl, userId, username, categoryId})
     });
     if (response.ok) {
       const createRecipe = await response.json();
@@ -72,11 +72,11 @@ export const newRecipeThunk = (name, description, instructions, imageUrl, userId
     }
 };
 
-export const updateRecipeThunk = (name, description, instructions, imageUrl, userId, categoryId, recipeId) => async (dispatch) => {
+export const updateRecipeThunk = (name, description, instructions, imageUrl, userId, username, categoryId, recipeId) => async (dispatch) => {
     const response = await fetch(`/api/recipe/${recipeId}/edit`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({name, description, instructions, imageUrl, userId, categoryId}),
+      body: JSON.stringify({name, description, instructions, imageUrl, userId, username, categoryId}),
     });
     if (response.ok) {
       const updatedRecipe = await response.json();

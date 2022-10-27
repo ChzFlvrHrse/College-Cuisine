@@ -1,7 +1,3 @@
-/* body {
-    background-color: white;
-} */
-
 #outer-outer {
     background: url(pexels-ray-piedra-1565982.jpg);
     -webkit-background-size: cover;
@@ -27,8 +23,15 @@
 }
 
 #cuisine {
-    color: whitesmoke;
+    color: white;
     font-size: 2rem;
+}
+
+.the-big-contain {
+    background-color: #f2f3ef;
+    position: absolute;
+    width: 100%;
+    height: fit-content;
 }
 
 #homepage-container {
@@ -110,6 +113,14 @@
     /* margin-top: -8rem; */
     font-family: nyt-cheltenham,Georgia,"Times New Roman",serif;
     color: black;
+    flex-wrap: wrap;
+}
+
+#recipe-owner {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: black;
 }
 
 #bottom-container {
@@ -142,15 +153,29 @@
 }
 
 .recipe-name-2 {
-    display: flex;
+    display: grid;
     justify-content: flex-start;
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
     padding-left: 1rem;
     font-weight: bold;
     overflow-wrap: break-word;
+    color: black
+}
+
+#recipe-user {
+    font-size: .8rem;
+    font-weight: normal;
 }
 
 .recipe-stars {
     display: flex;
     justify-content: flex-end;
+    padding-right: .5rem;
+    color: #f4564d;
+    font-size: 1.3rem;
+}
+
+.recipe-info-container:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
 }

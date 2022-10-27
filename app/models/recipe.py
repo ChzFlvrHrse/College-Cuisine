@@ -1,3 +1,4 @@
+from sqlalchemy import null
 from .db import db
 from datetime import datetime
 
@@ -10,6 +11,7 @@ class Recipe(db.Model):
     instructions = db.Column(db.VARCHAR(255), nullable=False)
     imageUrl = db.Column(db.String, nullable=False, default="https://i.dlpng.com/static/png/6892771_preview.png")
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    username = db.Column(db.String, nullable=False)
     categoryId = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -26,6 +28,7 @@ class Recipe(db.Model):
             "instructions": self.instructions,
             "imageUrl": self.imageUrl,
             'userId': self.userId,
+            'username': self.username,
             'categoryId': self.categoryId,
             'created_at': self.created_at,
             'updated_at': self.updated_at,

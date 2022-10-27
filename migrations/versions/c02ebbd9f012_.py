@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 7dacdcc4eadf
+Revision ID: c02ebbd9f012
 Revises: 
-Create Date: 2022-10-25 00:09:33.061428
+Create Date: 2022-10-27 13:55:56.220615
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7dacdcc4eadf'
+revision = 'c02ebbd9f012'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,6 +40,7 @@ def upgrade():
     sa.Column('instructions', sa.VARCHAR(length=255), nullable=False),
     sa.Column('imageUrl', sa.String(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('username', sa.String(), nullable=False),
     sa.Column('categoryId', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
@@ -61,6 +62,7 @@ def upgrade():
     sa.Column('review', sa.VARCHAR(length=255), nullable=False),
     sa.Column('rating', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=True),
+    sa.Column('username', sa.String(), nullable=False),
     sa.Column('recipeId', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),

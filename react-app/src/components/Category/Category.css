@@ -1,3 +1,10 @@
+.big-category-container {
+    background-color: #f2f3ef;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 #category-container {
     display: grid;
     justify-content: flex-start;

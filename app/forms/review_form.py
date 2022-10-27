@@ -6,5 +6,6 @@ class ReviewForm(FlaskForm):
     review = StringField("review", validators=[DataRequired()])
     rating = IntegerField("rating", validators=[DataRequired()])
     userId = IntegerField("userId", validators=[DataRequired()])
+    username = StringField("username", validators=[DataRequired()])
     recipeId = IntegerField("recipeId", validators=[DataRequired()])
     submit = SubmitField("submit")

@@ -7,6 +7,7 @@ import "./EditReview.css"
 
 function EditReview({ reviewId, recipeId, userId, setShowModalEdit, oldReview }) {
     const dispatch = useDispatch();
+    const username = oldReview.username
 
     const [review, setReview] = useState(oldReview.review);
     const [rating, setRating] = useState(oldReview.rating)
@@ -34,7 +35,7 @@ function EditReview({ reviewId, recipeId, userId, setShowModalEdit, oldReview })
         e.preventDefault();
         if (errors.length <= 0) {
             return dispatch(
-                updateReviewThunk(review, rating, userId, recipeId, reviewId)
+                updateReviewThunk(review, rating, userId, username, recipeId, reviewId)
             ).then(() => setShowModalEdit(false)).catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);

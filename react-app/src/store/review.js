@@ -59,11 +59,11 @@ const deleteReview = (reviewId) => {
 //     }
 // }
 
-export const newReviewThunk = (review, rating, userId, recipeId) => async (dispatch) => {
+export const newReviewThunk = (review, rating, userId, username, recipeId) => async (dispatch) => {
     const response = await fetch(`/api/recipe/${recipeId}/review/new`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({review, rating, userId, recipeId})
+      body: JSON.stringify({review, rating, userId, username, recipeId})
     });
     if (response.ok) {
       const createReview = await response.json();
@@ -72,11 +72,11 @@ export const newReviewThunk = (review, rating, userId, recipeId) => async (dispa
     }
 };
 
-export const updateReviewThunk = (review, rating, userId, recipeId, reviewId) => async (dispatch) => {
+export const updateReviewThunk = (review, rating, userId, username, recipeId, reviewId) => async (dispatch) => {
     const response = await fetch(`/api/recipe/${recipeId}/review/${reviewId}/edit`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({review, rating, userId, recipeId}),
+      body: JSON.stringify({review, rating, userId, username, recipeId}),
     });
     if (response.ok) {
       const updatedReview = await response.json();

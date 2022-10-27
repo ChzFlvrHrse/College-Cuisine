@@ -1,7 +1,14 @@
+.big-contain {
+    background-color: #f2f3ef;
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+}
+
 .curr-recipe-container {
     margin: 0 10rem;
     color: black;
-    background-color: white;
+    /* background-color: #f2f3ef; */
 }
 
 .user-recipe-info h1 {
@@ -25,9 +32,19 @@
     padding: 1rem 0;
 }
 
+#recipe-username-description {
+    color:#f4564d;
+}
+
+.food-image {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .food {
-    height: 15rem;
-    width: 18rem;
+    height: 25rem;
+    width: 30rem;
+    object-fit: cover;
 }
 
 .border-2 {
@@ -80,6 +97,10 @@
 #ingredients-reviews {
     display: grid;
     grid-template-columns: 1fr 2fr;
+}
+
+#ingredients-container {
+    margin-right: 1.5rem;
 }
 
 .ingredients,

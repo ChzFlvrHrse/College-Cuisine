@@ -1,12 +1,10 @@
-from unicodedata import category
-from wsgiref.validate import validator
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, IntegerField
-from wtforms.validators import DataRequired, ValidationError
+from wtforms.validators import DataRequired
 
 def valid_image(form, field):
     imageUrl = field.data
-    if imageUrl == None or not imageUrl.startswith("https://") or not imageUrl.startswith("http://"):
+    if not imageUrl.startswith("https") or not imageUrl.startswith("http"):
         field.data = "https://i.dlpng.com/static/png/6892771_preview.png"
 
 class RecipeForm(FlaskForm):
@@ -15,5 +13,6 @@ class RecipeForm(FlaskForm):
     instructions = TextAreaField('instruction', validators=[DataRequired()])
     imageUrl = StringField('imageUrl', validators=[valid_image])
     userId = IntegerField("userId", validators=[DataRequired()])
+    username = StringField('username', validators=[DataRequired()])
     categoryId = IntegerField("categoryId", validators=[DataRequired()])
     submit = SubmitField("submit")

@@ -2,15 +2,17 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect, useParams } from "react-router-dom";
 import { getOneRecipeThunk, updateRecipeThunk } from "../../store/recipe";
-import "./EditRecipe.css"
+import "../AddRecipe/AddRecipe.css"
 
-export default function EditRecipe({recipeId, setShowModalEdit}) {
-    // const { recipeId } = useParams();
+export default function EditRecipe() {
+    const { recipeId } = useParams();
 
     const currRecipe = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user);
 
     const userId = user.id;
+    const username = user.username
+
     const [name, setName] = useState(currRecipe.name);
     const [description, setDescription] = useState(currRecipe.description);
     const [instructions, setInstructions] = useState(currRecipe.instructions);
@@ -44,91 +46,99 @@ export default function EditRecipe({recipeId, setShowModalEdit}) {
             return alert("There was something wrong with your recipe")
         }
 
-        await dispatch(updateRecipeThunk(name, description, instructions, imageUrl, userId, category, recipeId)).then(() => dispatch(getOneRecipeThunk(recipeId)));
+        await dispatch(updateRecipeThunk(name, description, instructions, imageUrl, userId, username, category, recipeId)).then(() => dispatch(getOneRecipeThunk(recipeId)));
 
         history.push(`/recipe/${recipeId}`)
     }
 
     return (
-        <div className="recipe-form-container">
-            {errorValidators.length > 0 && (
-                <ul>
-                    {errorValidators.map((error) => (
-                        <li className="add-recipe-error" key={error}>{error}</li>
-                    ))}
-                </ul>
-            )}
-            <form
-                onSubmit={handleSubmit}
-                className='add-recipe'
-            >
-                <div>
-                    <label>Name of Recipe</label>
-                    <input
-                        type="text"
-                        autoComplete="off"
-                        onChange={event => setName(event.target.value)}
-                        value={name}
-                    ></input>
-                </div>
-                <div>
-                    <label>Description</label>
-                    <input
-                        type="text"
-                        autoComplete="off"
-                        onChange={event => setDescription(event.target.value)}
-                        value={description}
-                    ></input>
-                </div>
-                <div>
-                    <label>Instruction</label>
-                    <textarea
-                        type="text"
-                        autoComplete="off"
-                        onChange={event => setInstructions(event.target.value)}
-                        value={instructions}
-                    ></textarea>
-                </div>
-                <div>
-                    <label>Image</label>
-                    <input
-                        type="text"
-                        autoComplete="off"
-                        onChange={event => setImageUrl(event.target.value)}
-                        value={imageUrl}
-                    ></input>
-                </div>
-                <div>
-                    <label>Category</label>
-                    <select
-                        type="text"
-                        autoComplete="off"
-                        onChange={event => setCategory(event.target.value)}
-                        value={category}
-                    >
-                        <option>Pick a Category</option>
-                        <option value="1">Breakfast</option>
-                        <option value="2">Lunch</option>
-                        <option value="3">Dinner</option>
-                        <option value="4">Beverages</option>
-                        <option value="5">Dessert</option>
-                        <option value="6">Healthy</option>
-                        <option value="7">Snack</option>
-                    </select>
-                    {/* <input
+        <>
+        <div className="big-add">
+            <div className="recipe-form-container">
+                {errorValidators.length > 0 && (
+                    <ul>
+                        {errorValidators.map((error) => (
+                            <li className="add-recipe-error" key={error}>{error}</li>
+                        ))}
+                    </ul>
+                )}
+                <form
+                    onSubmit={handleSubmit}
+                    className='add-recipe'
+                >
+                    <div className="add-your-recipe">Edit Your Recipe!</div>
+                    <div className="info">
+                        <label>Name of Recipe</label>
+                        <input
+                            type="text"
+                            autoComplete="off"
+                            onChange={event => setName(event.target.value)}
+                            value={name}
+                        ></input>
+                    </div>
+                    <div className="info">
+                        <label>Description</label>
+                        <input
+                            type="text"
+                            autoComplete="off"
+                            onChange={event => setDescription(event.target.value)}
+                            value={description}
+                        ></input>
+                    </div>
+                    <div className="info">
+                        <label>Instruction</label>
+                        <textarea
+                            type="text"
+                            autoComplete="off"
+                            onChange={event => setInstructions(event.target.value)}
+                            value={instructions}
+                        ></textarea>
+                    </div>
+                    <div className="info">
+                        <label>Image URL (optional)</label>
+                        <input
+                            type="text"
+                            autoComplete="off"
+                            onChange={event => setImageUrl(event.target.value)}
+                            value={imageUrl}
+                        ></input>
+                    </div>
+                    <div className="info">
+                        <label>Category</label>
+                        <select
+                            type="text"
+                            autoComplete="off"
+                            onChange={event => setCategory(event.target.value)}
+                            value={category}
+                        >
+                            <option>Pick a Category</option>
+                            <option value="1">Breakfast</option>
+                            <option value="2">Lunch</option>
+                            <option value="3">Dinner</option>
+                            <option value="4">Beverages</option>
+                            <option value="5">Dessert</option>
+                            <option value="6">Healthy</option>
+                            <option value="7">Snack</option>
+                        </select>
+                        {/* <input
                         type="text"
                         autoComplete="off"
                         onChange={event => setCategory(event.target.value)}
                         value={category}
                     ></input> */}
-                </div>
-                <div>
-                    <button
-                        type="submit"
-                        disabled={errorValidators.length}
-                    >Add Recipe</button>
-                </div>
-            </form>
+                    </div>
+                    <div className="submit-new-recipe-container">
+                        <button
+                            className="submit-new-recipe"
+                            type="submit"
+                            disabled={errorValidators.length}
+                        >Add Recipe</button>
+                    </div>
+                </form>
+            </div>
         </div>
+
+        </>
+
     )
 }

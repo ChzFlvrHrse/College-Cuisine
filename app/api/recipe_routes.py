@@ -39,6 +39,7 @@ def create_recipe():
             instructions=data['instructions'],
             imageUrl=data['imageUrl'],
             userId=current_user.id,
+            username=data['username'],
             categoryId=data['categoryId']
         )
 
@@ -147,6 +148,7 @@ def create_review(recipeId):
             review=data['review'],
             rating=data['rating'],
             userId=current_user.id,
+            username=data['username'],
             recipeId=recipeId
         )
 

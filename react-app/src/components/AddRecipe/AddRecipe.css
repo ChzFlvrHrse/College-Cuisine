@@ -1,11 +1,73 @@
-/* .recipe-form-container {
-    color: white;
-} */
+.big-add {
+    background-color: #f2f3ef;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
 
+.recipe-form-container {
+    display: grid;
+    justify-content: center;
+    margin: 0 10rem;
+}
+
+.form-errors-container {
+    display: grid;
+    justify-content: center;
+    font-weight: bold;
+}
 .add-recipe-error {
     color: red;
 }
 
 .add-recipe {
+    color: black;
+    /* width: 100% */
+}
+
+.add-your-recipe {
+    font-size: 2.5rem;
+    color: #f4564d;
+    font-weight: bold;
+}
+
+.info {
+    display: grid;
+    padding: 1rem 0;
+}
+
+.info input, .info select, .info textarea {
+    height: 2.5rem;
+    width: 60rem;
+    border-radius: .3rem;
+    resize: vertical;
+}
+
+.info label {
+    font-weight: bold;
+    color: rgba(0, 0, 0, .5);
+    padding-bottom: 1rem;
+}
+
+.submit-new-recipe-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.submit-new-recipe {
+    padding: .8rem 1.5rem;
     color: white;
+    background-color: #f4564d;
+    border-radius: .3rem;
+    border: none;
+    margin-top: .8rem;
+}
+
+.submit-new-recipe:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.submit-new-recipe:active {
+    transform: scale(.98);
 }

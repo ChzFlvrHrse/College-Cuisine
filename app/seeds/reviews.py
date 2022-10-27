@@ -4,11 +4,11 @@ from app.models import db, Review
 # Adds a demo user, you can add other users here if you want
 def seed_review():
     cereal_review = Review(
-        review="Great Cereal!", rating=5, userId=1, recipeId=1)
+        review="Great Cereal!", rating=5, userId=1, username="Demo", recipeId=1)
     pancakes_review = Review(
-        review="Great Pancakes!", rating=5, userId=2, recipeId=2)
+        review="Great Pancakes!", rating=5, userId=2, username="marnie", recipeId=2)
     eggs_review = Review(
-        review="Great Eggs!", rating=5, userId=3, recipeId=3)
+        review="Great Eggs!", rating=5, userId=3, username="bobbie", recipeId=3)
 
     db.session.add(cereal_review)
     db.session.add(pancakes_review)

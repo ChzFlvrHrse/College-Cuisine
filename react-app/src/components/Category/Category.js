@@ -19,8 +19,20 @@ export default function Category() {
     const recipeType = recipesArr.filter(recipe => recipe.categoryId == categoryId)
     // console.log(recipeType)
 
+    const ratingAvg = (reviewsArr) => {
+        let ratings = 0;
+        let ratingLen = reviewsArr?.length;
+
+        reviewsArr?.forEach(review => {
+            ratings += review.rating;
+        })
+
+        return Math.round((ratings * 10) / ratingLen) / 10;
+    }
+
     return (
         <>
+        <div className='big-category-container'>
             <div id="category-container">
                 <div id="inner-container">
                     <div id="cat-label">
@@ -39,15 +51,23 @@ export default function Category() {
                                     <div>
                                         {recipe.name}
                                     </div>
+                                    <div id="recipe-user">
+                                        By: {recipe.username}
+                                    </div>
                                 </div>
                                 <div className="recipe-stars">
-                                    <div>Stars</div>
+                                    <div>
+                                        {ratingAvg(recipe.reviews)}
+                                        <a class="fas fa-star s5"></a>
+                                    </div>
                                 </div>
                             </Link>
                         ))}
                     </div>
                 </div>
             </div>
+        </div>
+
         </>
     )
 }
