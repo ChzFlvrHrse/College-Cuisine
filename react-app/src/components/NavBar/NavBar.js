@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from "react-redux";
+import ProfileButton from "./ProfileButton";
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
-  const [category, setCategory] = useState("");
 
   if (!user) {
     return (
@@ -70,8 +70,8 @@ const NavBar = () => {
               </div>
             </div>
           </div>
-          <div className="logout">
-            <LogoutButton />
+          <div className="prof">
+            <ProfileButton />
           </div>
           {/* <NavLink to='/users' exact={true} activeClassName='active'>
             Users
