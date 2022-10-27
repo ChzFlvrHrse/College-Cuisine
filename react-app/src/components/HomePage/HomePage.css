@@ -67,6 +67,7 @@ body {
     width: 7rem;
     border-radius: 4rem;
     color: white;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     font-family: nyt-karnak-display-130124,nyt-stymie,Georgia,"Times New Roman",serif;;
 }
 
@@ -81,7 +82,7 @@ body {
     height: 18rem;
     width: 21rem;
     margin-left: 4rem;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     margin-right: 4rem;
 }
 
@@ -101,4 +102,48 @@ body {
     /* margin-top: -8rem; */
     font-family: nyt-cheltenham,Georgia,"Times New Roman",serif;
     color: black;
+}
+
+#bottom-container {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    margin: 1rem 10rem;
+}
+
+
+.recipe-info-container {
+    display: grid;
+    justify-content: center;
+    height: 18rem;
+    width: 17rem;
+    background-color: #ffffff;
+    border: solid black thin;
+    border-radius: .2rem;
+    margin: 1rem 1rem;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.recipe-info-container:hover {
+    cursor: pointer;
+}
+
+.recipe-img {
+    object-fit: cover;
+    height: 12rem;
+    width: 17rem;
+}
+
+.recipe-name-2 {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 3rem;
+    padding-left: 1rem;
+    font-weight: bold;
+    overflow-wrap: break-word;
+}
+
+.recipe-stars {
+    display: flex;
+    justify-content: flex-end;
 }

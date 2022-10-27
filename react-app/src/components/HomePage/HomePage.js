@@ -16,6 +16,7 @@ export function HomePage() {
 
 
     const allRecipesArr = Object.values(allRecipes);
+    console.log(allRecipesArr)
     const firstRecipe = allRecipesArr[0];
 
     if (!user) {
@@ -59,6 +60,23 @@ export function HomePage() {
                             </div>
                         </Link>
                     </div>
+                </div>
+                <div id="bottom-container">
+                    {allRecipesArr?.map(recipe => (
+                        <Link to={`/recipe/${recipe.id}`} className="recipe-info-container">
+                            <div>
+                                <img className="recipe-img" src={recipe.imageUrl} />
+                            </div>
+                            <div className="recipe-name-2">
+                                <div>
+                                    {recipe.name}
+                                </div>
+                            </div>
+                            <div className="recipe-stars">
+                                <div>Stars</div>
+                            </div>
+                        </Link>
+                    ))}
                 </div>
             </>
         )
