@@ -1,10 +1,10 @@
-body {
+/* body {
     background: url(pexels-ray-piedra-1565982.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
+} */
 
 @keyframes gradient {
     0% {
@@ -16,6 +16,14 @@ body {
     100% {
         background-position: 0% 50%;
     }
+}
+
+body {
+    background: url(pexels-ray-piedra-1565982.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .login-container {
@@ -38,7 +46,6 @@ body {
     display: grid;
     justify-items: center;
     width: 22rem;
-
 }
 
 #login-banner {
@@ -59,10 +66,10 @@ body {
     padding-bottom: .7rem;
 }
 
-#to-klickr {
+#to-college {
     font-size: 1.3rem;
     font-weight: 400;
-    margin: .5rem 0;
+    /* margin: .5rem 0; */
 }
 
 .label-input {

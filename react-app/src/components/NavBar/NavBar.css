@@ -7,8 +7,7 @@
     position: sticky;
     z-index: 5;
     height: 4rem;
-    width: 1005;
-    /* border-bottom: #e33d26; */
+    width: 100%;
 }
 
 #left-nav {
@@ -19,6 +18,7 @@
     color: #e33d26;
     font-size: 1.5rem;
     text-decoration: none;
+    margin-left: 1rem;
 }
 
 #search {

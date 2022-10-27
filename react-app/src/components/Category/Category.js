@@ -28,12 +28,22 @@ export default function Category() {
                         <h1 className='cat-type'>{categoryType}</h1>
                     </div>
                 </div>
-                <div>
-                    <div id="lower-container">
-                        {recipeType.map(recipe => (
-                            <div key={recipe.id}>
-                                <Link to={`/recipe/${recipe.id}`}>{recipe.name}</Link>
-                            </div>
+                <div id="inner-container">
+                    <div id="bottom-container">
+                        {recipeType?.map(recipe => (
+                            <Link to={`/recipe/${recipe.id}`} className="recipe-info-container">
+                                <div>
+                                    <img className="recipe-img" src={recipe.imageUrl} />
+                                </div>
+                                <div className="recipe-name-2">
+                                    <div>
+                                        {recipe.name}
+                                    </div>
+                                </div>
+                                <div className="recipe-stars">
+                                    <div>Stars</div>
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

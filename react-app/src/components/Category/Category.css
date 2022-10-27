@@ -3,12 +3,12 @@
     justify-content: flex-start;
     align-items: center;
     color: #e33d26;
-    background-color: white;
-    margin: 0 10rem;
+    background-color: #f2f3ef;
 }
 
 #inner-container {
     display: flex;
+    margin: 0 10rem;
 }
 
 .cat-type {

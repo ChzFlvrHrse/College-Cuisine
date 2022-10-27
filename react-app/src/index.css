@@ -1,3 +1,7 @@
 * {
     font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
 }
+
+body {
+    margin: 0
+}

@@ -22,16 +22,19 @@ export function HomePage() {
     if (!user) {
         return (
             <>
-                <div id="outer-div">
-                    <div className="splash">
-                        <div>
-                            <h3 id='cuisine'>College Kid Cuisine</h3>
-                        </div>
-                        <div>
-                            <h5>Don't Go Hungry Cause You're Broke</h5>
+                <div id="outer-outer">
+                    <div id="outer-div">
+                        <div className="splash">
+                            <div>
+                                <h3 id='cuisine'>College Kid Cuisine</h3>
+                            </div>
+                            <div>
+                                <h5>Don't Go Hungry Cause You're Broke</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </>
         )
     } else {

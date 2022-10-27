@@ -33,6 +33,7 @@ const LoginForm = () => {
 
   return (
     <>
+    <div id="outer-login">
       <div className='login-container'>
         <div className='inner-login'>
           <form className='login-form' onSubmit={onLogin} autoComplete="off">
@@ -40,7 +41,7 @@ const LoginForm = () => {
               {/* <div id="circles-container">
                 <img src={klickrLogo} alt='' id='circles'></img>
               </div> */}
-              <h4 id="to-klickr">
+              <h4 id="to-college">
                 Log in to College Cuisine
               </h4>
             </div>
@@ -79,6 +80,8 @@ const LoginForm = () => {
           </form>
         </div>
       </div>
+    </div>
+
     </>
   );
 };
