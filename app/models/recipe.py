@@ -18,7 +18,7 @@ class Recipe(db.Model):
 
     ingredients = db.relationship("Ingredient", backref="recipe", cascade="all, delete-orphan")
     reviews = db.relationship("Review", backref="recipe", cascade="all, delete-orphan")
-    categories = db.relationship('Category', backref='recipe')
+    # categories = db.relationship('Category', backref='recipe')
 
     def to_dict(self):
         return {
