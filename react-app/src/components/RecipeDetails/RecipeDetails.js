@@ -133,7 +133,7 @@ export default function RecipeDetails() {
                                 <div className='review-user'>{user.username}</div>
                                 <div key={review.id}>{review.review}</div>
                                 <div className='rating-edit-delete'>
-                                    {userId == recipe.userId ? <i
+                                    {userId == review.userId ? <i
                                         onClick={() => {
                                             setShowModalEdit(true)
                                             setReviewState(review)
@@ -157,7 +157,7 @@ export default function RecipeDetails() {
                                             />
                                         </Modal>
                                     )}
-                                    {userId == recipe.userId ? <i
+                                    {userId == review.userId ? <i
                                         onClick={() => {
                                             setShowModalDeleteReview(true);
                                             setReviewState(review)

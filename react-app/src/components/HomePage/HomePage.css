@@ -116,7 +116,6 @@
     display: flex;
     justify-content: center;
     background-color: #f2f3ef;
-
 }
 
 
@@ -126,7 +125,7 @@
     height: 18rem;
     width: 17rem;
     background-color: #ffffff;
-    border: solid black thin;
+    /* border: solid black thin; */
     border-radius: .2rem;
     margin: 1rem 1rem;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
