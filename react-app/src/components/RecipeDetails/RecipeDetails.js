@@ -51,6 +51,17 @@ export default function RecipeDetails() {
         history.push(`/recipe/${recipeId}`)
     }
 
+    const ratingAvg = (reviewsArr) => {
+        let ratings = 0;
+        let ratingLen = reviewsArr?.length;
+
+        reviewsArr?.forEach(review => {
+            ratings += review.rating;
+        })
+
+        return Math.round((ratings * 10) / ratingLen) / 10;
+    }
+
     return (
         <>
             <div className='big-contain'>
@@ -80,17 +91,23 @@ export default function RecipeDetails() {
                             </div>
                         </div>
                         <div className='btns'>
-                            {userId == recipe.userId ? <Link to={`/recipe/${recipeId}/edit`}><i class="fa-solid fa-pen-to-square" ></i></Link> : <></>}
-                            {userId == recipe.userId ? <i
-                                onClick={() => {
-                                    setShowModal(true);
-                                    setRecipeState(recipe)
-                                }}
-                                className="delete-recipe"
-                                title="delete"
-                                class="fa-solid fa-delete-left"
-                            ></i> : <></>
-                            }
+                            <div className='icon-container'>
+                                {userId == recipe.userId ? <Link to={`/recipe/${recipeId}/edit`}><i title='edit' class="fa-solid fa-pen-to-square" ></i></Link> : <></>}
+
+                            </div>
+                            <div>
+                                {userId == recipe.userId ? <i
+                                    onClick={() => {
+                                        setShowModal(true);
+                                        setRecipeState(recipe)
+                                    }}
+                                    className="delete-recipe"
+                                    title="delete"
+                                    class="fa-solid fa-trash"
+                                ></i> : <></>
+                                }
+
+                            </div>
                             {showModal && (
                                 <Modal
                                     onClose={() => setShowModal(false)}
@@ -101,7 +118,8 @@ export default function RecipeDetails() {
                                     />
                                 </Modal>
                             )}
-                            <div>Stars</div>
+                            <div id='avg-func'>{ratingAvg(reviewsArr)}</div>
+                            <div><a id="avg-star-rating" class="fas fa-star s5"></a></div>
                         </div>
                         <div className='border-3'></div>
                     </div>

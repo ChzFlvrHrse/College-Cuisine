@@ -77,6 +77,8 @@
 .btns i {
     border-radius: .3rem;
     cursor: pointer;
+    color: black;
+    font-size: 1.5rem;
 }
 
 .btns i:hover {
@@ -85,6 +87,20 @@
 
 .btns i:active {
     transform: scale(.98);
+}
+
+.icon-container {
+    display: flex;
+    padding: 0 1rem;
+}
+
+#avg-func, #avg-star-rating {
+    color: #f4564d;
+    font-size: 1.5rem;
+}
+
+#avg-func {
+    padding-left: 1rem;
 }
 
 .border-3 {
