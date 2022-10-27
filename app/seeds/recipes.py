@@ -4,7 +4,7 @@ from app.models import db, Recipe
 # Adds a demo user, you can add other users here if you want
 def seed_recipe():
     cereal = Recipe(
-        name='Cereal', description='Cereal in a bowl filled with milk', instructions='Get bowl. Fill with milk. Eat with spoon', imageUrl="https://www.cspinet.org/sites/default/files/styles/700x530/public/2021-11/december21_bn_hero_700x530.jpg?h=61bc1599", userId=1, username='Demo', categoryId=1)
+        name='Cereal', description='Cereal in a bowl filled with milk', instructions='Get bowl. Fill with milk. Eat with spoon', imageUrl="https://upload.suggest.com/sg/uploads/2022/01/shutterstock_1021375678-800x599.png", userId=1, username='Demo', categoryId=1)
     pancakes = Recipe(
         name='Pancakes', description='Fluffy and savory cakes for a morning feast!', instructions='Mix and pour batter into skillet until cooked', imageUrl="https://www.mashed.com/img/gallery/basic-homemade-pancake-recipe/l-intro-1623681422.jpg", userId=2, username='marnie',categoryId=1)
     eggs = Recipe(
