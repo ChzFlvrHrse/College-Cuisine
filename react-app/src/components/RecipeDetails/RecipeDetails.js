@@ -48,6 +48,9 @@ export default function RecipeDetails() {
 
         await dispatch(newReviewThunk(review, rating, userId, username, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
 
+        setRating(0);
+        setReview("");
+
         history.push(`/recipe/${recipeId}`)
     }
 
