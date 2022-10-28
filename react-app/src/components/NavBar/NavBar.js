@@ -37,6 +37,9 @@ const NavBar = () => {
           <NavLink id="home" to='/' exact={true} activeClassName='active'>
             College Cuisine
           </NavLink>
+          <div className="border-right">
+            <div></div>
+          </div>
           <div id="search">
             <i id="spy" class="fa-solid fa-magnifying-glass"></i>
             <input id="search-bar" placeholder="What would you like to cook?"></input>

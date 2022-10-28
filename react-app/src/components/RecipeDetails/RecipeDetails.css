@@ -21,10 +21,10 @@
     padding-bottom: 1.5rem;
 }
 
-.border {
+/* .border {
     border-bottom: solid gray thin;
     opacity: .5;
-}
+} */
 
 .visuals {
     display: grid;
@@ -95,8 +95,11 @@
 }
 
 #avg-func, #avg-star-rating {
-    color: #f4564d;
     font-size: 1.5rem;
+}
+
+#avg-star-rating {
+    color: gold;
 }
 
 #avg-func {
@@ -216,33 +219,33 @@
 }
 
 .star-wrapper a:hover {
-    color: #f4564d;
+    color: gold;
     transform: scale(1.3);
     cursor: pointer;
 }
 
 .s1:hover~a {
-    color: #f4564d;
+    color: gold;
 }
 
 .s1::after~a {
-    color: #f4564d
+    color: gold;
 }
 
 .s2:hover~a {
-    color: #f4564d;
+    color: gold;
 }
 
 .s3:hover~a {
-    color: #f4564d;
+    color: gold;
 }
 
 .s4:hover~a {
-    color: #f4564d;
+    color: gold;
 }
 
 .s5:hover~a {
-    color: #f4564d;
+    color: gold;
 }
 
 .wraper {

@@ -69,7 +69,7 @@ export default function RecipeDetails() {
         let starMap = []
 
         for (let i = 0; i < num; i++) {
-            starMap.push(<a class="fas fa-star" style={{ color: "#f4564d", margin: "0 .2rem" }}></a>)
+            starMap.push(<a class="fas fa-star" style={{ color: "gold", margin: "0 .2rem" }}></a>)
         }
 
         for (let i = 0; i < (5 - num); i++) {
@@ -85,16 +85,14 @@ export default function RecipeDetails() {
         <>
             <div className='big-contain'>
                 <div className='curr-recipe-container'>
+                    {/* <div className='user-recipe-info'>
+                        <div className="border"></div>
+                    </div> */}
+                    <div className='visuals'>
                     <div className='user-recipe-info'>
                         <h1>{recipe.name}</h1>
                         <div className='username'>By: {recipe.username}</div>
-                        <div className="border"></div>
                     </div>
-                    <div className='visuals'>
-                        <div>
-                            <h3 id='recipe-username-description'>{recipe.username}'s Description</h3>
-                            <h4>{recipe.description}</h4>
-                        </div>
                         <div className='food-image'>
                             <img className='food' src={recipe.imageUrl} />
                         </div>

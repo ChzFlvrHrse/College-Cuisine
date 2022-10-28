@@ -171,8 +171,12 @@
     display: flex;
     justify-content: flex-end;
     padding-right: .5rem;
-    color: #f4564d;
+    color: black;
     font-size: 1.3rem;
+}
+
+.recipe-stars a {
+    color: gold;
 }
 
 .recipe-info-container:hover {
