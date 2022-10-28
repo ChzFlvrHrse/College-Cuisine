@@ -56,11 +56,11 @@ export default function EditRecipe() {
         <div className="big-add">
             <div className="recipe-form-container">
                 {errorValidators.length > 0 && (
-                    <ul>
+                    <div className="form-errors-container">
                         {errorValidators.map((error) => (
-                            <li className="add-recipe-error" key={error}>{error}</li>
+                            <div className="add-recipe-error" key={error}>{error}</div>
                         ))}
-                    </ul>
+                    </div>
                 )}
                 <form
                     onSubmit={handleSubmit}
