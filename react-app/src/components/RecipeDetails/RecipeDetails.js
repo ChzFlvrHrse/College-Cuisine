@@ -158,6 +158,7 @@ export default function RecipeDetails() {
                                                 setShowModalEdit(true)
                                                 setReviewState(review)
                                             }}
+                                            className='edit-review'
                                             title="edit"
                                             class="fa-solid fa-pen-to-square"
                                         ></i> : <></>}
@@ -173,7 +174,7 @@ export default function RecipeDetails() {
                                                     recipeId={recipeId}
                                                     userId={userId}
                                                     setShowModalEdit={setShowModalEdit}
-                                                    oldReview={review}
+                                                    oldReview={reviewState}
                                                 />
                                             </Modal>
                                         )}
@@ -197,7 +198,9 @@ export default function RecipeDetails() {
                                                 />
                                             </Modal>
                                         )}
-                                        <div>Stars</div>
+                                        <div><a>{review.rating}</a></div>
+                                        <div><a id="individual-star-rating" class="fas fa-star s5"></a></div>
+
                                     </div>
                                     <div className='border-3'></div>
                                 </div>
