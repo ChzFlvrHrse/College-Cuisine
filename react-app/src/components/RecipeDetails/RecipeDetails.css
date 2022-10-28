@@ -1,5 +1,5 @@
 .big-contain {
-    background-color: #f2f3ef;
+    background-color: #ffffff;
     position: absolute;
     width: 100%;
     height: fit-content;
@@ -11,25 +11,23 @@
     /* background-color: #f2f3ef; */
 }
 
+
+.visuals {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem 0;
+}
+
 .user-recipe-info h1 {
     font-family: nyt-cheltenham, Georgia, Times New Roman, serif;
-    font-size: 3rem;
-    font-weight: 300;
+    font-size: 4rem;
+    font-weight: 200;
 }
 
 .username {
     padding-bottom: 1.5rem;
-}
-
-/* .border {
-    border-bottom: solid gray thin;
-    opacity: .5;
-} */
-
-.visuals {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 1rem 0;
+    font-weight: bold;
 }
 
 #recipe-username-description {
@@ -42,13 +40,20 @@
 }
 
 .food {
-    height: 25rem;
-    width: 30rem;
+    height: 30rem;
+    width: 43rem;
     object-fit: cover;
 }
 
+.recipe-description {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.3rem;
+    font-family: nyt-cheltenham, Georgia, Times New Roman, serif;
+}
+
 .border-2 {
-    border-bottom: solid #666666 thick;
+    border-bottom: solid rgba(102, 102, 102, .5) thin;
     margin-bottom: 1rem;
 }
 
@@ -106,8 +111,13 @@
     padding-left: 1rem;
 }
 
+#total-reviews {
+    padding-left: .3rem;
+    font-size: 1.25rem;
+}
+
 .border-3 {
-    border-bottom: solid gray thin;
+    border-bottom: solid rgba(102, 102, 102, .5) thin;
     margin-top: 1rem;
     margin-bottom: 2rem;
     opacity: .5;
@@ -162,7 +172,7 @@
 
 #review-box textarea {
     resize: none;
-    height: 8rem;
+    height: 10rem;
     width: 90%;
 }
 
@@ -252,4 +262,8 @@
     position: absolute;
     bottom: 30px;
     right: 50px;
+}
+
+.error {
+    color: red;
 }

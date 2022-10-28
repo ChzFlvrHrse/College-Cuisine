@@ -19,6 +19,8 @@ export default function RecipeDetails() {
     const [showModalEdit, setShowModalEdit] = useState(false);
     const [showModalDeleteReview, setShowModalDeleteReview] = useState(false);
 
+    const [errorValidations, setErrorValidations] = useState([])
+
     const { recipeId } = useParams();
     const recipe = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user)
@@ -46,12 +48,40 @@ export default function RecipeDetails() {
     const submitReview = async (e) => {
         e.preventDefault()
 
+        if (checkReview() == true) {
+            setRating(rating);
+            setReview(review);
+        } else {
+            setRating(0);
+            setReview("");
+        }
+
         await dispatch(newReviewThunk(review, rating, userId, username, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
 
-        setRating(0);
-        setReview("");
+        // setRating(0);
+        // setReview("");
 
         history.push(`/recipe/${recipeId}`)
+    }
+
+    const checkReview = () => {
+        const errors = [];
+
+        if (rating == 0) {
+            errors.push("Please rate this recipe")
+        }
+
+        if (!review) {
+            errors.push("Please write a review")
+        }
+
+        setErrorValidations(errors)
+
+        if (errorValidations.length > 0) {
+            return true
+        } else {
+            return false
+        }
     }
 
     const ratingAvg = (reviewsArr) => {
@@ -85,16 +115,20 @@ export default function RecipeDetails() {
         <>
             <div className='big-contain'>
                 <div className='curr-recipe-container'>
-                    {/* <div className='user-recipe-info'>
-                        <div className="border"></div>
-                    </div> */}
                     <div className='visuals'>
-                    <div className='user-recipe-info'>
-                        <h1>{recipe.name}</h1>
-                        <div className='username'>By: {recipe.username}</div>
-                    </div>
+                        <div className='user-recipe-info'>
+                            <h1>{recipe.name}</h1>
+                            <div className='username'>By {recipe.username}</div>
+                        </div>
                         <div className='food-image'>
-                            <img className='food' src={recipe.imageUrl} />
+                            <div>
+                                <div>
+                                    <img className='food' src={recipe.imageUrl} />
+                                </div>
+                                <p className='recipe-description'>
+                                    {recipe.description}
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -109,7 +143,7 @@ export default function RecipeDetails() {
                         </div>
                         <div className='btns'>
                             <div className='icon-container'>
-                                {userId == recipe.userId ? <Link to={`/recipe/${recipeId}/edit`}><i title='edit' class="fa-solid fa-pen-to-square" ></i></Link> : <></>}
+                                {userId == recipe.userId ? <Link to={`/recipe/${recipeId}/edit`}><i title='edit recipe' class="fa-solid fa-pen-to-square" ></i></Link> : <></>}
 
                             </div>
                             <div>
@@ -119,7 +153,7 @@ export default function RecipeDetails() {
                                         setRecipeState(recipe)
                                     }}
                                     className="delete-recipe"
-                                    title="delete"
+                                    title="delete recipe"
                                     class="fa-solid fa-trash"
                                 ></i> : <></>
                                 }
@@ -137,6 +171,7 @@ export default function RecipeDetails() {
                             )}
                             <div id='avg-func'>{ratingAvg(reviewsArr)}</div>
                             <div><a id="avg-star-rating" class="fas fa-star s5"></a></div>
+                            <div id='total-reviews'>({reviewsArr?.length})</div>
                         </div>
                         <div className='border-3'></div>
                     </div>
@@ -178,7 +213,7 @@ export default function RecipeDetails() {
                                                     setReviewState(review)
                                                 }}
                                                 className='edit-review'
-                                                title="edit"
+                                                title="edit review"
                                                 class="fa-solid fa-pen-to-square"
                                             ></i> : <></>}
                                         </div>
@@ -204,7 +239,7 @@ export default function RecipeDetails() {
                                                 setReviewState(review)
                                             }}
                                             className="delete-review"
-                                            title="delete"
+                                            title="delete review"
                                             class="fa-solid fa-delete-left"
                                         ></i> : <></>}
                                         {showModalDeleteReview && (
@@ -218,7 +253,6 @@ export default function RecipeDetails() {
                                                 />
                                             </Modal>
                                         )}
-                                        {/* <div>{starFunc(review.rating)}</div> */}
                                     </div>
                                     <div className='border-3'></div>
                                 </div>
@@ -230,6 +264,14 @@ export default function RecipeDetails() {
                                 <form
                                     onSubmit={submitReview}
                                 >
+                                    <div id='errors'>
+                                        {errorValidations &&
+                                        (errorValidations.map(error => (
+                                            <div key={error.id} className='error'>
+                                                {error}
+                                            </div>
+                                        )))}
+                                    </div>
                                     <div>
                                         <div id="rating-stars">
                                             <div id='rating'>Rating</div>
@@ -275,8 +317,9 @@ export default function RecipeDetails() {
                                     <div id='submit'>
                                         <button
                                             type='submit'
-                                            disabled={!review}
+                                            // disabled={!review || rating == 0}
                                             id='sumbit-review'
+                                            onClick={checkReview}
                                         >Submit</button>
                                     </div>
                                 </form>
@@ -285,7 +328,6 @@ export default function RecipeDetails() {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }
