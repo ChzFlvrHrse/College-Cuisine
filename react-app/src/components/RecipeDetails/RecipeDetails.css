@@ -152,6 +152,11 @@
     color:#f4564d;
 }
 
+.edit-review-icon {
+    display: flex;
+    padding: 0 1rem;
+}
+
 #review-box textarea {
     resize: none;
     height: 8rem;
