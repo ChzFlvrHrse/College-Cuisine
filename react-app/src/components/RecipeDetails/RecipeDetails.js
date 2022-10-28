@@ -62,6 +62,22 @@ export default function RecipeDetails() {
         return Math.round((ratings * 10) / ratingLen) / 10;
     }
 
+    const starFunc = (num) => {
+        let starMap = []
+
+        for (let i = 0; i < num; i++) {
+            starMap.push(<a class="fas fa-star" style={{ color: "#f4564d", margin: "0 .2rem" }}></a>)
+        }
+
+        for (let i = 0; i < (5 - num); i++) {
+            starMap.push(<a class="fas fa-star" style={{ color: "rgba(0, 0, 0, .4)", margin: "0 .2rem" }}></a>)
+        }
+
+        return starMap.map(star => {
+            return star
+        })
+    }
+
     return (
         <>
             <div className='big-contain'>
@@ -153,15 +169,18 @@ export default function RecipeDetails() {
                                     <div className='review-user'>{review.username}</div>
                                     <div key={review.id}>{review.review}</div>
                                     <div className='rating-edit-delete'>
-                                        {userId == review.userId ? <i
-                                            onClick={() => {
-                                                setShowModalEdit(true)
-                                                setReviewState(review)
-                                            }}
-                                            className='edit-review'
-                                            title="edit"
-                                            class="fa-solid fa-pen-to-square"
-                                        ></i> : <></>}
+                                        <div className='rating-done'>{starFunc(review.rating)}</div>
+                                        <div className='edit-review-icon'>
+                                            {userId == review.userId ? <i
+                                                onClick={() => {
+                                                    setShowModalEdit(true)
+                                                    setReviewState(review)
+                                                }}
+                                                className='edit-review'
+                                                title="edit"
+                                                class="fa-solid fa-pen-to-square"
+                                            ></i> : <></>}
+                                        </div>
                                         {showModalEdit && (
                                             <Modal
                                                 onClose={() => {
@@ -198,9 +217,7 @@ export default function RecipeDetails() {
                                                 />
                                             </Modal>
                                         )}
-                                        <div><a>{review.rating}</a></div>
-                                        <div><a id="individual-star-rating" class="fas fa-star s5"></a></div>
-
+                                        {/* <div>{starFunc(review.rating)}</div> */}
                                     </div>
                                     <div className='border-3'></div>
                                 </div>
