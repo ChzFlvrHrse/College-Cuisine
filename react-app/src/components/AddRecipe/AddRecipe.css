@@ -27,7 +27,7 @@
 
 .add-your-recipe {
     font-size: 2.5rem;
-    color: #f4564d;
+    color: #4dbff4;
     font-weight: bold;
 }
 
@@ -57,7 +57,7 @@
 .submit-new-recipe {
     padding: .8rem 1.5rem;
     color: white;
-    background-color: #f4564d;
+    background-color: #4dbff4;
     border-radius: .3rem;
     border: none;
     margin-top: .8rem;

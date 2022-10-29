@@ -57,12 +57,6 @@ function App() {
         <Route exact path="/recipe/:recipeId/edit">
           <EditRecipe />
         </Route>
-        <Route>
-          <DeleteReview />
-        </Route>
-        <Route>
-          <EditReview />
-        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>

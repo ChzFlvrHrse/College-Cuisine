@@ -68,7 +68,7 @@ export function HomePage() {
                                 <div id="recipe-name">
                                     {firstRecipe?.name}
                                 </div>
-                                <div id='recipe-dscription'>
+                                <div id='recipe-description'>
                                     {firstRecipe?.description}
                                 </div>
                                 <div id='recipe-owner'>

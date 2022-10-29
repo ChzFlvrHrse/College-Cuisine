@@ -18,7 +18,7 @@
 }
 
 #home {
-    color: #e33d26;
+    color: #4dbff4;
     font-size: 1.5rem;
     text-decoration: none;
     margin-left: 1rem;
@@ -47,13 +47,13 @@
 
 #login, #signup {
     padding: 1rem;
-    color: #e33d26;
+    color: #4dbff4;
     text-decoration: none;
 }
 
 #login:hover, #signup:hover {
     color: black;
-    border-bottom: solid #e33d26;
+    border-bottom: solid #4dbff4;
 }
 
 #login-signup {
@@ -64,7 +64,7 @@
     display: none;
     position: absolute;
     background-color: white;
-    color: #e33d26;
+    color: #4dbff4;
     min-width: 10rem;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -76,19 +76,19 @@
 }
 
 .cat-link:hover {
-    background-color:#e33d26;
+    background-color:#4dbff4;
     color: white;
 }
 
 .cat-link:hover > a {
-    background-color: #e33d26;
+    background-color: #4dbff4;
     color: white;
     transform: scale(1.2);
 }
 
 .dropdown-content a {
     display: flex;
-    color: #e33d26;
+    color: #4dbff4;
     font-size: 1.2rem;
 }
 
