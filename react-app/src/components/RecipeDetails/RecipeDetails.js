@@ -3,22 +3,24 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecipeThunk } from '../../store/recipe';
 import { newReviewThunk } from '../../store/review';
-import { newIngredientThunk } from '../../store/ingredient'
+import { deleteIngredientThunk, newIngredientThunk } from '../../store/ingredient'
 import { Modal } from '../../context/Modal';
-import "./RecipeDetails.css"
 import DeleteRecipe from '../DeleteReicpe/DeleteRecipe';
 import DeleteReview from '../DeleteReview/DeleteReview';
 import EditReview from '../EditReview/EditReview';
+import "./RecipeDetails.css"
 
 export default function RecipeDetails() {
-    // const [ingredientsState, setIngredientsState] = useState("");
+    const [ingredientsState, setIngredientState] = useState("");
     const [recipeState, setRecipeState] = useState("")
     const [reviewState, setReviewState] = useState("")
     const [review, setReview] = useState("");
     const [rating, setRating] = useState(0);
+
     const [showModal, setShowModal] = useState(false);
     const [showModalEdit, setShowModalEdit] = useState(false);
     const [showModalDeleteReview, setShowModalDeleteReview] = useState(false);
+    const [showModalDeleteIngredient, setShowModalDeleteIngredient] = useState(false);
 
     const [ingredient, setIngredient] = useState("");
 
@@ -73,6 +75,16 @@ export default function RecipeDetails() {
         setIngredient("");
 
         history.push(`/recipe/${recipeId}`)
+    }
+
+    const preventDefault = async (e) => {
+        return e.preventDefault()
+    }
+
+    const deleteIngredient = async (recipeId, ingredientId) => {
+        preventDefault();
+
+        await dispatch(deleteIngredientThunk(recipeId, ingredientId)).then(dispatch(getOneRecipeThunk(recipeId)));
     }
 
     const checkReview = () => {
@@ -198,11 +210,13 @@ export default function RecipeDetails() {
                                     <div className='ingredients-map'>
                                         <div className='ingr' key={ingr.id}>{ingr.ingredient}</div>
                                         <div className='edit-delete-ingr'>
-                                            <div className='inner-edit-ingr'>
+                                            {/* <div className='inner-edit-ingr'>
                                                 {userId == recipeOwner ? <i title='edit ingredient' class="fa-solid fa-pen-to-square" ></i> : <></>}
-                                            </div>
+                                            </div> */}
                                             <div className='inner-delete-ingr'>
-                                                {userId == recipeOwner ? <i title='delete ingredient' class="fa-solid fa-delete-left"></i> : <></>}
+                                                {userId == recipeOwner ?
+                                                <i onClick={async (e) => {e.preventDefault(); await dispatch(deleteIngredientThunk(recipeId, ingr.id)).then(dispatch(getOneRecipeThunk(recipeId))); history.push(`/recipe/${recipeId}`)}}
+                                                title='delete ingredient' class="fa-solid fa-xmark"></i> : <></>}
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +299,7 @@ export default function RecipeDetails() {
                                             }}
                                             className="delete-review"
                                             title="delete review"
-                                            class="fa-solid fa-delete-left"
+                                            class="fa-solid fa-xmark"
                                         ></i> : <></>}
                                         {showModalDeleteReview && (
                                             <Modal
