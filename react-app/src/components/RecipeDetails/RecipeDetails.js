@@ -3,6 +3,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getOneRecipeThunk } from '../../store/recipe';
 import { newReviewThunk } from '../../store/review';
+import { newIngredientThunk } from '../../store/ingredient'
 import { Modal } from '../../context/Modal';
 import "./RecipeDetails.css"
 import DeleteRecipe from '../DeleteReicpe/DeleteRecipe';
@@ -19,6 +20,8 @@ export default function RecipeDetails() {
     const [showModalEdit, setShowModalEdit] = useState(false);
     const [showModalDeleteReview, setShowModalDeleteReview] = useState(false);
 
+    const [ingredient, setIngredient] = useState("");
+
     const [errorValidations, setErrorValidations] = useState([])
 
     const { recipeId } = useParams();
@@ -26,6 +29,7 @@ export default function RecipeDetails() {
     const user = useSelector(state => state.session.user)
     const userId = user.id
     const username = user.username
+    const recipeOwner = recipe.userId
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -58,8 +62,15 @@ export default function RecipeDetails() {
 
         await dispatch(newReviewThunk(review, rating, userId, username, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
 
-        // setRating(0);
-        // setReview("");
+        history.push(`/recipe/${recipeId}`)
+    }
+
+    const submitIngredient = async (e) => {
+        e.preventDefault();
+
+        await dispatch(newIngredientThunk(ingredient, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
+
+        setIngredient("");
 
         history.push(`/recipe/${recipeId}`)
     }
@@ -132,7 +143,7 @@ export default function RecipeDetails() {
                         </div>
                     </div>
                     <div>
-                        <div className="border-2"></div>
+                        <div className="border-3"></div>
                         <div id="category-name">
                             <div className='category'>
                                 Category:
@@ -182,12 +193,46 @@ export default function RecipeDetails() {
                                     Ingredients:
                                 </div>
                             </div>
-                            <div>
+                            <div className='map-container'>
                                 {ingredientsArr?.map(ingr => (
-                                    <div className='ingr' key={ingr.id}>{ingr.ingredient}</div>
+                                    <div className='ingredients-map'>
+                                        <div className='ingr' key={ingr.id}>{ingr.ingredient}</div>
+                                        <div className='edit-delete-ingr'>
+                                            <div className='inner-edit-ingr'>
+                                                {userId == recipeOwner ? <i title='edit ingredient' class="fa-solid fa-pen-to-square" ></i> : <></>}
+                                            </div>
+                                            <div className='inner-delete-ingr'>
+                                                {userId == recipeOwner ? <i title='delete ingredient' class="fa-solid fa-delete-left"></i> : <></>}
+                                            </div>
+                                        </div>
+                                    </div>
                                 ))}
                             </div>
                             <div className='border-3'></div>
+                            <div id="ingredients-box">
+                                {userId == recipeOwner ?
+                                    <form
+                                        onSubmit={submitIngredient}
+                                    >
+                                        <input
+                                            type='text'
+                                            onChange={(e) => setIngredient(e.target.value)}
+                                            value={ingredient}
+                                            placeholder='Ingredient'
+                                            className='ingredient-input'
+                                        ></input>
+                                        <div className='submit-ingredient-container'>
+                                            <button
+                                                type='submit'
+                                                disabled={!ingredient}
+                                                className="submit-ingredient"
+                                            >
+                                                Add Ingredient
+                                            </button>
+                                        </div>
+                                    </form>
+                                    : <></>}
+                            </div>
                         </div>
                         <div id='reviews-container'>
                             <div className='instructions'>
@@ -266,11 +311,11 @@ export default function RecipeDetails() {
                                 >
                                     <div id='errors'>
                                         {errorValidations &&
-                                        (errorValidations.map(error => (
-                                            <div key={error.id} className='error'>
-                                                {error}
-                                            </div>
-                                        )))}
+                                            (errorValidations.map(error => (
+                                                <div key={error.id} className='error'>
+                                                    {error}
+                                                </div>
+                                            )))}
                                     </div>
                                     <div>
                                         <div id="rating-stars">

@@ -1,22 +1,6 @@
-// const GET_RECIPES = "recipe/getRecipes"
-// const GET_ONE_RECIPE = "recipe/getOneRecipe"
 const NEW_REVIEW = "review/newReview"
 const UPDATE_REVIEW = "review/update"
 const DELETE_REVIEW = "review/delete"
-
-// const getAllRecipes = (recipes) => {
-//     return {
-//         type: GET_RECIPES,
-//         recipes
-//     }
-// }
-
-// const getOneRecipe = (recipeId) => {
-//     return {
-//         type: GET_ONE_RECIPE,
-//         recipeId
-//     }
-// }
 
 const newReview = (review) => {
     return {
@@ -38,26 +22,6 @@ const deleteReview = (reviewId) => {
         reviewId
     }
 }
-
-// export const getAllRecipesThunk = () => async (dispatch) => {
-//     const response = await fetch("/api/recipe/");
-
-//     if (response.ok) {
-//         const recipes = await response.json();
-//         dispatch(getAllRecipes(recipes));
-//         return recipes;
-//     }
-// }
-
-// export const getOneRecipeThunk = (recipeId) => async (dispatch) => {
-//     const response = await fetch(`/api/recipe/${recipeId}`)
-
-//     if (response.ok) {
-//         const recipe = await response.json();
-//         dispatch(getOneRecipe(recipe));
-//         return recipe
-//     }
-// }
 
 export const newReviewThunk = (review, rating, userId, username, recipeId) => async (dispatch) => {
     const response = await fetch(`/api/recipe/${recipeId}/review/new`, {
