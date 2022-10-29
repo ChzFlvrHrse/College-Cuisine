@@ -188,11 +188,13 @@ export default function RecipeDetails() {
                                 >
                                     <DeleteRecipe
                                         recipeId={recipeId}
+                                        categoryId={recipe.categoryId}
                                         setShowModal={setShowModal}
                                     />
                                 </Modal>
                             )}
-                            <div id='avg-func'>{ratingAvg(reviewsArr)}</div>
+                            {recipe.reviews?.length > 0 ? <div id='avg-func'>{ratingAvg(recipe.reviews)}</div>:
+                            <div id='avg-func' style={{fontSize: ".9rem", color: 'black'}}>Not Reviewed</div>}
                             <div><a id="avg-star-rating" class="fas fa-star s5"></a></div>
                             <div id='total-reviews'>({reviewsArr?.length})</div>
                         </div>

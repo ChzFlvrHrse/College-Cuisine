@@ -1,18 +1,22 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteRecipeThunk } from "../../store/recipe";
+import { getAllRecipesThunk } from "../../store/recipe";
 import { useHistory } from "react-router-dom";
 import './DeleteRecipe.css'
 
-export default function DeleteRecipe({ recipeId, setShowModal }) {
+export default function DeleteRecipe({ recipeId, categoryId, setShowModal }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const categories = ['', 'Breakfast', 'Lunch', 'Dinner', 'Beverages', 'Dessert', 'Healthy', 'Snack']
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await dispatch(deleteRecipeThunk(recipeId));
+        await dispatch(deleteRecipeThunk(recipeId)).then(dispatch(getAllRecipesThunk()));
         setShowModal(false);
-        history.push('/')
+        history.push(`/category/${categories[categoryId]}/${categoryId}`)
+        // history.push('/')
     };
     const handleSubmit2 = async (e) => {
         e.preventDefault();

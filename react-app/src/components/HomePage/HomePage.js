@@ -94,7 +94,9 @@ export function HomePage() {
                             </div>
                             <div className="recipe-stars">
                                 <div>
-                                    {ratingAvg(recipe.reviews)}
+                                    {recipe.reviews?.length > 0 ? ratingAvg(recipe.reviews):
+                                    <a style={{fontSize: ".9rem", color: 'black'}}>Not Reviewed</a>}
+
                                     <a class="fas fa-star s5"></a>
                                 </div>
                             </div>
