@@ -1,5 +1,4 @@
 import { newRecipeThunk, getAllRecipesThunk } from "../../store/recipe";
-import { newIngredientThunk } from "../../store/ingredient";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
@@ -16,12 +15,6 @@ export default function AddRecipe() {
     const [imageUrl, setImageUrl] = useState("");
     const [category, setCategory] = useState("");
     const [errorValidators, setErrorValidators] = useState([])
-
-    const [firstIngr, setFirstIngr] = useState('')
-    const [secondIngr, setSecondIngr] = useState('')
-    const [thirdIngr, setThirdIngr] = useState('')
-    const [fourthIngr, setFourthIngr] = useState('')
-    const [fifthIngr, setFifthIngr] = useState('')
 
     const dispatch = useDispatch()
     const history = useHistory();
