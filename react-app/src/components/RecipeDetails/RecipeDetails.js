@@ -11,7 +11,7 @@ import EditReview from '../EditReview/EditReview';
 import "./RecipeDetails.css"
 
 export default function RecipeDetails() {
-    const [ingredientsState, setIngredientState] = useState("");
+    let [ingredientsState, setIngredientState] = useState(0);
     const [recipeState, setRecipeState] = useState("")
     const [reviewState, setReviewState] = useState("")
     const [review, setReview] = useState("");
@@ -20,7 +20,6 @@ export default function RecipeDetails() {
     const [showModal, setShowModal] = useState(false);
     const [showModalEdit, setShowModalEdit] = useState(false);
     const [showModalDeleteReview, setShowModalDeleteReview] = useState(false);
-    const [showModalDeleteIngredient, setShowModalDeleteIngredient] = useState(false);
 
     const [ingredient, setIngredient] = useState("");
 
@@ -43,13 +42,8 @@ export default function RecipeDetails() {
 
     let ingredientsArr;
     let reviewsArr;
-
-    useEffect((e) => {
-        dispatch(getOneRecipeThunk(recipeId))
-    }, [dispatch, ingredientsArr, reviewsArr]);
-
-    ingredientsArr = recipe.ingredients
-    reviewsArr = recipe.reviews
+    // ingredientsArr = recipe.ingredients
+    // reviewsArr = recipe.reviews
 
     const submitReview = async (e) => {
         e.preventDefault()
@@ -74,18 +68,16 @@ export default function RecipeDetails() {
 
         setIngredient("");
 
-        history.push(`/recipe/${recipeId}`)
+        // history.push(`/recipe/${recipeId}`)
     }
 
-    const preventDefault = async (e) => {
-        return e.preventDefault()
-    }
+    useEffect((e) => {
+        dispatch(getOneRecipeThunk(recipeId))
+    }, [dispatch, ingredientsArr, reviewsArr, rating, review, ingredient, ingredientsState, showModal, showModalEdit, showModalEdit, showModalDeleteReview]);
 
-    const deleteIngredient = async (recipeId, ingredientId) => {
-        preventDefault();
+    ingredientsArr = recipe.ingredients
+    reviewsArr = recipe.reviews
 
-        await dispatch(deleteIngredientThunk(recipeId, ingredientId)).then(dispatch(getOneRecipeThunk(recipeId)));
-    }
 
     const checkReview = () => {
         const errors = [];
@@ -217,7 +209,7 @@ export default function RecipeDetails() {
                                             </div> */}
                                             <div className='inner-delete-ingr'>
                                                 {userId == recipeOwner ?
-                                                <i onClick={async (e) => {e.preventDefault(); await dispatch(deleteIngredientThunk(recipeId, ingr.id)).then(dispatch(getOneRecipeThunk(recipeId))); history.push(`/recipe/${recipeId}`)}}
+                                                <i onClick={async (e) => {e.preventDefault(); await dispatch(deleteIngredientThunk(recipeId, ingr.id)).then(dispatch(getOneRecipeThunk(recipeId))); setIngredientState(ingredientsState++)}}
                                                 title='delete ingredient' class="fa-solid fa-xmark"></i> : <></>}
                                             </div>
                                         </div>
