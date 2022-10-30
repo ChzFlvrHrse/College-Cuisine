@@ -13,7 +13,7 @@ export default function DeleteReview({ reviewId, recipeId, setShowModal }) {
         e.preventDefault();
         await dispatch(deleteReviewThunk(recipeId, reviewId)).then(dispatch(getOneRecipeThunk(recipeId)));
         setShowModal(false);
-        history.push(`/recipe/${recipeId}`)
+        // history.push(`/recipe/${recipeId}`)
     };
     const handleSubmit2 = async (e) => {
         e.preventDefault();
