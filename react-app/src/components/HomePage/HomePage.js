@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipesThunk, getOneRecipeThunk } from "../../store/recipe";
+import collegeCuisine from './college-cuisine-logo.png'
 
 export function HomePage() {
     const user = useSelector(state => state.session.user);
@@ -38,8 +39,8 @@ export function HomePage() {
                 <div id="outer-outer">
                     <div id="outer-div">
                         <div className="splash">
-                            <div>
-                                <h3 id='cuisine'>College Kid Cuisine</h3>
+                            <div id='logo'>
+                                <img src={collegeCuisine}  alt='College Cuisine'/>
                             </div>
                             <div>
                                 <h5>Don't Go Hungry Cause You're Broke</h5>
@@ -47,7 +48,6 @@ export function HomePage() {
                         </div>
                     </div>
                 </div>
-
             </>
         )
     } else {
