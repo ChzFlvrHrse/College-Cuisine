@@ -12,13 +12,13 @@ class Recipe(db.Model):
     imageUrl = db.Column(db.String, nullable=False, default="https://i.dlpng.com/static/png/6892771_preview.png")
     userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     username = db.Column(db.String, nullable=False)
-    categoryId = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
+    categoryId = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     ingredients = db.relationship("Ingredient", backref="recipe", cascade="all, delete-orphan")
     reviews = db.relationship("Review", backref="recipe", cascade="all, delete-orphan")
-    categories = db.relationship('Category', backref='recipe')
+    # categories = db.relationship('Category', backref='recipe')
 
     def to_dict(self):
         return {
