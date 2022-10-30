@@ -31,7 +31,7 @@
 }
 
 #recipe-username-description {
-    color:#4dbff4;
+    color:#43bbd7;
 }
 
 .food-image {
@@ -65,7 +65,7 @@
 .ingredients,
 .instructions,
 .reviews {
-    color: #4dbff4;
+    color: #43bbd7;
     font-weight: bold;
 }
 
@@ -166,7 +166,7 @@
 }
 
 .rating-edit-delete a {
-    color:#4dbff4;
+    color:#43bbd7;
 }
 
 .edit-review-icon {
@@ -201,7 +201,7 @@
 
 #sumbit-review {
     padding: .5rem 2rem;
-    background-color: #4dbff4;
+    background-color: #43bbd7;
     border-radius: .3rem;
     border: none;
     color: white;
@@ -292,7 +292,7 @@
 }
 
 .submit-ingredient {
-    background-color: #4dbff4;
+    background-color: #43bbd7;
     color: white;
     border: none;
     border-radius: .2rem;

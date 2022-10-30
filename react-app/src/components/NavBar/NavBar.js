@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
+import collegeCuisine from './college-cuisine-logo.png'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -13,8 +14,11 @@ const NavBar = () => {
       <nav id="nav">
         <div id="left-nav">
           <NavLink id="home" to='/' exact={true} activeClassName='active'>
-            College Cuisine
+            <img src={collegeCuisine}  alt='College Cuisine'/>
           </NavLink>
+          <div className="border-right">
+            <div></div>
+          </div>
           <div id="search">
             <i id="spy" class="fa-solid fa-magnifying-glass"></i>
             <input id="search-bar" placeholder="What would you like to cook?"></input>
@@ -35,7 +39,7 @@ const NavBar = () => {
       <nav id="nav">
         <div id="left-nav">
           <NavLink id="home" to='/' exact={true} activeClassName='active'>
-            College Cuisine
+            <img src={collegeCuisine}  alt='College Cuisine'/>
           </NavLink>
           <div className="border-right">
             <div></div>

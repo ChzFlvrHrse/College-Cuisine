@@ -74,8 +74,8 @@
 }
 
 .label-input:focus {
-    border-color: #348fdc;
-    color:#348fdc;
+    border-color: #43bbd7;
+    color:#43bbd7;
 }
 
 .button {
@@ -88,7 +88,7 @@
     height: 2.5rem;
     width: 18.5rem;
     color: white;
-    background-color: #f4564d;
+    background-color: #43bbd7;
     border-radius: .3rem;
     border: solid 0;
     font-size: 1rem;
