@@ -36,16 +36,6 @@ export default function AddRecipe() {
         return <Redirect to="/" />;
     }
 
-    // const addIngredients = async (e) => {
-    //     e.preventDefault();
-
-    //     const ingredients = [firstIngr, secondIngr, thirdIngr, fourthIngr, fifthIngr];
-
-    //     ingredients.forEach(async (ingr) => {
-    //         await dispatch(newIngredientThunk(ingr))
-    //     })
-    // }
-
     const handleSubmit = async (e) => {
         e.preventDefault()
 
