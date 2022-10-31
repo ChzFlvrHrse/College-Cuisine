@@ -79,6 +79,10 @@ export default function RecipeDetails() {
     reviewsArr = recipe.reviews
     console.log(reviewsArr)
 
+    let sortedReviewsByNewest = reviewsArr?.sort((a, b) => a.id - b.id);
+
+    console.log(sortedReviewsByNewest)
+
     const checkReview = () => {
         const errors = [];
 
@@ -253,7 +257,7 @@ export default function RecipeDetails() {
                             <div className='reviews'>
                                 Reviews:
                             </div>
-                            {reviewsArr?.map(review => (
+                            {sortedReviewsByNewest?.map(review => (
                                 <div id='recipe-reviews'>
                                     <div className='review-user'>{review.username}</div>
                                     <div className='the-review' key={review.id}>{review.review}</div>
