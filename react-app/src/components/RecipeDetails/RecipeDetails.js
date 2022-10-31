@@ -77,7 +77,7 @@ export default function RecipeDetails() {
 
     ingredientsArr = recipe.ingredients
     reviewsArr = recipe.reviews
-
+    console.log(reviewsArr)
 
     const checkReview = () => {
         const errors = [];
