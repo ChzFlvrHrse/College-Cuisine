@@ -247,9 +247,9 @@
     color: gold;
 }
 
-/* .s1:active {
+.s1:focus {
     color: gold;
-} */
+}
 
 .s2:hover~a {
     color: gold;
