@@ -125,6 +125,7 @@
     display: flex;
     justify-content: center;
     background-color: #f2f3ef;
+    grid-template-columns: 1fr 1fr;
 }
 
 
@@ -157,7 +158,12 @@
     padding-left: 1rem;
     font-weight: bold;
     overflow-wrap: break-word;
-    color: black
+    color: black;
+}
+
+.nested-recipe-name {
+    overflow-wrap: break-word;
+    width: 10rem;
 }
 
 #recipe-user {
@@ -171,6 +177,7 @@
     padding-right: .5rem;
     color: black;
     font-size: 1.3rem;
+    /* position: absolute; */
 }
 
 .recipe-stars a {
@@ -186,4 +193,8 @@
     height: 15rem;
     width: fit-content;
     object-fit: cover;
+}
+
+#rating-information {
+    display: flex;
 }

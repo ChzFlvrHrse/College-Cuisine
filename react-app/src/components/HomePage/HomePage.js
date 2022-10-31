@@ -85,7 +85,7 @@ export function HomePage() {
                                 <img className="recipe-img" src={recipe.imageUrl} />
                             </div>
                             <div className="recipe-name-2">
-                                <div>
+                                <div className="nested-recipe-name">
                                     {recipe.name}
                                 </div>
                                 <div id="recipe-user">
@@ -93,11 +93,11 @@ export function HomePage() {
                                 </div>
                             </div>
                             <div className="recipe-stars">
-                                <div>
-                                    {recipe.reviews?.length > 0 ? ratingAvg(recipe.reviews):
+                                <div id="rating-information">
+                                    {recipe.reviews?.length > 0 ? <div>{ratingAvg(recipe.reviews)}</div>:
                                     <a style={{fontSize: ".9rem", color: 'black'}}>Not Reviewed</a>}
-
                                     <a class="fas fa-star s5"></a>
+                                    <div id='total-reviews'>({recipe.reviews?.length})</div>
                                 </div>
                             </div>
                         </Link>
