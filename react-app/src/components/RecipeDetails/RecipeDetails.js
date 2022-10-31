@@ -82,7 +82,7 @@ export default function RecipeDetails() {
     const checkReview = () => {
         const errors = [];
 
-        if (rating == 0) {
+        if (rating == 0 || rating > 5) {
             errors.push("Please rate this recipe")
         }
 
