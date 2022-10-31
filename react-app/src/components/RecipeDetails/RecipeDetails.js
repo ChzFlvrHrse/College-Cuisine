@@ -303,11 +303,11 @@ export default function RecipeDetails() {
                                             <Modal
                                                 onClose={() => {
                                                     setShowModalDeleteReview(false)
-                                                    setReviewState(review)
+                                                    // setReviewState(review)
                                                 }}
                                             >
                                                 <DeleteReview
-                                                    reviewId={review.id}
+                                                    reviewId={reviewState.id}
                                                     recipeId={recipeId}
                                                     setShowModal={setShowModalDeleteReview}
                                                 />
