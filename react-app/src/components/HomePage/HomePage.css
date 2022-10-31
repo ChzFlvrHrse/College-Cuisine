@@ -77,7 +77,8 @@
     border-radius: 4rem;
     color: white;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    font-family: nyt-karnak-display-130124,nyt-stymie,Georgia,"Times New Roman",serif;;
+    font-family: nyt-karnak-display-130124, nyt-stymie, Georgia, "Times New Roman", serif;
+    ;
 }
 
 .on-top-2 {
@@ -101,7 +102,7 @@
     justify-content: center;
     font-size: 2.5rem;
     margin-bottom: -4rem;
-    font-family: nyt-cheltenham,Georgia,"Times New Roman",serif;
+    font-family: nyt-cheltenham, Georgia, "Times New Roman", serif;
     color: black;
 }
 
@@ -109,7 +110,7 @@
     display: flex;
     justify-content: center;
     font-size: 1rem;
-    font-family: nyt-cheltenham,Georgia,"Times New Roman",serif;
+    font-family: nyt-cheltenham, Georgia, "Times New Roman", serif;
     color: black;
     flex-wrap: wrap;
 }
@@ -162,8 +163,10 @@
 }
 
 .nested-recipe-name {
-    overflow-wrap: break-word;
-    width: 10rem;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #recipe-user {
@@ -189,7 +192,7 @@
     transform: scale(1.1);
 }
 
-#logo > img{
+#logo>img {
     height: 15rem;
     width: fit-content;
     object-fit: cover;
