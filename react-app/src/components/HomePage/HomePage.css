@@ -126,7 +126,8 @@
     display: flex;
     justify-content: center;
     background-color: #f2f3ef;
-    grid-template-columns: 1fr 1fr;
+    flex-wrap: wrap;
+    /* margin: 0 2rem; */
 }
 
 
@@ -200,9 +201,4 @@
 
 #rating-information {
     display: flex;
-}
-
-.the-review {
-    width: 28rem;
-    overflow-wrap: break-word;
 }

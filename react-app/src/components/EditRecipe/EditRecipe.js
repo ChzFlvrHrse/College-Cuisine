@@ -124,7 +124,7 @@ export default function EditRecipe() {
                             onChange={event => setCategoryId(event.target.value)}
                             value={categoryId}
                         >
-                            <option value={null} disabled selected>Pick A Category</option>
+                            <option value={null} >Pick A Category</option>
                             <option type='number' value={1}>Breakfast</option>
                             <option type='number' value={2}>Lunch</option>
                             <option type='number' value={3}>Dinner</option>

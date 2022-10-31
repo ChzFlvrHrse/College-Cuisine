@@ -11,11 +11,12 @@
     align-items: center;
     color: #43bbd7;
     background-color: #f2f3ef;
+    margin: 0 2rem;
 }
 
 #inner-container {
     display: flex;
-    margin: 0 10rem;
+    margin: 0 5rem;
 }
 
 .cat-type {
@@ -31,4 +32,17 @@
 #lower-container {
     display: flex;
     justify-content: space-around;
+}
+
+.nested-recipe-name {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#bottom-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
 }

@@ -86,7 +86,7 @@ export function HomePage() {
                             </div>
                             <div className="recipe-name-2">
                                 <div className="nested-recipe-name">
-                                    {recipe.name}
+                                    {recipe.name} 
                                 </div>
                                 <div id="recipe-user">
                                     By: {recipe.username}

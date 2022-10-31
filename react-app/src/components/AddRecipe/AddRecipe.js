@@ -110,7 +110,7 @@ export default function AddRecipe() {
                                 onChange={event => setCategory(event.target.value)}
                                 value={category}
                             >
-                                <option value={null} disabled selected>Pick a Category</option>
+                                <option value={null}>Pick a Category</option>
                                 <option type='number' value={1}>Breakfast</option>
                                 <option type='number' value={2}>Lunch</option>
                                 <option type='number' value={3}>Dinner</option>

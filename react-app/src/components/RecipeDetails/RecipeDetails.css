@@ -338,3 +338,8 @@
 .map-container {
     width: 22.5rem;
 }
+
+.the-review {
+    width: 28rem;
+    overflow-wrap: break-word;
+}
