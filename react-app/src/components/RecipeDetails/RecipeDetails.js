@@ -185,8 +185,8 @@ export default function RecipeDetails() {
                                     />
                                 </Modal>
                             )}
-                            {recipe.reviews?.length > 0 ? <div id='avg-func'>{ratingAvg(recipe.reviews)}</div>:
-                            <div id='avg-func' style={{fontSize: ".9rem", color: 'black'}}>Not Reviewed</div>}
+                            {recipe.reviews?.length > 0 ? <div id='avg-func'>{ratingAvg(recipe.reviews)}</div> :
+                                <div id='avg-func' style={{ fontSize: ".9rem", color: 'black' }}>Not Reviewed</div>}
                             <div><a id="avg-star-rating" class="fas fa-star s5"></a></div>
                             <div id='total-reviews'>({reviewsArr?.length})</div>
                         </div>
@@ -209,8 +209,8 @@ export default function RecipeDetails() {
                                             </div> */}
                                             <div className='inner-delete-ingr'>
                                                 {userId == recipeOwner ?
-                                                <i onClick={async (e) => {e.preventDefault(); await dispatch(deleteIngredientThunk(recipeId, ingr.id)); setIngredientState(ingredientsState+=1)}}
-                                                title='delete ingredient' class="fa-solid fa-xmark"></i> : <></>}
+                                                    <i onClick={async (e) => { e.preventDefault(); await dispatch(deleteIngredientThunk(recipeId, ingr.id)); setIngredientState(ingredientsState += 1) }}
+                                                        title='delete ingredient' class="fa-solid fa-xmark"></i> : <></>}
                                             </div>
                                         </div>
                                     </div>
@@ -256,7 +256,7 @@ export default function RecipeDetails() {
                             {reviewsArr?.map(review => (
                                 <div id='recipe-reviews'>
                                     <div className='review-user'>{review.username}</div>
-                                    <div key={review.id}>{review.review}</div>
+                                    <div className='the-review' key={review.id}>{review.review}</div>
                                     <div className='rating-edit-delete'>
                                         <div className='rating-done'>{starFunc(review.rating)}</div>
                                         <div className='edit-review-icon'>

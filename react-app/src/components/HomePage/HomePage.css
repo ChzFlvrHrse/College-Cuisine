@@ -198,3 +198,8 @@
 #rating-information {
     display: flex;
 }
+
+.the-review {
+    width: 28rem;
+    overflow-wrap: break-word;
+}
