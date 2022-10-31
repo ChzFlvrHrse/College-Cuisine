@@ -45,7 +45,12 @@ export default function Category() {
                             {recipeType?.map(recipe => (
                                 <Link to={`/recipe/${recipe.id}`} className="recipe-info-container">
                                     <div>
-                                        <img className="recipe-img" src={recipe.imageUrl} />
+                                        <img
+                                            className="recipe-img"
+                                            src={recipe.imageUrl}
+                                            alt='https://icsnorthernltd.com/images/product-1.jpg'
+                                            onError={e => { e.currentTarget.src = 'https://icsnorthernltd.com/images/product-1.jpg'}}
+                                        />
                                     </div>
                                     <div className="recipe-name-2">
                                         <div className='nested-recipe-name'>

@@ -133,7 +133,12 @@ export default function RecipeDetails() {
                         <div className='food-image'>
                             <div>
                                 <div>
-                                    <img className='food' src={recipe.imageUrl} />
+                                    <img
+                                        className='food'
+                                        src={recipe.imageUrl}
+                                        alt='https://icsnorthernltd.com/images/product-1.jpg'
+                                        onError={e => { e.currentTarget.src = 'https://icsnorthernltd.com/images/product-1.jpg' }}
+                                    />
                                 </div>
                                 <p className='recipe-description'>
                                     {recipe.description}
