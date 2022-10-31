@@ -19,6 +19,8 @@ export default function AddRecipe() {
     const dispatch = useDispatch()
     const history = useHistory();
 
+    const categories = { 1: "Breakfast", 2: "Lunch", 3: "Dinner", 4: "Beverages", 5: "Dessert", 6: "Healthy", 7: "Snack" }
+
     useEffect(() => {
         const errors = []
 
@@ -45,7 +47,7 @@ export default function AddRecipe() {
 
         await dispatch(newRecipeThunk(name, description, instructions, imageUrl, userId, username, category)).then(() => dispatch(getAllRecipesThunk()));
 
-        history.push(`/`)
+        history.push(`/category/${categories[category]}/${category}`)
     }
 
 
