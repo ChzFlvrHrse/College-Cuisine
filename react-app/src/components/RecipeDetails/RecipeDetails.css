@@ -247,6 +247,10 @@
     color: gold;
 }
 
+.s1:active {
+    color: gold;
+}
+
 .s2:hover~a {
     color: gold;
 }
