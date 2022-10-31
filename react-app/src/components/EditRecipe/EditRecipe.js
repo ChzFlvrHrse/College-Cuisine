@@ -7,17 +7,26 @@ import "../AddRecipe/AddRecipe.css"
 export default function EditRecipe() {
     const { recipeId } = useParams();
 
-    const currRecipe = useSelector(state => state.recipe);
+    const target = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user);
 
     const userId = user.id;
     const username = user.username
 
-    const [name, setName] = useState(currRecipe.name);
-    const [description, setDescription] = useState(currRecipe.description);
-    const [instructions, setInstructions] = useState(currRecipe.instructions);
-    const [imageUrl, setImageUrl] = useState(currRecipe.imageUrl);
-    const [categoryId, setCategoryId] = useState(currRecipe.categoryId);
+
+    if (target && target.userId === user.id) {
+        localStorage.setItem('name', target?.name)
+        localStorage.setItem('description', target?.description)
+        localStorage.setItem('instructions', target?.instructions)
+        localStorage.setItem('imageUrl', target?.imageUrl)
+        localStorage.setItem('categoryId', target?.categorId)
+    }
+
+    const [name, setName] = useState(localStorage.getItem('name'));
+    const [description, setDescription] = useState(localStorage.getItem('description'));
+    const [instructions, setInstructions] = useState(localStorage.getItem('instructions'));
+    const [imageUrl, setImageUrl] = useState(localStorage.getItem('imageUrl'));
+    const [categoryId, setCategoryId] = useState(localStorage.getItem('categoryId'));
     const [errorValidators, setErrorValidators] = useState([])
 
     useEffect(() => {
@@ -37,11 +46,6 @@ export default function EditRecipe() {
 
     useEffect(() => {
         dispatch(getOneRecipeThunk(recipeId))
-        // setName(name);
-        // setDescription(description);
-        // setInstructions(instructions);
-        // setImageUrl(imageUrl);
-        // setCategoryId(categoryId)
     }, []);
 
     const categories = { 1: "Breakfast", 2: "Lunch", 3: "Dinner", 4: "Beverages", 5: "Dessert", 6: "Healthy", 7: "Snack" }
@@ -83,7 +87,6 @@ export default function EditRecipe() {
                             autoComplete="off"
                             onChange={event => setName(event.target.value)}
                             value={name}
-                            placeholder={currRecipe.name}
                         ></input>
                     </div>
                     <div className="info">
@@ -93,7 +96,6 @@ export default function EditRecipe() {
                             autoComplete="off"
                             onChange={event => setDescription(event.target.value)}
                             value={description}
-                            placeholder={currRecipe.description}
                         ></input>
                     </div>
                     <div className="info">
@@ -103,7 +105,6 @@ export default function EditRecipe() {
                             autoComplete="off"
                             onChange={event => setInstructions(event.target.value)}
                             value={instructions}
-                            placeholder={currRecipe.instructions}
                         ></textarea>
                     </div>
                     <div className="info">
@@ -113,7 +114,6 @@ export default function EditRecipe() {
                             autoComplete="off"
                             onChange={event => setImageUrl(event.target.value)}
                             value={imageUrl}
-                            placeholder={currRecipe.imageUrl}
                         ></input>
                     </div>
                     <div className="info">
@@ -123,7 +123,6 @@ export default function EditRecipe() {
                             autoComplete="off"
                             onChange={event => setCategoryId(event.target.value)}
                             value={categoryId}
-                            name="hello"
                         >
                             <option value={null} disabled selected>Pick A Category</option>
                             <option type='number' value={1}>Breakfast</option>
