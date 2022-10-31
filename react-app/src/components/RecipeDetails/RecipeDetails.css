@@ -247,13 +247,17 @@
     color: gold;
 }
 
-.s1:active {
+/* .s1:active {
     color: gold;
-}
+} */
 
 .s2:hover~a {
     color: gold;
 }
+
+/* .s2:active~a {
+    color: gold;
+} */
 
 .s3:hover~a {
     color: gold;
