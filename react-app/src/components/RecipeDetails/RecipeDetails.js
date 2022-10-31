@@ -38,7 +38,6 @@ export default function RecipeDetails() {
     const categories = { 1: "Breakfast", 2: "Lunch", 3: "Dinner", 4: "Beverages", 5: "Dessert", 6: "Healthy", 7: "Snack" }
 
     const cat = categories[recipe.categoryId];
-    const catId = recipe.categoryId;
 
     let ingredientsArr;
     let reviewsArr;
@@ -56,9 +55,6 @@ export default function RecipeDetails() {
             setReview("");
             await dispatch(newReviewThunk(review, rating, userId, username, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
         }
-
-
-        // history.push(`/recipe/${recipeId}`)
     }
 
     const submitIngredient = async (e) => {
@@ -67,8 +63,6 @@ export default function RecipeDetails() {
         await dispatch(newIngredientThunk(ingredient, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
 
         setIngredient("");
-
-        // history.push(`/recipe/${recipeId}`)
     }
 
     useEffect(() => {
@@ -77,11 +71,8 @@ export default function RecipeDetails() {
 
     ingredientsArr = recipe.ingredients
     reviewsArr = recipe.reviews
-    console.log(reviewsArr)
 
     let sortedReviewsByNewest = reviewsArr?.sort((a, b) => a.id - b.id);
-
-    console.log(sortedReviewsByNewest)
 
     const checkReview = () => {
         const errors = [];
