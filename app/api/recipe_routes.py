@@ -64,7 +64,7 @@ def edit_recipe(recipeId):
         old_recipe.description = data['description']
         old_recipe.instructions = data['instructions']
         old_recipe.imageUrl = data['imageUrl']
-        old_recipe.cateogryId=data['categoryId']
+        old_recipe.categoryId=data['categoryId']
 
         db.session.commit()
 

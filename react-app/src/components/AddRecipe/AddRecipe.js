@@ -110,14 +110,14 @@ export default function AddRecipe() {
                                 onChange={event => setCategory(event.target.value)}
                                 value={category}
                             >
-                                <option>Pick a Category</option>
-                                <option value="1">Breakfast</option>
-                                <option value="2">Lunch</option>
-                                <option value="3">Dinner</option>
-                                <option value="4">Beverages</option>
-                                <option value="5">Dessert</option>
-                                <option value="6">Healthy</option>
-                                <option value="7">Snack</option>
+                                <option value={null} disabled selected>Pick a Category</option>
+                                <option type='number' value={1}>Breakfast</option>
+                                <option type='number' value={2}>Lunch</option>
+                                <option type='number' value={3}>Dinner</option>
+                                <option type='number' value={4}>Beverages</option>
+                                <option type='number' value={5}>Dessert</option>
+                                <option type='number' value={6}>Healthy</option>
+                                <option type='number' value={7}>Snack</option>
                             </select>
                         </div>
                         <div className="submit-new-recipe-container">

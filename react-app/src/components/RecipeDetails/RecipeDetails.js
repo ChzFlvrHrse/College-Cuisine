@@ -54,11 +54,11 @@ export default function RecipeDetails() {
         } else {
             setRating(0);
             setReview("");
+            await dispatch(newReviewThunk(review, rating, userId, username, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
         }
 
-        await dispatch(newReviewThunk(review, rating, userId, username, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
 
-        history.push(`/recipe/${recipeId}`)
+        // history.push(`/recipe/${recipeId}`)
     }
 
     const submitIngredient = async (e) => {
@@ -71,7 +71,7 @@ export default function RecipeDetails() {
         // history.push(`/recipe/${recipeId}`)
     }
 
-    useEffect((e) => {
+    useEffect(() => {
         dispatch(getOneRecipeThunk(recipeId))
     }, [dispatch, ingredientsArr, reviewsArr, rating, review, ingredient, ingredientsState, showModal, showModalEdit, showModalEdit, showModalDeleteReview]);
 
@@ -209,7 +209,7 @@ export default function RecipeDetails() {
                                             </div> */}
                                             <div className='inner-delete-ingr'>
                                                 {userId == recipeOwner ?
-                                                <i onClick={async (e) => {e.preventDefault(); await dispatch(deleteIngredientThunk(recipeId, ingr.id)).then(dispatch(getOneRecipeThunk(recipeId))); setIngredientState(ingredientsState++)}}
+                                                <i onClick={async (e) => {e.preventDefault(); await dispatch(deleteIngredientThunk(recipeId, ingr.id)); setIngredientState(ingredientsState+=1)}}
                                                 title='delete ingredient' class="fa-solid fa-xmark"></i> : <></>}
                                             </div>
                                         </div>
@@ -278,7 +278,7 @@ export default function RecipeDetails() {
                                                 }}
                                             >
                                                 <EditReview
-                                                    reviewId={review.id}
+                                                    reviewId={reviewState.id}
                                                     recipeId={recipeId}
                                                     userId={userId}
                                                     setShowModalEdit={setShowModalEdit}

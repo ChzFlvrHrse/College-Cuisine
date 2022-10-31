@@ -17,7 +17,7 @@ export default function EditRecipe() {
     const [description, setDescription] = useState(currRecipe.description);
     const [instructions, setInstructions] = useState(currRecipe.instructions);
     const [imageUrl, setImageUrl] = useState(currRecipe.imageUrl);
-    const [category, setCategory] = useState(currRecipe.categoryId);
+    const [categoryId, setCategoryId] = useState(currRecipe.categoryId);
     const [errorValidators, setErrorValidators] = useState([])
 
     useEffect(() => {
@@ -26,18 +26,25 @@ export default function EditRecipe() {
         if (!name) errors.push("Please name your recipe")
         if (!description) errors.push("Describe your recipe")
         if (!instructions) errors.push("Please provide instructions")
-        if (!category) errors.push("Please select a category")
+        if (!categoryId) errors.push("Please select a category")
 
         setErrorValidators(errors)
 
-    }, [name, description, instructions, category])
+    }, [name, description, instructions, categoryId])
 
     const dispatch = useDispatch();
     const history = useHistory();
 
     useEffect(() => {
         dispatch(getOneRecipeThunk(recipeId))
+        // setName(name);
+        // setDescription(description);
+        // setInstructions(instructions);
+        // setImageUrl(imageUrl);
+        // setCategoryId(categoryId)
     }, []);
+
+    const categories = { 1: "Breakfast", 2: "Lunch", 3: "Dinner", 4: "Beverages", 5: "Dessert", 6: "Healthy", 7: "Snack" }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -46,10 +53,12 @@ export default function EditRecipe() {
             return alert("There was something wrong with your recipe")
         }
 
-        await dispatch(updateRecipeThunk(name, description, instructions, imageUrl, userId, username, category, recipeId)).then(() => dispatch(getOneRecipeThunk(recipeId)));
+        await dispatch(updateRecipeThunk(name, description, instructions, imageUrl, userId, username, categoryId, recipeId)).then(() => dispatch(getOneRecipeThunk(recipeId)));
 
         history.push(`/recipe/${recipeId}`)
     }
+
+    console.log(categoryId)
 
     return (
         <>
@@ -74,6 +83,7 @@ export default function EditRecipe() {
                             autoComplete="off"
                             onChange={event => setName(event.target.value)}
                             value={name}
+                            placeholder={currRecipe.name}
                         ></input>
                     </div>
                     <div className="info">
@@ -83,6 +93,7 @@ export default function EditRecipe() {
                             autoComplete="off"
                             onChange={event => setDescription(event.target.value)}
                             value={description}
+                            placeholder={currRecipe.description}
                         ></input>
                     </div>
                     <div className="info">
@@ -92,6 +103,7 @@ export default function EditRecipe() {
                             autoComplete="off"
                             onChange={event => setInstructions(event.target.value)}
                             value={instructions}
+                            placeholder={currRecipe.instructions}
                         ></textarea>
                     </div>
                     <div className="info">
@@ -101,6 +113,7 @@ export default function EditRecipe() {
                             autoComplete="off"
                             onChange={event => setImageUrl(event.target.value)}
                             value={imageUrl}
+                            placeholder={currRecipe.imageUrl}
                         ></input>
                     </div>
                     <div className="info">
@@ -108,31 +121,26 @@ export default function EditRecipe() {
                         <select
                             type="text"
                             autoComplete="off"
-                            onChange={event => setCategory(event.target.value)}
-                            value={category}
+                            onChange={event => setCategoryId(event.target.value)}
+                            value={categoryId}
+                            name="hello"
                         >
-                            <option>Pick a Category</option>
-                            <option value="1">Breakfast</option>
-                            <option value="2">Lunch</option>
-                            <option value="3">Dinner</option>
-                            <option value="4">Beverages</option>
-                            <option value="5">Dessert</option>
-                            <option value="6">Healthy</option>
-                            <option value="7">Snack</option>
+                            <option value={null} disabled selected>Pick A Category</option>
+                            <option type='number' value={1}>Breakfast</option>
+                            <option type='number' value={2}>Lunch</option>
+                            <option type='number' value={3}>Dinner</option>
+                            <option type='number' value={4}>Beverages</option>
+                            <option type='number' value={5}>Dessert</option>
+                            <option type='number' value={6}>Healthy</option>
+                            <option type='number' value={7}>Snack</option>
                         </select>
-                        {/* <input
-                        type="text"
-                        autoComplete="off"
-                        onChange={event => setCategory(event.target.value)}
-                        value={category}
-                    ></input> */}
                     </div>
                     <div className="submit-new-recipe-container">
                         <button
                             className="submit-new-recipe"
                             type="submit"
                             disabled={errorValidators.length}
-                        >Add Recipe</button>
+                        >Edit Recipe</button>
                     </div>
                 </form>
             </div>
