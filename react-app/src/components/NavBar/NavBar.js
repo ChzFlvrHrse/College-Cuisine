@@ -36,7 +36,7 @@ const NavBar = () => {
           <div className="border-right">
             <div></div>
           </div>
-          <div id="search">
+          {/* <div id="search">
             <i id="spy" class="fa-solid fa-magnifying-glass"></i>
             <input
               onChange={(e) => setSearch(e.target.value)}
@@ -45,7 +45,7 @@ const NavBar = () => {
               placeholder="What would you like to cook?"
 
              ></input>
-          </div>
+          </div> */}
         </div>
         <div id="login-signup">
           <NavLink id='login' to='/login' exact={true} activeClassName='active'>
@@ -67,10 +67,10 @@ const NavBar = () => {
           <div className="border-right">
             <div></div>
           </div>
-          <div id="search">
+          {/* <div id="search">
             <i id="spy" class="fa-solid fa-magnifying-glass"></i>
             <input id="search-bar" placeholder="What would you like to cook?"></input>
-          </div>
+          </div> */}
         </div>
         <div id="login-signup">
           <Link id="login" to='/recipe/add'>Add Recipe+</Link>
