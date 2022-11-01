@@ -23,7 +23,8 @@ export default function RecipeDetails() {
 
     const [ingredient, setIngredient] = useState("");
 
-    const [errorValidations, setErrorValidations] = useState([])
+    const [errorValidations, setErrorValidations] = useState([]);
+    const [ingredientsError, setIngredientsError] = useState([]);
 
     const { recipeId } = useParams();
     const recipe = useSelector(state => state.recipe);
@@ -101,7 +102,7 @@ export default function RecipeDetails() {
             errors.push("Please write your ingredient")
         }
 
-        setErrorValidations(errors);
+        setIngredientsError(errors);
 
         if (errorValidations.length > 0) {
             return true;
@@ -259,8 +260,8 @@ export default function RecipeDetails() {
                                             onSubmit={submitIngredient}
                                         >
                                             <div id='errors'>
-                                                {errorValidations &&
-                                                    (errorValidations.map(error => (
+                                                {ingredientsError &&
+                                                    (ingredientsError.map(error => (
                                                         <div key={error.id} className='error'>
                                                             {error}
                                                         </div>
