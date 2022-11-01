@@ -69,7 +69,12 @@ export function HomePage() {
                     <div id="homepage-container">
                         <div className="top-container">
                             <Link to={`/recipe/${firstRecipe?.id}`} className="featured-link">
-                                <img className="featured" src={firstRecipe?.imageUrl} />
+                                <img
+                                    className="featured"
+                                    src={firstRecipe?.imageUrl}
+                                    alt='https://icsnorthernltd.com/images/product-1.jpg'
+                                    onError={e => { e.currentTarget.src = 'https://icsnorthernltd.com/images/product-1.jpg' }}
+                                />
                                 <div className="on-top">
                                     <div id="recipe-of-the-day">
                                         <div>Recipe</div>
