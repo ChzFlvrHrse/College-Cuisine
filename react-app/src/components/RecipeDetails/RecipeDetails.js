@@ -94,6 +94,22 @@ export default function RecipeDetails() {
         }
     }
 
+    const checkIngredient = () => {
+        const errors = [];
+
+        if (!ingredient) {
+            errors.push("Please write your ingredient")
+        }
+
+        setErrorValidations(errors);
+
+        if (errorValidations.length > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     const ratingAvg = (reviewsArr) => {
         let ratings = 0;
         let ratingLen = reviewsArr?.length;
@@ -222,6 +238,14 @@ export default function RecipeDetails() {
                                     <form
                                         onSubmit={submitIngredient}
                                     >
+                                    <div id='errors'>
+                                        {errorValidations &&
+                                            (errorValidations.map(error => (
+                                                <div key={error.id} className='error'>
+                                                    {error}
+                                                </div>
+                                            )))}
+                                    </div>
                                         <input
                                             type='text'
                                             onChange={(e) => setIngredient(e.target.value)}
@@ -232,8 +256,9 @@ export default function RecipeDetails() {
                                         <div className='submit-ingredient-container'>
                                             <button
                                                 type='submit'
-                                                disabled={!ingredient}
+                                                // disabled={!ingredient}
                                                 className="submit-ingredient"
+                                                onClick={checkIngredient}
                                             >
                                                 Add Ingredient
                                             </button>
