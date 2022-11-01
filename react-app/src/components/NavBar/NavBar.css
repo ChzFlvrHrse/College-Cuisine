@@ -75,10 +75,10 @@
     position: absolute;
     background-color: white;
     color: #43bbd7;
-    min-width: 10rem;
+    min-width: fit-content;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 2.8%;
+    /* right: 2.8%; */
     cursor: pointer;
 }
 
@@ -128,7 +128,7 @@ a {
     position: absolute;
     background-color: white;
     color: #43bbd7;
-    min-width: 10rem;
+    min-width: fit-content;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     /* right: 21%; */
@@ -138,7 +138,6 @@ a {
 .dropdown:hover .dropdown-content-about {
     display: block;
     color: white;
-    /* justify-content: flex-start; */
 }
 
 .dropdown:hover .drop {
@@ -170,7 +169,7 @@ a {
     position: absolute;
     background-color: white;
     color: #43bbd7;
-    min-width: 10rem;
+    min-width: fit-content;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     /* right: 12.2%; */
