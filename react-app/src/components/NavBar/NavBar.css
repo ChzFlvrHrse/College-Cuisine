@@ -131,13 +131,14 @@ a {
     min-width: 10rem;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 21%;
+    /* right: 21%; */
     cursor: pointer;
 }
 
 .dropdown:hover .dropdown-content-about {
     display: block;
     color: white;
+    /* justify-content: flex-start; */
 }
 
 .dropdown:hover .drop {
@@ -172,7 +173,7 @@ a {
     min-width: 10rem;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    right: 12.2%;
+    /* right: 12.2%; */
     cursor: pointer;
 }
 
