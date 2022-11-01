@@ -359,11 +359,11 @@ export default function RecipeDetails() {
                                             <div class="star-wrapper">
                                                 <a
                                                     onClick={() => setRating(5)}
-                                                    value={rating} className={rating >= 5 ? "fas fa-star s1-checked" : "fas fa-star s1"}
+                                                    value={rating} className={rating >= 5 ? "fas fa-star s5-checked" : "fas fa-star s5"}
                                                 ></a>
                                                 <a
                                                     onClick={() => setRating(4)}
-                                                    value={rating} className={rating >= 4 ? "fas fa-star s2-checked" : "fas fa-star s2"}
+                                                    value={rating} className={rating >= 4 ? "fas fa-star s4-checked" : "fas fa-star s4"}
                                                 ></a>
                                                 <a
                                                     onClick={() => setRating(3)}
@@ -371,11 +371,11 @@ export default function RecipeDetails() {
                                                 ></a>
                                                 <a
                                                     onClick={() => setRating(2)}
-                                                    value={rating} className={rating >= 2 ? "fas fa-star s4-checked" : "fas fa-star s4"}
+                                                    value={rating} className={rating >= 2 ? "fas fa-star s2-checked" : "fas fa-star s2"}
                                                 ></a>
                                                 <a
                                                     onClick={() => setRating(1)}
-                                                    value={rating} className={rating >= 1 ? "fas fa-star s5-checked" : "fas fa-star s5"}
+                                                    value={rating} className={rating >= 1 ? "fas fa-star s1-checked" : "fas fa-star s1"}
                                                 ></a>
                                             </div>
                                             <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
