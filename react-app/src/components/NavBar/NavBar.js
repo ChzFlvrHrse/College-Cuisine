@@ -1,13 +1,30 @@
 import "./NavBar.css"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
-import { useSelector } from "react-redux";
+// import { getAllRecipesThunk } from "../../store/recipe";
+import { useDispatch, useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import collegeCuisine from './college-cuisine-logo.png'
 
+
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
+  // const allRecipes = useSelector(state => state.recipe)
+  // const fuzzy = require('fuzzy');
+
+  const [search, setSearch] = useState("");
+
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(getAllRecipesThunk());
+  // }, [search])
+
+  // const allRecipesArr = Object.values(allRecipes);
+
+  // const results = fuzzy.filter('recipe', allRecipesArr);
+  // const matches = results.map((el) => el)
+  // console.log(matches);
 
   if (!user) {
     return (
@@ -21,7 +38,13 @@ const NavBar = () => {
           </div>
           <div id="search">
             <i id="spy" class="fa-solid fa-magnifying-glass"></i>
-            <input id="search-bar" placeholder="What would you like to cook?"></input>
+            <input
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+              id="search-bar"
+              placeholder="What would you like to cook?"
+
+             ></input>
           </div>
         </div>
         <div id="login-signup">
