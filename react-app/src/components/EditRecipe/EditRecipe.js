@@ -19,7 +19,7 @@ export default function EditRecipe() {
         localStorage.setItem('description', target?.description)
         localStorage.setItem('instructions', target?.instructions)
         localStorage.setItem('imageUrl', target?.imageUrl)
-        localStorage.setItem('categoryId', target?.categorId)
+        localStorage.setItem('categoryId', target?.categoryId)
     }
 
     const [name, setName] = useState(localStorage.getItem('name'));
@@ -62,7 +62,7 @@ export default function EditRecipe() {
         history.push(`/recipe/${recipeId}`)
     }
 
-    console.log(categoryId)
+    // console.log(categoryId)
 
     return (
         <>
