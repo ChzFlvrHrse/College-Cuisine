@@ -31,7 +31,7 @@ const NavBar = () => {
       <nav id="nav">
         <div id="left-nav">
           <NavLink id="home" to='/' exact={true} activeClassName='active'>
-            <img src={collegeCuisine}  alt='College Cuisine'/>
+            <img src={collegeCuisine} alt='College Cuisine' />
           </NavLink>
           <div className="border-right">
             <div></div>
@@ -48,6 +48,14 @@ const NavBar = () => {
           </div> */}
         </div>
         <div id="login-signup">
+          <div className="dropdown">
+            <div id="login" className="drop">About</div>
+            <div className="dropdown-content-about-no-user">
+              <div className="about-link">
+                <a href="https://github.com/ChzFlvrHrse/College-Cuisine">GitHub Repo</a>
+              </div>
+            </div>
+          </div>
           <NavLink id='login' to='/login' exact={true} activeClassName='active'>
             Log In
           </NavLink>
@@ -62,7 +70,7 @@ const NavBar = () => {
       <nav id="nav">
         <div id="left-nav">
           <NavLink id="home" to='/' exact={true} activeClassName='active'>
-            <img src={collegeCuisine}  alt='College Cuisine'/>
+            <img src={collegeCuisine} alt='College Cuisine' />
           </NavLink>
           <div className="border-right">
             <div></div>
@@ -73,6 +81,14 @@ const NavBar = () => {
           </div> */}
         </div>
         <div id="login-signup">
+          <div className="dropdown">
+            <div id="login" className="drop">About</div>
+            <div className="dropdown-content-about">
+              <div className="about-link">
+                <a href="https://github.com/ChzFlvrHrse/College-Cuisine">GitHub Repo</a>
+              </div>
+            </div>
+          </div>
           <Link id="login" to='/recipe/add'>Add Recipe+</Link>
           <div className="dropdown">
             <div id="login" className="drop">Categories</div>
