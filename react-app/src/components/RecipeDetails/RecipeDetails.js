@@ -375,7 +375,7 @@ export default function RecipeDetails() {
                                                 ></a>
                                                 <a
                                                     onClick={() => setRating(1)}
-                                                    value="5" className={rating >= 1 ? "fas fa-star s5-checked" : "fas fa-star s5"}
+                                                    value={rating} className={rating >= 1 ? "fas fa-star s5-checked" : "fas fa-star s5"}
                                                 ></a>
                                             </div>
                                             <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
