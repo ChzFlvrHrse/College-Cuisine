@@ -1,4 +1,4 @@
-import React, { useDebugValue } from "react";
+import React from "react";
 import "./404.css";
 import { login } from '../../store/session';
 import { useSelector } from "react-redux";

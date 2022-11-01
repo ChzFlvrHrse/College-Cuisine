@@ -42,12 +42,17 @@
 
 #spy {
     font-size: 1.2rem;
+    color: #757575;
 }
 
 #search-bar {
     border: none;
     font-size: 1.2rem;
     width: 25rem;
+}
+
+#serch-bar:focus {
+    border: none;
 }
 
 #login, #signup {
@@ -116,3 +121,5 @@ a {
     margin-right: 1rem;
     padding-bottom: .5rem;
 }
+
+

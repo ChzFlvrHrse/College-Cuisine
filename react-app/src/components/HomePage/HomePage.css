@@ -1,6 +1,7 @@
 #outer-outer {
+    display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 #outer-div {
@@ -8,9 +9,8 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, .4);
-    margin-right: 50%;
-    padding: 18rem 0;
-    /* height: 100%; */
+    width: 50%;
+    height: 100%;
 }
 
 .splash {
@@ -201,4 +201,39 @@
 
 #rating-information {
     display: flex;
+}
+
+#lets-eat {
+    background-color:#43bbd7;
+    color: white;
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border-radius: .3rem;
+    cursor: pointer;
+    border: none;
+}
+
+#lets-eat:hover {
+    transform: scale(1.2);
+}
+
+#lets-eat:active {
+    transform: scale(.98);
+}
+
+#icon {
+    display: none;
+}
+
+@media screen and (max-width: 975px) {
+    #logo {
+        display: none;
+    }
+    #icon {
+        display: flex;
+        height: 15rem;
+        width: fit-content;
+        object-fit: cover;
+    }
 }

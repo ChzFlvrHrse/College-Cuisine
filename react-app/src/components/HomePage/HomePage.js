@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipesThunk, getOneRecipeThunk } from "../../store/recipe";
 import collegeCuisine from './college-cuisine-logo.png'
+import icon from './college-cuisine-icon.png'
 
 export function HomePage() {
     const user = useSelector(state => state.session.user);
@@ -45,8 +46,16 @@ export function HomePage() {
                                     alt='College Cuisine'
                                 />
                             </div>
+                            <div id='icon'>
+                                <img
+                                    src={icon}
+                                    alt='College Cuisine'
+                                />
+                            </div>
                             <div>
-                                <h5>Don't Go Hungry Cause You're Broke</h5>
+                                <Link to='/sign-up'>
+                                    <button id='lets-eat'>Let's Eat!</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import icon from './college-cuisine-icon.png'
 import "./LoginForm.css"
 
 const LoginForm = () => {
@@ -33,54 +34,57 @@ const LoginForm = () => {
 
   return (
     <>
-    <div id="outer-login">
-      <div className='login-container'>
-        <div className='inner-login'>
-          <form className='login-form' onSubmit={onLogin} autoComplete="off">
-            <div id='login-banner'>
-              {/* <div id="circles-container">
-                <img src={klickrLogo} alt='' id='circles'></img>
-              </div> */}
-              <h4 id="to-college">
-                Log in to College Cuisine
-              </h4>
-            </div>
-            <div className='login-errors'>
-            {errors.length ? "Email or Password is incorrect" : <></>}
-            </div>
-            <div className='label-input'>
-              <label>Email address</label>
-              <input
-                name='email'
-                type='text'
-                value={email}
-                onChange={updateEmail}
-                autoFocus
-              />
-            </div>
-            <div className='label-input'>
-              <label id="password">Password</label>
-              <input
-                name='password'
-                type='password'
-                value={password}
-                onChange={updatePassword}
-              />
-            </div>
-            <div className="button">
-              <button type='submit'>Log In</button>
-            </div>
-            <div className="button">
-              <button className='loginform-bttns' onClick={(e) => {
-                setEmail('demo@aa.io');
-                setPassword('password')
-              }}>Demo Login
-              </button>
-            </div>
-          </form>
+      <div id="outer-login">
+        <div className='login-container'>
+          <div className='inner-login'>
+            <form className='login-form' onSubmit={onLogin} autoComplete="off">
+              <div id='auth-icon'>
+                <img
+                  src={icon}
+                  alt=''
+                />
+              </div>
+              <div id='login-banner'>
+                <h4 id="to-college">
+                  Log in to College Cuisine
+                </h4>
+              </div>
+              <div className='login-errors'>
+                {errors.length ? "Email or Password is incorrect" : <></>}
+              </div>
+              <div className='label-input'>
+                <label>Email address</label>
+                <input
+                  name='email'
+                  type='text'
+                  value={email}
+                  onChange={updateEmail}
+                  autoFocus
+                />
+              </div>
+              <div className='label-input'>
+                <label id="password">Password</label>
+                <input
+                  name='password'
+                  type='password'
+                  value={password}
+                  onChange={updatePassword}
+                />
+              </div>
+              <div className="button">
+                <button type='submit'>Log In</button>
+              </div>
+              <div className="button">
+                <button className='loginform-bttns' onClick={(e) => {
+                  setEmail('demo@aa.io');
+                  setPassword('password')
+                }}>Demo Login
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
 
     </>
   );
