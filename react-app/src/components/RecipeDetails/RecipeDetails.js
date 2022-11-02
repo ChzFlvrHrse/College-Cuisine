@@ -58,9 +58,13 @@ export default function RecipeDetails() {
     const submitIngredient = async (e) => {
         e.preventDefault();
 
-        await dispatch(newIngredientThunk(ingredient, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
+        if (!ingredient) {
+            setIngredientsError(["Please write an ingredient"])
+        } else {
+            await dispatch(newIngredientThunk(ingredient, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
 
-        setIngredient("");
+            setIngredient("");
+        }
     }
 
     useEffect(() => {
@@ -93,22 +97,6 @@ export default function RecipeDetails() {
             return true
         } else {
             return false
-        }
-    }
-
-    const checkIngredient = () => {
-        const errors = [];
-
-        if (!ingredient) {
-            errors.push("Please write your ingredient")
-        }
-
-        setIngredientsError(errors);
-
-        if (errorValidations.length > 0) {
-            return true;
-        } else {
-            return false;
         }
     }
 
@@ -290,15 +278,14 @@ export default function RecipeDetails() {
                                                 type='text'
                                                 onChange={(e) => setIngredient(e.target.value)}
                                                 value={ingredient}
-                                                placeholder='Ingredient'
+                                                placeholder='Add an Ingredient'
                                                 className='ingredient-input'
                                             ></input>
                                             <div className='submit-ingredient-container'>
                                                 <button
                                                     type='submit'
-                                                    // disabled={!ingredient}
                                                     className="submit-ingredient"
-                                                    onClick={checkIngredient}
+                                                    // onClick={checkIngredient}
                                                 >
                                                     Add Ingredient
                                                 </button>
