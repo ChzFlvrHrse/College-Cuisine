@@ -41,7 +41,7 @@ export default function EditRecipe() {
         if (!instructions) errors.push("Please provide instructions")
         if (instructions.length > 500) errors.push("Instructions cannot exceed 500 characters")
 
-        if (!categoryId) errors.push("Please select a category")
+        if (!categoryId || categoryId == "Pick a Category") errors.push("Please select a category")
 
         setErrorValidators(errors)
 
@@ -120,7 +120,7 @@ export default function EditRecipe() {
                                 ></input>
                             </div>
                             <div className="info">
-                                <label>Instruction</label>
+                                <label>Instructions</label>
                                 <textarea
                                     type="text"
                                     autoComplete="off"
@@ -145,7 +145,7 @@ export default function EditRecipe() {
                                     onChange={event => setCategoryId(event.target.value)}
                                     value={categoryId}
                                 >
-                                    <option value={null} >Pick A Category</option>
+                                    <option value='Pick a Category' >Pick A Category</option>
                                     <option type='number' value={1}>Breakfast</option>
                                     <option type='number' value={2}>Lunch</option>
                                     <option type='number' value={3}>Dinner</option>
