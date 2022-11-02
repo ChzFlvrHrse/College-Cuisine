@@ -42,8 +42,6 @@ export default function RecipeDetails() {
 
     let ingredientsArr;
     let reviewsArr;
-    // ingredientsArr = recipe.ingredients
-    // reviewsArr = recipe.reviews
 
     const submitReview = async (e) => {
         e.preventDefault()
@@ -84,6 +82,10 @@ export default function RecipeDetails() {
 
         if (!review) {
             errors.push("Please write a review")
+        }
+
+        if (review.length > 500) {
+            errors.push("Review must be less than 500 characters")
         }
 
         setErrorValidations(errors)
