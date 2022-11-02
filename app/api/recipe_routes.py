@@ -21,7 +21,7 @@ def get_all_recipes():
 def get_recipe(recipeId):
     recipe = Recipe.query.get(recipeId)
     if recipe == None:
-        return "Recipe is not available"
+        return {"message": "Recipe is not available"}
     return recipe.to_dict()
 
 # New Recipe

@@ -55,7 +55,7 @@ export const deleteIngredientThunk = (recipeId, ingredientId) => async (dispatch
 
     if (response.ok) {
         const deleted = await response.json();
-        dispatch(deleteReview(deleted))
+        dispatch(deleteReview(recipeId))
     }
 }
 
@@ -73,8 +73,7 @@ const ingredientReducer = (state = initialState, action) => {
             return newState
         }
         case DELETE_INGREDIENT: {
-            const newState = {...state}
-            delete newState[action.ingredientId]
+            const newState = {}
             return newState
         }
         default:

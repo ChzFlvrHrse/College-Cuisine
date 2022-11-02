@@ -17,7 +17,7 @@ export default function DeleteRecipe({ recipeId, categoryId, setShowModal }) {
         e.preventDefault();
         await dispatch(deleteRecipeThunk(recipeId)).then(dispatch(getAllRecipesThunk()));
         setShowModal(false);
-        history.push(`/category/${categories[categoryId]}/${categoryId}`)
+        history.push(`/`)
     };
     const handleSubmit2 = async (e) => {
         e.preventDefault();
