@@ -240,8 +240,8 @@ export default function RecipeDetails() {
                             <div id='ingredients-container'>
                                 <div>
                                     {userId == recipe.userId ?
-                                    <div className='ingredients'>Your Ingredients:</div>
-                                    :  <div className='ingredients'>Ingredients:</div>}
+                                    <div className='ingredients'>Your Ingredients: ({ingredientsArr?.length})</div>
+                                    : <div className='ingredients'>Ingredients: ({ingredientsArr?.length})</div>}
 
                                 </div>
                                 <div className='map-container'>
