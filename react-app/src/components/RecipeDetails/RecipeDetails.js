@@ -239,9 +239,10 @@ export default function RecipeDetails() {
                         <div id="ingredients-reviews">
                             <div id='ingredients-container'>
                                 <div>
-                                    <div className='ingredients'>
-                                        Ingredients:
-                                    </div>
+                                    {userId == recipe.userId ?
+                                    <div className='ingredients'>Your Ingredients:</div>
+                                    :  <div className='ingredients'>Ingredients:</div>}
+
                                 </div>
                                 <div className='map-container'>
                                     {ingredientsArr?.map(ingr => (
