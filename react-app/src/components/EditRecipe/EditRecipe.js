@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Redirect, useParams, Link } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { getOneRecipeThunk, updateRecipeThunk } from "../../store/recipe";
 import "../AddRecipe/AddRecipe.css"
 
@@ -52,9 +52,7 @@ export default function EditRecipe() {
 
     useEffect(() => {
         dispatch(getOneRecipeThunk(recipeId))
-    }, []);
-
-    const categories = { 1: "Breakfast", 2: "Lunch", 3: "Dinner", 4: "Beverages", 5: "Dessert", 6: "Healthy", 7: "Snack" }
+    }, [dispatch, recipeId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -73,9 +71,6 @@ export default function EditRecipe() {
             <div className="login-containerPNF">
                 <div className="inner-loginPNF">
                     <div id="login-bannerPNF">
-                        {/* <div id="circles-containerPNF">
-                <img src={klickrLogo} alt="" id="circlesPNF"></img>
-              </div> */}
                         <h4 id="to-klickr1">You are not authorized</h4>
                         <h4 id="to-klickr1">to view this content</h4>
                         <div className="button">

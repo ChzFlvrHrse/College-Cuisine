@@ -1,19 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteReviewThunk } from "../../store/review";
-import { useHistory } from "react-router-dom";
 import './DeleteReview.css'
 import { getOneRecipeThunk } from "../../store/recipe";
 
 export default function DeleteReview({ reviewId, recipeId, setShowModal }) {
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         await dispatch(deleteReviewThunk(recipeId, reviewId)).then(dispatch(getOneRecipeThunk(recipeId)));
         setShowModal(false);
-        // history.push(`/recipe/${recipeId}`)
     };
     const handleSubmit2 = async (e) => {
         e.preventDefault();

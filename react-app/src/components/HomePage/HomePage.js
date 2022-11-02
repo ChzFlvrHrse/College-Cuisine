@@ -2,7 +2,7 @@ import "./HomePage.css";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { getAllRecipesThunk, getOneRecipeThunk } from "../../store/recipe";
+import { getAllRecipesThunk } from "../../store/recipe";
 import collegeCuisine from './college-cuisine-logo.png'
 import icon from './college-cuisine-icon.png'
 
@@ -12,16 +12,14 @@ export function HomePage() {
 
     const dispatch = useDispatch()
 
-    useEffect((e) => {
+    useEffect(() => {
         dispatch(getAllRecipesThunk())
-    }, []);
+    }, [dispatch]);
 
 
     const allRecipesArr = Object.values(allRecipes);
     console.log(allRecipesArr)
     const firstRecipe = allRecipesArr[0];
-
-    // let rating = 0;
 
     const ratingAvg = (reviewsArr) => {
         let ratings = 0;
@@ -117,8 +115,8 @@ export function HomePage() {
                                 <div className="recipe-stars">
                                     <div id="rating-information">
                                         {recipe.reviews?.length > 0 ? <div>{ratingAvg(recipe.reviews)}</div> :
-                                            <a style={{ fontSize: ".9rem", color: 'black' }}>Not Reviewed</a>}
-                                        <a class="fas fa-star s5"></a>
+                                            <a href="#" style={{ fontSize: ".9rem", color: 'black' }}>Not Reviewed</a>}
+                                        <a href="#" class="fas fa-star s5"></a>
                                         <div id='total-reviews'>({recipe.reviews?.length})</div>
                                     </div>
                                 </div>

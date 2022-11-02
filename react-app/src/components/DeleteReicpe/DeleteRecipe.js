@@ -11,8 +11,6 @@ export default function DeleteRecipe({ recipeId, categoryId, setShowModal }) {
 
     const user = useSelector(state => state.session.user)
 
-    const categories = ['', 'Breakfast', 'Lunch', 'Dinner', 'Beverages', 'Dessert', 'Healthy', 'Snack']
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         await dispatch(deleteRecipeThunk(recipeId)).then(dispatch(getAllRecipesThunk()));

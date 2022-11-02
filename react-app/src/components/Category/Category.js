@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipesThunk } from '../../store/recipe';
@@ -14,11 +14,10 @@ export default function Category() {
 
     useEffect((e) => {
         dispatch(getAllRecipesThunk())
-    }, []);
+    }, [dispatch]);
 
     const recipesArr = Object.values(recipes)
-    const recipeType = recipesArr.filter(recipe => recipe.categoryId == categoryId)
-    // console.log(recipeType)
+    const recipeType = recipesArr.filter(recipe => recipe.categoryId === categoryId)
 
     const ratingAvg = (reviewsArr) => {
         let ratings = 0;
@@ -37,7 +36,6 @@ export default function Category() {
                 <div className="inner-loginPNF">
                     <div id="login-bannerPNF">
                         <h4 id="to-klickr1">Sign in Required</h4>
-                        {/* <h4 id="to-klickr1">to view this content</h4> */}
                         <div className="button">
                             <Link to='/login'>
                                 <button className="loginform-bttns">
@@ -83,8 +81,8 @@ export default function Category() {
                                         <div className="recipe-stars">
                                             <div id="rating-information">
                                                 {recipe.reviews?.length > 0 ? <div>{ratingAvg(recipe.reviews)}</div> :
-                                                    <a style={{ fontSize: ".9rem", color: 'black' }}>Not Reviewed</a>}
-                                                <a class="fas fa-star s5"></a>
+                                                    <a href="#" style={{ fontSize: ".9rem", color: 'black' }}>Not Reviewed</a>}
+                                                <a href="#" class="fas fa-star s5"></a>
                                                 <div id='total-reviews'>({recipe.reviews?.length})</div>
                                             </div>
                                         </div>
