@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import collegeCuisine from './college-cuisine-logo.png'
+import collegeCuisine2 from './college-cuisine-logo-2.png';
 
 
 const NavBar = () => {
@@ -14,7 +14,7 @@ const NavBar = () => {
       <nav id="nav">
         <div id="left-nav">
           <NavLink id="home" to='/' exact={true} activeClassName='active'>
-            <img src={collegeCuisine} alt='College Cuisine' />
+            <img src={collegeCuisine2} alt='College Cuisine' />
           </NavLink>
           <div className="border-right">
             <div></div>
@@ -53,7 +53,7 @@ const NavBar = () => {
       <nav id="nav">
         <div id="left-nav">
           <NavLink id="home" to='/' exact={true} activeClassName='active'>
-            <img src={collegeCuisine} alt='College Cuisine' />
+            <img src={collegeCuisine2} alt='College Cuisine' />
           </NavLink>
           <div className="border-right">
             <div></div>
