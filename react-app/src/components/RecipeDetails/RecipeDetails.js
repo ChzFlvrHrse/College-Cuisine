@@ -246,22 +246,24 @@ export default function RecipeDetails() {
                                 </div>
                                 <div className='map-container'>
                                     {ingredientsArr?.map(ingr => (
-                                        <div className='ingredients-map'>
-                                            <div className='ingr' key={ingr.id}>{ingr.ingredient}</div>
-                                            <div className='edit-delete-ingr'>
-                                                {/* <div className='inner-edit-ingr'>
-                                                {userId == recipeOwner ? <i title='edit ingredient' class="fa-solid fa-pen-to-square" ></i> : <></>}
-                                            </div> */}
-                                                <div className='inner-delete-ingr'>
-                                                    {userId == recipeOwner ?
-                                                        <i onClick={async (e) => { e.preventDefault(); await dispatch(deleteIngredientThunk(recipeId, ingr.id)); setIngredientState(ingredientsState += 1) }}
-                                                            title='delete ingredient' class="fa-solid fa-xmark"></i> : <></>}
+                                        <div>
+                                            <div className='ingredients-map'>
+                                                <div className='ingr' key={ingr.id}>{ingr.ingredient}</div>
+                                                <div className='edit-delete-ingr'>
+                                                    {/* <div className='inner-edit-ingr'>
+                                                    {userId == recipeOwner ? <i title='edit ingredient' class="fa-solid fa-pen-to-square" ></i> : <></>}
+                                                </div> */}
+                                                    <div className='inner-delete-ingr'>
+                                                        {userId == recipeOwner ?
+                                                            <i onClick={async (e) => { e.preventDefault(); await dispatch(deleteIngredientThunk(recipeId, ingr.id)); setIngredientState(ingredientsState += 1) }}
+                                                                title='delete ingredient' class="fa-solid fa-xmark"></i> : <></>}
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div className='border-3'></div>
                                         </div>
                                     ))}
                                 </div>
-                                <div className='border-3'></div>
                                 <div id="ingredients-box">
                                     {userId == recipeOwner ?
                                         <form
