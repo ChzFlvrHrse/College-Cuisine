@@ -47,6 +47,10 @@ ul.profile-list {
   font-size: 16px;
   font-weight: 450;
   padding-bottom: .5rem;
+  width: 10rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hover-link:hover {
@@ -65,7 +69,6 @@ ul.profile-list {
 }
 
 .profile-page-reroute {
-
   text-decoration: none;
   color: black;
   padding-bottom: 5px;
@@ -80,14 +83,11 @@ ul.profile-list {
 
 .profile-page-reroute-upload {
   color: rgb(100, 100, 182);
-
-
 }
 
 .profile-page-reroute-upload:hover #drop-nav-link {
   text-decoration: underline;
   color: rgb(100, 100, 182);
-
 }
 
 .upload-photo-dropdown {
@@ -103,8 +103,6 @@ ul.profile-list {
   margin-left: -80px;
   margin-top: 20px;
   padding-left: 70px;
-
-
 }
 
 

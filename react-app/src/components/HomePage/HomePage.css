@@ -176,6 +176,10 @@
 #recipe-user {
     font-size: .8rem;
     font-weight: normal;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recipe-stars {

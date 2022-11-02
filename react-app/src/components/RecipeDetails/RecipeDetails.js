@@ -164,7 +164,7 @@ export default function RecipeDetails() {
                     <div className='curr-recipe-container'>
                         <div className='visuals'>
                             <div className='user-recipe-info'>
-                                <h1>{recipe.name}</h1>
+                                <h1>{recipe.name}hhhhhhhhhhhhhhhhhhhh</h1>
                                 <div className='username'>By {recipe.username}</div>
                             </div>
                             <div className='food-image'>

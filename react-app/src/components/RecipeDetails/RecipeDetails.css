@@ -23,6 +23,8 @@
     font-family: nyt-cheltenham, Georgia, Times New Roman, serif;
     font-size: 4rem;
     font-weight: 200;
+    width: 20rem;
+    overflow-wrap: break-word;
 }
 
 .username {

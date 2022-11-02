@@ -13,10 +13,13 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  let validator = require('email-validator');
+
   useEffect(() => {
     let errors = [];
 
     if (username.length > 40 || username.length < 4) errors.push("Username must be between 4 and 40 characters");
+    if (!email) errors.push("Pleae provide an email")
     if (!password.length) errors.push("Password is required");
     if (!repeatPassword.length) errors.push("Please repeat the password")
 
@@ -27,7 +30,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
 
-    if (!email.includes('@')) {
+    if (!validator.validate(email)) {
       setErrors(["Please enter a valid email"])
       return;
     }
