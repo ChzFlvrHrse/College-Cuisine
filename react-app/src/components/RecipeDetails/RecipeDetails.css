@@ -333,7 +333,7 @@
 .ingredients-map {
     display: flex;
     align-items: center;
-    width: 10rem;
+    width: 11rem;
     justify-content: space-between;
     word-break: break-all;
 }
