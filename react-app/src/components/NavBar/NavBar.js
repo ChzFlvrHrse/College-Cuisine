@@ -1,30 +1,13 @@
 import "./NavBar.css"
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-// import { getAllRecipesThunk } from "../../store/recipe";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import collegeCuisine from './college-cuisine-logo.png'
 
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
-  // const allRecipes = useSelector(state => state.recipe)
-  // const fuzzy = require('fuzzy');
-
-  const [search, setSearch] = useState("");
-
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getAllRecipesThunk());
-  // }, [search])
-
-  // const allRecipesArr = Object.values(allRecipes);
-
-  // const results = fuzzy.filter('recipe', allRecipesArr);
-  // const matches = results.map((el) => el)
-  // console.log(matches);
 
   if (!user) {
     return (
