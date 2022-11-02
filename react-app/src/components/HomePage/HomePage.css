@@ -107,6 +107,9 @@
     margin-bottom: -4rem;
     font-family: nyt-cheltenham, Georgia, "Times New Roman", serif;
     color: black;
+    width: 250px;
+    overflow-wrap: break-word;
+    /* word-break: break-all; */
 }
 
 #recipe-description {
@@ -116,6 +119,7 @@
     font-family: nyt-cheltenham, Georgia, "Times New Roman", serif;
     color: black;
     flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
 #recipe-owner {
@@ -123,6 +127,8 @@
     justify-content: center;
     font-weight: bold;
     color: black;
+    width: 15rem;
+    word-break: break-all;
 }
 
 #bottom-container {
