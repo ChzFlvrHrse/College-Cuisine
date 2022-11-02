@@ -34,7 +34,6 @@ export default function RecipeDetails() {
     const recipeOwner = recipe?.userId
 
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const categories = { 1: "Breakfast", 2: "Lunch", 3: "Dinner", 4: "Beverages", 5: "Dessert", 6: "Healthy", 7: "Snack" }
 
@@ -84,8 +83,8 @@ export default function RecipeDetails() {
             errors.push("Please write a review")
         }
 
-        if (review.length > 500) {
-            errors.push("Review must be no more than 500 characters")
+        if (review.length > 250) {
+            errors.push("Review cannot exceed 250 characters")
         }
 
         setErrorValidations(errors)
@@ -140,6 +139,22 @@ export default function RecipeDetails() {
         })
     }
 
+    useEffect(() => {
+        const errors = [];
+
+        if (ingredient.length > 25) errors.push("Ingredient cannot exceed 25 characters");
+
+        setIngredientsError(errors);
+
+    }, [ingredient]);
+
+    useEffect(() => {
+        const errors = [];
+
+        if (review.length > 250) errors.push("Review cannot exceed 250 characters")
+
+        setErrorValidations(errors);
+    }, [review])
 
     if (!user) {
         return (
@@ -405,18 +420,14 @@ export default function RecipeDetails() {
                                                         value={rating} className={rating >= 1 ? "fas fa-star s1-checked" : "fas fa-star s1"}
                                                     ></a>
                                                 </div>
+                                                <div className='review-length'>Char Count:{review.length}</div>
                                                 <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
                                                 <div class="wraper">
                                                     <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="gitlabBilal" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
                                                 </div>
                                             </div>
-                                            {/* <input
-                                            type="number"
-                                            onChange={(e) => setRating(e.target.value)}
-                                            value={rating}
-                                        ></input> */}
                                             <textarea
-                                                placeholder='Review'
+                                                placeholder='Review (250 Character Max)'
                                                 type='text'
                                                 onChange={(e) => setReview(e.target.value)}
                                                 value={review}
@@ -425,7 +436,6 @@ export default function RecipeDetails() {
                                         <div id='submit'>
                                             <button
                                                 type='submit'
-                                                // disabled={!review || rating == 0}
                                                 id='sumbit-review'
                                                 onClick={checkReview}
                                             >Submit</button>

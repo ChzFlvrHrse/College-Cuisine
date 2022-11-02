@@ -15,8 +15,8 @@ function EditReview({ reviewId, recipeId, userId, setShowModalEdit, oldReview })
     useEffect(() => {
         const formValidationErrors = [];
 
-        if (review.length > 500) {
-            formValidationErrors.push("Reviews must be no more than 500 characters");
+        if (review.length > 250) {
+            formValidationErrors.push("Reviews must be no more than 250 characters");
         }
         if (review.length < 1) {
             formValidationErrors.push("Reviews must be more than 1 character");
@@ -101,6 +101,7 @@ function EditReview({ reviewId, recipeId, userId, setShowModalEdit, oldReview })
                                         href="#"
                                     ></a>
                                 </div>
+                                <div className='review-length'>Char Count:{review.length}</div>
                                 <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
                                 <div class="wraper">
                                     <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="gitlabBilal" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
@@ -108,11 +109,10 @@ function EditReview({ reviewId, recipeId, userId, setShowModalEdit, oldReview })
                             </div>
                             <div className='edit-review-box'>
                                 <textarea
-                                    placeholder='Review'
+                                    placeholder='Review (250 Character Max)'
                                     type='text'
                                     onChange={(e) => setReview(e.target.value)}
                                     value={review}
-
                                 ></textarea>
                             </div>
                         </div>
