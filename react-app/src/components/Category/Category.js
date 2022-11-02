@@ -12,12 +12,12 @@ export default function Category() {
 
     const dispatch = useDispatch()
 
-    useEffect((e) => {
+    useEffect(() => {
         dispatch(getAllRecipesThunk())
     }, [dispatch]);
 
     const recipesArr = Object.values(recipes)
-    const recipeType = recipesArr.filter(recipe => recipe.categoryId === categoryId)
+    const recipeType = recipesArr.filter(recipe => recipe.categoryId === Number(categoryId))
 
     const ratingAvg = (reviewsArr) => {
         let ratings = 0;
