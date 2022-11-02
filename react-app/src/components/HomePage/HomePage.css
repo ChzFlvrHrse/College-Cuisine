@@ -109,17 +109,18 @@
     color: black;
     width: 250px;
     overflow-wrap: break-word;
-    /* word-break: break-all; */
 }
 
 #recipe-description {
-    display: flex;
-    justify-content: center;
+    display: block;
     font-size: 1rem;
     font-family: nyt-cheltenham, Georgia, "Times New Roman", serif;
     color: black;
-    flex-wrap: wrap;
     margin-top: 1rem;
+    width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #recipe-owner {
