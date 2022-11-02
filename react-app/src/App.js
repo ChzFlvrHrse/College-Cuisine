@@ -13,8 +13,6 @@ import AddRecipe from './components/AddRecipe/AddRecipe';
 import Category from './components/Category/Category';
 import RecipeDetails from './components/RecipeDetails/RecipeDetails';
 import EditRecipe from './components/EditRecipe/EditRecipe';
-import DeleteReview from './components/DeleteReview/DeleteReview';
-import EditReview from './components/EditReview/EditReview';
 import { PageNotFound } from './components/UnknownPage/404';
 
 function App() {

@@ -1,4 +1,4 @@
-import { newRecipeThunk, getAllRecipesThunk } from "../../store/recipe";
+import { newRecipeThunk, getOneRecipeThunk } from "../../store/recipe";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect, Link } from "react-router-dom";
@@ -51,9 +51,12 @@ export default function AddRecipe() {
             return alert("There was something wrong with your recipe")
         }
 
-        await dispatch(newRecipeThunk(name, description, instructions, imageUrl, userId, username, category)).then(() => dispatch(getAllRecipesThunk()));
+        const newRecipe = await dispatch(newRecipeThunk(name, description, instructions, imageUrl, userId, username, category));
+        await dispatch(getOneRecipeThunk(newRecipe.id))
 
-        history.push(`/category/${categories[category]}/${category}`)
+        console.log(newRecipe);
+
+        history.push(`/recipe/${newRecipe.id}`)
     }
 
 
