@@ -177,9 +177,11 @@ export default function RecipeDetails() {
                                             onError={e => { e.currentTarget.src = 'https://icsnorthernltd.com/images/product-1.jpg' }}
                                         />
                                     </div>
-                                    <p className='recipe-description'>
-                                        {recipe.description}
-                                    </p>
+                                    <div className='recipe-description-box'>
+                                        <p className='recipe-description'>
+                                            {recipe.description}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -292,8 +294,10 @@ export default function RecipeDetails() {
                                 <div className='instructions'>
                                     Instructions:
                                 </div>
-                                <div>
-                                    {recipe.instructions}
+                                <div className='instructions-box'>
+                                    <div>
+                                        {recipe.instructions}
+                                    </div>
                                 </div>
                                 <div className='border-3'></div>
                                 <div className='reviews'>

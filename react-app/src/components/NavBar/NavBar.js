@@ -85,7 +85,7 @@ const NavBar = () => {
             <div id="login" className="drop">About</div>
             <div className="dropdown-content-about">
               <div className="about-link">
-                <a href="https://github.com/ChzFlvrHrse/College-Cuisine">GitHub Repo</a>
+                <a id='github' href="https://github.com/ChzFlvrHrse/College-Cuisine">GitHub Repo</a>
               </div>
             </div>
           </div>

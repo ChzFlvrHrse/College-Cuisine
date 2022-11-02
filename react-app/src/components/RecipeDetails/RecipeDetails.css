@@ -333,6 +333,7 @@
 .ingredients-map {
     display: flex;
     align-items: center;
+    width: 10rem;
     justify-content: space-between;
     word-break: break-all;
 }
@@ -362,4 +363,14 @@
 .the-review {
     width: 28rem;
     overflow-wrap: break-word;
+}
+
+.recipe-description-box {
+    width: 43rem;
+    word-break: break-all;
+}
+
+.instructions-box {
+    width: 30rem;
+    word-break: break-all;
 }
