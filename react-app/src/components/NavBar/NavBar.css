@@ -78,8 +78,6 @@
     min-width: fit-content;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    /* right: 2.8%; */
-    cursor: pointer;
 }
 
 .cat-link {
@@ -89,6 +87,7 @@
 .cat-link:hover {
     background-color:#43bbd7;
     color: white;
+    cursor: pointer;
 }
 
 .cat-link:hover > a {
@@ -112,9 +111,9 @@ a {
     color: white;
 }
 
-.dropdown:hover .drop {
+/* .dropdown:hover .drop {
     cursor: pointer;
-}
+} */
 
 .prof {
     display: flex;
@@ -141,7 +140,7 @@ a {
 }
 
 .dropdown:hover .drop {
-    cursor: pointer;
+    cursor: default;
 }
 
 .about-link {
