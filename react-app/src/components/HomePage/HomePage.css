@@ -1,6 +1,9 @@
 #outer-outer {
-    display: flex;
-    width: 100%;
+    background: url(pexels-ray-piedra-1565982.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     height: 100vh;
 }
 
@@ -232,7 +235,7 @@
     }
     #icon {
         display: flex;
-        height: 15rem;
+        height: 12rem;
         width: fit-content;
         object-fit: cover;
     }

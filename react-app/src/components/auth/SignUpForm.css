@@ -1,9 +1,17 @@
+#outer-signup {
+    background: url(pexels-ray-piedra-1565982.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+}
+
 .signup-container {
     display: grid;
     justify-content: center;
     align-items: center;
-    margin-top: 6rem;
-
+    padding-top: 6rem;
 }
 
 .inner-signup {
@@ -82,6 +90,7 @@
     display: flex;
     margin: .5rem 0;
     margin-bottom: 1rem;
+    border: none;
 }
 
 .button button {
@@ -99,11 +108,9 @@
     opacity: .9;
 }
 
-/* name headers displaced */
 #labelInputSignUpName {
     margin-left: -18px;
 }
-
 
 .signup-form-errors {
     color: red;

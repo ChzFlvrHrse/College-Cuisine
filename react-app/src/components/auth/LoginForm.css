@@ -1,16 +1,18 @@
-body {
+#outer-login {
     background: url(pexels-ray-piedra-1565982.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    height: 100vh;
 }
 
 .login-container {
     display: grid;
     justify-content: center;
     align-items: center;
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
+    padding-top: 6rem;
 }
 
 .inner-login {
