@@ -85,7 +85,7 @@ export default function RecipeDetails() {
         }
 
         if (review.length > 500) {
-            errors.push("Review must be less than 500 characters")
+            errors.push("Review must be no more than 500 characters")
         }
 
         setErrorValidations(errors)
