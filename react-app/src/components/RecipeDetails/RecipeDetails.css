@@ -122,7 +122,7 @@
     font-size: 1rem;
 }
 
-.border-3 {
+.border-3, .border-4 {
     border-bottom: solid rgba(102, 102, 102, .5) thin;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -380,4 +380,10 @@
 .review-length {
     padding-left: 1rem;
     color: rgba(0, 0, 0, .5)
+}
+
+@media screen and (max-width: 630px) {
+    #category-name, .border-4 {
+        display: none;
+    }
 }

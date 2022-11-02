@@ -191,7 +191,7 @@ export default function RecipeDetails() {
                             </div>
                         </div>
                         <div>
-                            <div className="border-3"></div>
+                            <div className="border-4"></div>
                             <div id="category-name">
                                 <div className='category'>
                                     Category:

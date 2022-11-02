@@ -71,3 +71,12 @@
 .submit-new-recipe:active {
     transform: scale(.98);
 }
+
+.this-will-flex {
+    display: flex;
+}
+
+.will-flex {
+    padding-left: 1rem;
+    color: rgba(0, 0, 0, .5);
+}

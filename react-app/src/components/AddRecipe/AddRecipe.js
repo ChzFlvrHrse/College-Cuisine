@@ -26,10 +26,10 @@ export default function AddRecipe() {
         if (name.length > 40) errors.push("Recipe cannot exceed 40 characters")
 
         if (!description) errors.push("Describe your recipe")
-        if (description.length > 500) errors.push("Description cannot exceed 500 characters")
+        if (description.length > 250) errors.push("Description cannot exceed 250 characters")
 
         if (!instructions) errors.push("Please provide instructions")
-        if (instructions.length > 500) errors.push("Instructions cannot exceed 500 characters")
+        if (instructions.length > 250) errors.push("Instructions cannot exceed 250 characters")
 
         if (!category || category == "Pick a Category") errors.push("Please select a category")
 
@@ -50,7 +50,7 @@ export default function AddRecipe() {
         }
 
         const newRecipe = await dispatch(newRecipeThunk(name, description, instructions, imageUrl, userId, username, category));
-        await dispatch(getOneRecipeThunk(newRecipe.id))
+        // await dispatch(getOneRecipeThunk(newRecipe.id))
 
         history.push(`/recipe/${newRecipe.id}`)
     }
@@ -98,24 +98,37 @@ export default function AddRecipe() {
                                     autoComplete="off"
                                     onChange={event => setName(event.target.value)}
                                     value={name}
+                                    placeholder="Name of Recipe"
                                 ></input>
                             </div>
                             <div className="info">
-                                <label>Description</label>
-                                <input
+                                <div className="this-will-flex">
+                                    <label>Description</label>
+                                    <div className="will-flex">
+                                        Char Count: {description.length}
+                                    </div>
+                                </div>
+                                <textarea
                                     type="text"
                                     autoComplete="off"
                                     onChange={event => setDescription(event.target.value)}
                                     value={description}
-                                ></input>
+                                    placeholder="Description (Max Char 250)"
+                                ></textarea>
                             </div>
                             <div className="info">
-                                <label>Instructions</label>
+                                <div className="this-will-flex">
+                                    <label>Instructions</label>
+                                    <div className="will-flex">
+                                        Char Count: {instructions.length}
+                                    </div>
+                                </div>
                                 <textarea
                                     type="text"
                                     autoComplete="off"
                                     onChange={event => setInstructions(event.target.value)}
                                     value={instructions}
+                                    placeholder="Instructions (Max Char 250)"
                                 ></textarea>
                             </div>
                             <div className="info">
