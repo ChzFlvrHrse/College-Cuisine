@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from "react-router-dom";
 import { getOneRecipeThunk, updateRecipeThunk } from "../../store/recipe";
-import "../AddRecipe/AddRecipe.css"
+import "./EditRecipe.css"
 
 export default function EditRecipe() {
     const { recipeId } = useParams();
@@ -100,6 +100,12 @@ export default function EditRecipe() {
                             onSubmit={handleSubmit}
                             className='add-recipe'
                         >
+                            <Link to={`/recipe/${recipeId}`} className="back-to-recipe">
+                                <i class="fa-solid fa-arrow-left"></i>
+                                <div id='back'>
+                                    Back to Recipe
+                                </div>
+                            </Link>
                             <div className="add-your-recipe">Edit Your Recipe!</div>
                             <div className="info">
                                 <label>Name of Recipe</label>

@@ -18,7 +18,6 @@ export function HomePage() {
 
 
     const allRecipesArr = Object.values(allRecipes);
-    console.log(allRecipesArr)
     const firstRecipe = allRecipesArr[0];
 
     const ratingAvg = (reviewsArr) => {

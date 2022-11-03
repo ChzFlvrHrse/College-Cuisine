@@ -94,7 +94,7 @@ export default function RecipeDetails() {
         reviewsArr?.forEach(rev => {
             if (rev.userId === userId) {
                 errors.push("You have already reviewed this recipe")
-                
+
             }
         })
 
