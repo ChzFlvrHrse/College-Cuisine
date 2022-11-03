@@ -71,3 +71,16 @@ SECRET_KEY=«generate_strong_secret_here»
 ``` 
 Inside react-app create another .env and add     REACT_APP_BASE_URL=http://localhost:5000 
 ```
+
+# Features to Add
+- Search Bar
+- Subscribe to a user
+- Comment on reviews
+- Add multiple photos
+
+# Challenges 
+- Getting all error handlers to work properly
+
+# Things to Improve
+- Optimze queries
+- Clean up CSS and class naming
