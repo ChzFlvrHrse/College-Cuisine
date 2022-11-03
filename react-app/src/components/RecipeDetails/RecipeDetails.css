@@ -335,7 +335,7 @@
 .ingredients-map {
     display: flex;
     align-items: center;
-    width: 11rem;
+    width: 20rem;
     justify-content: space-between;
     word-break: break-all;
 }
