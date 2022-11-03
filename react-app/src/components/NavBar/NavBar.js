@@ -37,6 +37,9 @@ const NavBar = () => {
               <div className="about-link">
                 <a href="https://github.com/ChzFlvrHrse/College-Cuisine">GitHub Repo</a>
               </div>
+              <div className="about-link">
+                <a href="https://www.linkedin.com/in/nathan-scott-0a7264183/" >LinkedIn</a>
+              </div>
             </div>
           </div>
           <NavLink id='login' to='/login' exact={true} activeClassName='active'>
@@ -69,6 +72,9 @@ const NavBar = () => {
             <div className="dropdown-content-about">
               <div className="about-link">
                 <a id='github' href="https://github.com/ChzFlvrHrse/College-Cuisine">GitHub Repo</a>
+              </div>
+              <div className="about-link">
+                <a href="https://www.linkedin.com/in/nathan-scott-0a7264183/" >LinkedIn</a>
               </div>
             </div>
           </div>
