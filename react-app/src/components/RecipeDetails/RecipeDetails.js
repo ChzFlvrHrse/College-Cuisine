@@ -79,26 +79,29 @@ export default function RecipeDetails() {
     const checkReview = () => {
         const errors = [];
 
-        if (rating <= 0 || rating > 5) {
-            errors.push("Please provide a rating between 1 and 5")
-        }
-
-        if (!review) {
-            errors.push("Please write a review")
-        }
-
-        if (review.length > 250) {
-            errors.push("Review cannot exceed 250 characters")
-        }
-
         reviewsArr?.forEach(rev => {
             if (rev.userId === userId) {
                 errors.push("You have already reviewed this recipe")
-
             }
         })
 
-        setErrorValidations(errors)
+        if (errors.length) {
+            setErrorValidations(errors)
+        } else {
+            if (rating <= 0 || rating > 5) {
+                errors.push("Please provide a rating between 1 and 5")
+            }
+
+            if (!review) {
+                errors.push("Please write a review")
+            }
+
+            if (review.length > 250) {
+                errors.push("Review cannot exceed 250 characters")
+            }
+
+            setErrorValidations(errors)
+        }
 
         if (errorValidations.length > 0) {
             return true
@@ -424,7 +427,7 @@ export default function RecipeDetails() {
                                                 </div>
                                             </div>
                                             <textarea
-                                                placeholder='Review (250 Character Max)'
+                                                placeholder='Review (250 Char Max)'
                                                 type='text'
                                                 onChange={(e) => setReview(e.target.value)}
                                                 value={review}
