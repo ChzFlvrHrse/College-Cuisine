@@ -17,6 +17,16 @@ The best place to find affordable options for college kids who are tight fisted 
 
   ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
+# Key Functionalities
+
+## Recipes, Reviews (full CRUD)
+
+College Cuisine allows users to add recipes that include basic information such as the recipe name, description, instructions for preparation, an image of the final product and the category the recipe belongs to. If the user owns the recipe they are able to edit and delete the recipe. Users are also able to leave 1 review per recipe and leave a star rating between 1 and 5. If the user owns the review they can edit and delete the contents of the review.
+
+## Ingredients (3/4 CRUD)
+
+College Cuisine enables users to add and delete ingredients to recipes that they are the owner of.
+
 # Preview Images
 
 ## Not Logged In Splash/Homepage
