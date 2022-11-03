@@ -40,6 +40,11 @@ The best place to find affordable options for college kids who are tight fisted 
 ## Edit Recipe
 ![Edit Recipe](https://user-images.githubusercontent.com/87671074/199764746-fbc2ca6a-5ead-4e42-a144-a34c71dee6ba.png)
 
-# Clone College Cuisine
-`git clone https://github.com/ChzFlvrHrse/College-Cuisine.git`
-
+# Clone College Cuisine Locally
+- git clone https://github.com/ChzFlvrHrse/College-Cuisine.git
+- cd into college-cuisine folder and ``` run pipenv install ```
+- Open two terminal paths for both colleg-cuisine and react-app.
+- Under college-cuisine ``` run pipenv shell  then flask run, for react-app```
+- In the shell cd'd into the react-app folder enter ``` run npm install ```
+- Create a .env file under the root of the backend folder with the following contents:
+  ``` REACT_APP_BASE_URL=http://localhost:5000 ```
