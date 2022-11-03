@@ -40,6 +40,6 @@ The best place to find affordable options for college kids who are tight fisted 
 ## Edit Recipe
 ![Edit Recipe](https://user-images.githubusercontent.com/87671074/199764746-fbc2ca6a-5ead-4e42-a144-a34c71dee6ba.png)
 
-
-
+# Clone College Cuisine
+`git clone [git@github.com:ChzFlvrHrse/](https://github.com/ChzFlvrHrse/College-Cuisine.git)`
 
