@@ -48,3 +48,26 @@ The best place to find affordable options for college kids who are tight fisted 
 - In the shell cd'd into the react-app folder enter ``` run npm install ```
 - Create a .env file under the root of the backend folder with the following contents:
   ``` REACT_APP_BASE_URL=http://localhost:5000 ```
+
+
+## Getting started
+Clone the repository then install dependencies
+
+using ```pipenv install -r requirements.txt ```
+Create a .env file based on the example with proper settings for your development environment
+
+
+ ``` Get into your pipenv run pipenv shell,flask db upgrade, flask seed all, flask run```
+
+
+
+# Environment Info
+```
+DATABASE_URL=sqlite:///dev.db
+FLASK_DEBUG=True
+SECRET_KEY=«generate_strong_secret_here» 
+```
+
+``` 
+Inside react-app create another .env and add     REACT_APP_BASE_URL=http://localhost:5000 
+```
