@@ -34,5 +34,12 @@ The best place to find affordable options for college kids who are tight fisted 
 ## Recipe Details Bottom
 ![Recipe Details Bottom](https://user-images.githubusercontent.com/87671074/199764423-fd2f1295-6b21-4dc1-b09a-c8271205bb63.png)
 
+## Add a Recipe
+![Add Recipe](https://user-images.githubusercontent.com/87671074/199764700-07f9c995-14cf-4a13-a597-460a3d3d7e57.png)
+
+## Edit Recipe
+![Edit Recipe](https://user-images.githubusercontent.com/87671074/199764746-fbc2ca6a-5ead-4e42-a144-a34c71dee6ba.png)
+
+
 
 
