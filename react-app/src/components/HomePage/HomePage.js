@@ -95,36 +95,38 @@ export function HomePage() {
                     </div>
                     <div id="bottom-container">
                         {allRecipesArr?.map(recipe => (
-                            <Link to={`/recipe/${recipe.id}`} className="recipe-info-container">
-                                <div>
-                                    <img
-                                        className="recipe-img"
-                                        src={recipe.imageUrl}
-                                        alt='https://icsnorthernltd.com/images/product-1.jpg'
-                                        onError={e => { e.currentTarget.src = 'https://icsnorthernltd.com/images/product-1.jpg' }}
-                                    />
-                                </div>
-                                <div className="recipe-name-2">
-                                    <div className="nested-recipe-name">
-                                        {recipe.name}
+                            <div>
+                                <Link to={`/recipe/${recipe.id}`} className="recipe-info-container">
+                                    <div className="recipe-info-big-container">
+                                        <img
+                                            className="recipe-img"
+                                            src={recipe.imageUrl}
+                                            alt='https://icsnorthernltd.com/images/product-1.jpg'
+                                            onError={e => { e.currentTarget.src = 'https://icsnorthernltd.com/images/product-1.jpg' }}
+                                        />
                                     </div>
-                                    <div id="recipe-user">
-                                        By: {recipe.username}
+                                    <div className="recipe-name-2">
+                                        <div className="nested-recipe-name">
+                                            {recipe.name}
+                                        </div>
+                                        <div id="recipe-user">
+                                            By: {recipe.username}
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="recipe-stars">
-                                    <div id="rating-information">
-                                        {recipe.reviews?.length > 0 ? <div>{ratingAvg(recipe.reviews)}</div> :
-                                            <a href="#" style={{ fontSize: ".9rem", color: 'black' }}>Not Reviewed</a>}
-                                        <a href="#" class="fas fa-star s5"></a>
-                                        <div id='total-reviews'>({recipe.reviews?.length})</div>
+                                    <div className="recipe-stars">
+                                        <div id="rating-information">
+                                            {recipe.reviews?.length > 0 ? <div>{ratingAvg(recipe.reviews)}</div> :
+                                                <a href="#" style={{ fontSize: ".9rem", color: 'black' }}>Not Reviewed</a>}
+                                            <a href="#" class="fas fa-star s5"></a>
+                                            <div id='total-reviews'>({recipe.reviews?.length})</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
+                            </div>
+
                         ))}
                     </div>
                 </div>
-
             </>
         )
     }

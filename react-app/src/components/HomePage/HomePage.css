@@ -139,10 +139,15 @@
     flex-wrap: wrap;
 }
 
+.recipe-info-big-container {
+    display: flex;
+    justify-content: flex-start;
+}
 
 .recipe-info-container {
-    display: grid;
+    display: flex;
     justify-content: center;
+    flex-direction: column;
     height: 18rem;
     width: 17rem;
     background-color: #ffffff;
