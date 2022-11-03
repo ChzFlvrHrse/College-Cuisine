@@ -19,19 +19,19 @@ The best place to find affordable options for college kids who are tight fisted 
 
 # Preview Images
 
-Not Logged In Splash/Homepage
+## Not Logged In Splash/Homepage
 ![No User Splash](https://user-images.githubusercontent.com/87671074/199763795-008a1c6d-b72b-4672-b0d1-68b442762faa.png)
 
-Logged In Splash/Homepage
+## Logged In Splash/Homepage
 ![User Splash](https://user-images.githubusercontent.com/87671074/199763858-c31bbf60-3c13-4a0a-b736-927d84460dea.png)
 
-Categories
+## Categories
 ![Categories Page](https://user-images.githubusercontent.com/87671074/199764308-5e652008-bafb-43dc-bb61-816c9cb5d912.png)
 
-Recipe Details Top
+## Recipe Details Top
 ![Recipe Details Top](https://user-images.githubusercontent.com/87671074/199764364-6fc3d9a7-2dc7-4fdb-aaff-1490d1b82a2e.png)
 
-Recipe Details Bottom
+## Recipe Details Bottom
 ![Recipe Details Bottom](https://user-images.githubusercontent.com/87671074/199764423-fd2f1295-6b21-4dc1-b09a-c8271205bb63.png)
 
 
