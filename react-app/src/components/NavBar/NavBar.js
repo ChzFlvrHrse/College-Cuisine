@@ -35,10 +35,10 @@ const NavBar = () => {
             <div id="login" className="drop">About</div>
             <div className="dropdown-content-about-no-user">
               <div className="about-link">
-                <a href="https://github.com/ChzFlvrHrse/College-Cuisine">GitHub Repo</a>
+                <a href="https://github.com/ChzFlvrHrse" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
               <div className="about-link">
-                <a href="https://www.linkedin.com/in/nathan-scott-0a7264183/" >LinkedIn</a>
+                <a href="https://www.linkedin.com/in/nathan-scott-0a7264183/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
             </div>
           </div>
@@ -71,10 +71,10 @@ const NavBar = () => {
             <div id="login" className="drop">About</div>
             <div className="dropdown-content-about">
               <div className="about-link">
-                <a id='github' href="https://github.com/ChzFlvrHrse/College-Cuisine">GitHub Repo</a>
+                <a id='github' href="https://github.com/ChzFlvrHrse" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
               <div className="about-link">
-                <a href="https://www.linkedin.com/in/nathan-scott-0a7264183/" >LinkedIn</a>
+                <a href="https://www.linkedin.com/in/nathan-scott-0a7264183/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
             </div>
           </div>
