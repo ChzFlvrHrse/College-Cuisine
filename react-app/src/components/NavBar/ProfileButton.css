@@ -8,9 +8,12 @@
   transform: scale(1.2);
 }
 
+#profile-icon:active {
+  transform: scale(.98);
+}
+
 ul.profile-list {
   list-style-type: none;
-
 }
 
 .profile-list-item logout {
@@ -28,7 +31,7 @@ ul.profile-list {
   z-index: 4;
   position: absolute;
   width: 11.5em;
-  height: 4em;
+  height: 4.5em;
   background-color: white;
   border: 1px solid black;
   right: 1%;
@@ -53,19 +56,22 @@ ul.profile-list {
   text-overflow: ellipsis;
 }
 
-.hover-link:hover {
-  background-color: rgb(216, 207, 207);
-  margin-bottom: 20px;
-  padding: 5px 0;
+.hover-link button{
+  background-color: #43bbd7;
+  color: white;
+  border-radius: .3rem;
+  border: none;
+  padding: .3rem .5rem;
   cursor: pointer;
-  width: 100%;
-  height: 15%;
-  opacity: 0.8;
 }
 
-.profile-icon:hover {
-  cursor: pointer;
-  opacity: .9;
+.hover-link button:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.hover-link button:active {
+  transform: scale(.98);
 }
 
 .profile-page-reroute {
@@ -105,8 +111,6 @@ ul.profile-list {
   padding-left: 70px;
 }
 
-
-
 .profile-page-reroute-upload:hover {
   text-decoration: underline;
   color: rgb(100, 100, 182);
@@ -122,9 +126,6 @@ ul.profile-list {
   color: black;
   margin-left: -69px;
   margin-top: 20px;
-
-
-  /* margin-left:-0.2px; */
   padding-left: 70px;
 
 }
