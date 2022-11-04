@@ -18,15 +18,10 @@ function EditReview({ reviewId, recipeId, userId, setShowModalEdit, oldReview })
         if (review.length > 250) {
             formValidationErrors.push("Reviews must be no more than 250 characters");
         }
-        if (review.length < 1) {
-            formValidationErrors.push("Reviews must be more than 1 character");
+        if (!review || !review.split(" ").join("").length) {
+            formValidationErrors.push("Please write a review")
         }
 
-        if (rating === 0) {
-            formValidationErrors.push("Please rate this recipe")
-        }
-
-        //
         setErrors(formValidationErrors);
     }, [review, rating]);
 

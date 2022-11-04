@@ -59,7 +59,7 @@ export default function RecipeDetails() {
     const submitIngredient = async (e) => {
         e.preventDefault();
 
-        if (!ingredient) {
+        if (!ingredient || !ingredient.split(" ").join("").length) {
             setIngredientsError(["Please write an ingredient"])
         } else {
             await dispatch(newIngredientThunk(ingredient, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
@@ -93,7 +93,7 @@ export default function RecipeDetails() {
                 errors.push("Please provide a rating between 1 and 5")
             }
 
-            if (!review) {
+            if (!review || !review.split(" ").join("").length) {
                 errors.push("Please write a review")
             }
 
@@ -142,6 +142,7 @@ export default function RecipeDetails() {
         const errors = [];
 
         if (ingredient.length > 30) errors.push("Ingredient cannot exceed 30 characters");
+        // if (!ingredient.split(" ").join("").length) errors.push("Please write an ingredient")
 
         setIngredientsError(errors);
 
