@@ -32,13 +32,13 @@ export default function EditRecipe() {
     useEffect(() => {
         const errors = []
 
-        if (!name) errors.push("Please name your recipe")
+        if (!name || !name.split(" ").join("").length) errors.push("Please name your recipe")
         if (name.length > 40) errors.push("Recipe name cannot exceed 40 characters")
 
-        if (!description) errors.push("Describe your recipe")
+        if (!description || !description.split(" ").join("").length) errors.push("Describe your recipe")
         if (description.length > 250) errors.push("Description cannot exceed 250 characters")
 
-        if (!instructions) errors.push("Please provide instructions")
+        if (!instructions || !instructions.split(" ").join("").length) errors.push("Please provide instructions")
         if (instructions.length > 250) errors.push("Instructions cannot exceed 250 characters")
 
         if (!categoryId || categoryId == "Pick a Category") errors.push("Please select a category")
