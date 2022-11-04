@@ -368,7 +368,6 @@ export default function RecipeDetails() {
                                                 <Modal2
                                                     onClose={() => {
                                                         setShowModalDeleteReview(false)
-                                                        // setReviewState(review)
                                                     }}
                                                 >
                                                     <DeleteReview
