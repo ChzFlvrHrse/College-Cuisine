@@ -80,14 +80,8 @@ export default function RecipeDetails() {
     const checkReview = () => {
         const errors = [];
 
-        reviewsArr?.forEach(rev => {
-            if (rev.userId === userId) {
-                errors.push("You have already reviewed this recipe")
-            }
-        })
-
-        if (errors.length) {
-            setErrorValidations(errors)
+        if (errorValidations.length > 0) {
+            return true
         } else {
             if (rating <= 0 || rating > 5) {
                 errors.push("Please provide a rating between 1 and 5")
@@ -142,7 +136,6 @@ export default function RecipeDetails() {
         const errors = [];
 
         if (ingredient.length > 30) errors.push("Ingredient cannot exceed 30 characters");
-        // if (!ingredient.split(" ").join("").length) errors.push("Please write an ingredient")
 
         setIngredientsError(errors);
 
@@ -152,6 +145,13 @@ export default function RecipeDetails() {
         const errors = [];
 
         if (review.length > 250) errors.push("Review cannot exceed 250 characters")
+
+
+        reviewsArr?.forEach(rev => {
+            if (rev.userId === userId) {
+                errors.push("You have already reviewed this recipe")
+            }
+        })
 
         setErrorValidations(errors);
     }, [review])
