@@ -23,7 +23,7 @@ export default function AddRecipe() {
         const errors = []
 
         if (!name) errors.push("Please name your recipe")
-        if (name.length > 40) errors.push("Recipe cannot exceed 40 characters")
+        if (name.length > 40) errors.push("Recipe name cannot exceed 40 characters")
 
         if (!description) errors.push("Describe your recipe")
         if (description.length > 250) errors.push("Description cannot exceed 250 characters")

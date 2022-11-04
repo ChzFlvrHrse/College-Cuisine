@@ -140,7 +140,7 @@ export default function RecipeDetails() {
     useEffect(() => {
         const errors = [];
 
-        if (ingredient.length > 25) errors.push("Ingredient cannot exceed 25 characters");
+        if (ingredient.length > 30) errors.push("Ingredient cannot exceed 30 characters");
 
         setIngredientsError(errors);
 
@@ -298,7 +298,7 @@ export default function RecipeDetails() {
                                                 <button
                                                     type='submit'
                                                     className="submit-ingredient"
-                                                    // onClick={checkIngredient}
+                                                    disabled={ingredientsError.length > 0}
                                                 >
                                                     Add Ingredient
                                                 </button>
