@@ -20,11 +20,19 @@
 }
 
 .user-recipe-info h1 {
+    display: grid;
+    justify-content: flex-start;
     font-family: nyt-cheltenham, Georgia, Times New Roman, serif;
     font-size: 4rem;
     font-weight: 200;
-    width: 20rem;
+    width: 25rem;
     overflow-wrap: break-word;
+    text-align: center;
+}
+
+.user-recipe-info div{
+    overflow-wrap: break-word;
+    width: 25rem;
 }
 
 .username {

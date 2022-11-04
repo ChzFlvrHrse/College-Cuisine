@@ -5,6 +5,7 @@ import { getOneRecipeThunk } from '../../store/recipe';
 import { newReviewThunk } from '../../store/review';
 import { deleteIngredientThunk, newIngredientThunk } from '../../store/ingredient'
 import { Modal } from '../../context/Modal';
+import { Modal2 } from '../../context/Modal2';
 import DeleteRecipe from '../DeleteReicpe/DeleteRecipe';
 import DeleteReview from '../DeleteReview/DeleteReview';
 import EditReview from '../EditReview/EditReview';
@@ -229,7 +230,7 @@ export default function RecipeDetails() {
 
                                 </div>
                                 {showModal && (
-                                    <Modal
+                                    <Modal2
                                         onClose={() => setShowModal(false)}
                                     >
                                         <DeleteRecipe
@@ -237,7 +238,7 @@ export default function RecipeDetails() {
                                             categoryId={recipe.categoryId}
                                             setShowModal={setShowModal}
                                         />
-                                    </Modal>
+                                    </Modal2>
                                 )}
                                 {recipe.reviews?.length > 0 ? <div id='avg-func'>{ratingAvg(recipe.reviews)}</div> :
                                     <div id='avg-func' style={{ fontSize: ".9rem", color: 'black' }}>Not Reviewed</div>}
@@ -363,7 +364,7 @@ export default function RecipeDetails() {
                                                 class="fa-solid fa-xmark"
                                             ></i> : <></>}
                                             {showModalDeleteReview && (
-                                                <Modal
+                                                <Modal2
                                                     onClose={() => {
                                                         setShowModalDeleteReview(false)
                                                         // setReviewState(review)
@@ -374,7 +375,7 @@ export default function RecipeDetails() {
                                                         recipeId={recipeId}
                                                         setShowModal={setShowModalDeleteReview}
                                                     />
-                                                </Modal>
+                                                </Modal2>
                                             )}
                                         </div>
                                         <div className='border-3'></div>
