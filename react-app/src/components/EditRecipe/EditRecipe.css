@@ -90,4 +90,13 @@
 
 #back {
     padding-left: .2rem;
+    text-decoration: underline;
+}
+
+.back-to-recipe:hover {
+    transform: scale(1.2);
+}
+
+.back-to-recipe:active {
+    transform: scale(.98);
 }
