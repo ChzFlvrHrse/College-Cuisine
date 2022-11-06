@@ -50,7 +50,6 @@ export default function RecipeDetails() {
             setRating(rating)
             setReview(review)
         } else {
-            setErrorValidations([])
             setRating(0);
             setReview("");
             await dispatch(newReviewThunk(review, rating, userId, username, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
@@ -81,19 +80,15 @@ export default function RecipeDetails() {
     const checkReview = () => {
         const errors = [];
 
-        if (errorValidations.length > 0) {
-            return true
-        } else {
-            if (rating <= 0 || rating > 5) {
-                errors.push("Please provide a rating between 1 and 5")
-            }
-
-            if (!review || !review.split(" ").join("").length) {
-                errors.push("Please write a review")
-            }
-
-            setErrorValidations(errors)
+        if (rating <= 0 || rating > 5) {
+            errors.push("Please provide a rating between 1 and 5")
         }
+
+        if (!review || !review.split(" ").join("").length) {
+            errors.push("Please write a review")
+        }
+
+        setErrorValidations(errors)
 
         if (errorValidations.length > 0) {
             return true
@@ -150,6 +145,9 @@ export default function RecipeDetails() {
 
         setErrorValidations(errors);
     }, [review, rating])
+
+
+    const reviewed = reviewsArr?.filter(rev => rev.userId === userId)
 
     if (!user) {
         return (
@@ -247,8 +245,8 @@ export default function RecipeDetails() {
                             <div id='ingredients-container'>
                                 <div>
                                     {userId == recipe.userId ?
-                                    <div className='ingredients'>Your Ingredients: ({ingredientsArr?.length})</div>
-                                    : <div className='ingredients'>Ingredients: ({ingredientsArr?.length})</div>}
+                                        <div className='ingredients'>Your Ingredients: ({ingredientsArr?.length})</div>
+                                        : <div className='ingredients'>Ingredients: ({ingredientsArr?.length})</div>}
 
                                 </div>
                                 <div className='map-container'>
@@ -434,6 +432,7 @@ export default function RecipeDetails() {
                                                 type='submit'
                                                 id='sumbit-review'
                                                 onClick={checkReview}
+                                                disabled={reviewed?.length > 0}
                                             >Submit</button>
                                         </div>
                                     </form>
