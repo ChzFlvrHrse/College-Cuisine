@@ -46,10 +46,20 @@ export default function RecipeDetails() {
     const submitReview = async (e) => {
         e.preventDefault()
 
-        if (checkReview() == true) {
-            setRating(rating);
-            setReview(review);
+        const errors = [];
+
+        if (checkReview() === true) {
+            if (rating <= 0 || rating > 5){
+                errors.push("Please provide a rating between 1 and 5")
+                setRating(rating);
+            }
+
+            if (!review || review.split(" ").join("")) {
+                errors.push("Please write a review")
+                setReview(review);
+            }
         } else {
+            setErrorValidations([])
             setRating(0);
             setReview("");
             await dispatch(newReviewThunk(review, rating, userId, username, recipeId)).then(dispatch(getOneRecipeThunk(recipeId)))
@@ -89,10 +99,6 @@ export default function RecipeDetails() {
 
             if (!review || !review.split(" ").join("").length) {
                 errors.push("Please write a review")
-            }
-
-            if (review.length > 250) {
-                errors.push("Review cannot exceed 250 characters")
             }
 
             setErrorValidations(errors)
@@ -146,7 +152,6 @@ export default function RecipeDetails() {
 
         if (review.length > 250) errors.push("Review cannot exceed 250 characters")
 
-
         reviewsArr?.forEach(rev => {
             if (rev.userId === userId) {
                 errors.push("You have already reviewed this recipe")
@@ -154,7 +159,7 @@ export default function RecipeDetails() {
         })
 
         setErrorValidations(errors);
-    }, [review])
+    }, [review, rating])
 
     if (!user) {
         return (
