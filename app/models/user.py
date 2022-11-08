@@ -6,7 +6,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 class User(db.Model, UserMixin):
-    __table_name__ = 'users'
+    __tablename__ = 'users'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}

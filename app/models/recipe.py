@@ -4,7 +4,7 @@ from datetime import datetime
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Recipe(db.Model):
-    __table_name__ = 'recipes'
+    __tablename__ = 'recipes'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
