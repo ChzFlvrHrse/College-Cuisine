@@ -3,7 +3,7 @@ from datetime import datetime
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Category(db.Model):
-    __tablename__ = 'categories'
+    __table_name__ = 'categories'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
