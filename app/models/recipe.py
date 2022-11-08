@@ -14,7 +14,7 @@ class Recipe(db.Model):
     description = db.Column(db.VARCHAR(255), nullable=False)
     instructions = db.Column(db.VARCHAR(255), nullable=False)
     imageUrl = db.Column(db.String, nullable=False, default="https://i.dlpng.com/static/png/6892771_preview.png")
-    userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     username = db.Column(db.String, nullable=False)
     categoryId = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
