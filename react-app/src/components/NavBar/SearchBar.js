@@ -23,15 +23,11 @@ export function SearchBar() {
 
     allRecipesArr = Object.values(allRecipes);
 
-    // console.log(allRecipesArr[0].name)
-
     if (allRecipesArr?.length > 0) {
         filteredRecipes = allRecipesArr?.filter(values => values.name?.toLowerCase().includes(search.toLowerCase()))
     } else {
         filteredRecipes = "";
     }
-
-    console.log(filteredRecipes)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -88,15 +84,15 @@ export function SearchBar() {
                                                 alt="preview"
                                             />
                                         </Link>
-                                        <NavLink
+                                        <Link
                                             className="SearchRecipeNavLinkTitle"
                                             to={`/recipe/${recipe.id}`}
                                         >
                                             {recipe.name}
-                                        </NavLink>
+                                        </Link>
                                     </div>
                                 );
-                            })}
+                        })}
                     </div>
                 </div>
             </div>

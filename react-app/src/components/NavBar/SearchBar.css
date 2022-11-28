@@ -1,5 +1,5 @@
-#search-bar:active {
-    border: none;
+#search-bar:focus {
+    outline: none;
 }
 
 .SearchBarContainer {

@@ -97,9 +97,6 @@ const NavBar = () => {
           <div className="prof">
             <ProfileButton />
           </div>
-          {/* <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink> */}
         </div>
       </nav>
     );
