@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import { getAllRecipesThunk } from "../../store/recipe";
 import { login } from "../../store/session";
-import './SearchBar.css'
+import './SearchBar.css';
 
 export function SearchBar() {
     const [search, setSearch] = useState('');
@@ -23,12 +23,10 @@ export function SearchBar() {
 
     allRecipesArr = Object.values(allRecipes);
 
-    // console.log(allRecipesArr)
+    // console.log(allRecipesArr[0].name)
 
     if (allRecipesArr?.length > 0) {
-        filteredRecipes = allRecipesArr?.filter(values => {
-            values.name?.toLowerCase().includes(search?.toLowerCase());
-        })
+        filteredRecipes = allRecipesArr?.filter(values => values.name?.toLowerCase().includes(search.toLowerCase()))
     } else {
         filteredRecipes = "";
     }
@@ -83,13 +81,13 @@ export function SearchBar() {
                                         key={recipe.id}
                                         onClick={() => setSearch("")}
                                     >
-                                        {/* <Link to={`/recipe/${recipe.id}`}>
+                                        <Link to={`/recipe/${recipe.id}`}>
                                             <img
                                                 className="SearchRecipeIndividual"
                                                 src={recipe.imageUrl}
                                                 alt="preview"
                                             />
-                                        </Link> */}
+                                        </Link>
                                         <NavLink
                                             className="SearchRecipeNavLinkTitle"
                                             to={`/recipe/${recipe.id}`}
