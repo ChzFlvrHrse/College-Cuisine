@@ -62,11 +62,11 @@ const NavBar = () => {
           <div className="border-right">
             <div></div>
           </div>
-          <div id="search">
+          {/* <div id="search">
             <i id="spy" class="fa-solid fa-magnifying-glass"></i>
             <input id="search-bar" placeholder="What would you like to cook?"></input>
-          </div>
-          {/* <SearchBar /> */}
+          </div> */}
+          <SearchBar />
         </div>
         <div id="login-signup">
           <div className="dropdown">
