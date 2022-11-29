@@ -72,6 +72,10 @@ export default function RecipeDetails() {
         dispatch(getOneRecipeThunk(recipeId))
     }, [dispatch, ingredientsArr, reviewsArr, rating, review, ingredient, ingredientsState, showModal, showModalEdit, showModalEdit, showModalDeleteReview]);
 
+    useEffect(() => {
+        dispatch(getOneRecipeThunk(recipeId))
+    }, [dispatch])
+
     ingredientsArr = recipe.ingredients
     reviewsArr = recipe.reviews
 
