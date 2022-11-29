@@ -10,8 +10,8 @@ export default function EditRecipe() {
     const target = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user);
 
-    const userId = user.id;
-    const username = user.username
+    const userId = user?.id;
+    const username = user?.username
 
 
     if (target && target.userId === user.id) {
@@ -66,7 +66,7 @@ export default function EditRecipe() {
         history.push(`/recipe/${recipeId}`)
     }
 
-    if (userId !== target.userId) {
+    if (!user || userId !== target.userId) {
         return (
             <div className="login-containerPNF">
                 <div className="inner-loginPNF">
