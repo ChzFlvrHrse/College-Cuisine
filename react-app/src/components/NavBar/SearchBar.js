@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAllRecipesThunk } from "../../store/recipe";
 import { login } from "../../store/session";
 import './SearchBar.css';
@@ -92,7 +92,7 @@ export function SearchBar() {
                                         </Link>
                                     </div>
                                 );
-                        })}
+                            })}
                     </div>
                 </div>
             </div>
