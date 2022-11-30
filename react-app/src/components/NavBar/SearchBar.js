@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllRecipesThunk } from "../../store/recipe";
-import { login } from "../../store/session";
 import './SearchBar.css';
 
 export function SearchBar() {
@@ -44,6 +43,7 @@ export function SearchBar() {
                     onChange={handleSubmit}
                     value={search}
                 ></input>
+                {search.length > 0 ? <i onClick={() => setSearch("")} class="fa-solid fa-x" id='xmark' title='clear search'></i> : <></>}
             </div>
             <div className={search?.length ? "SearchBarContainer" : "HiddenResult"}>
                 <button

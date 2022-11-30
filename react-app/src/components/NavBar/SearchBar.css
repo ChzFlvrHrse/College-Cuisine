@@ -2,6 +2,15 @@
     outline: none;
 }
 
+#xmark:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+#xmark:active {
+    transform: scale(.98);
+}
+
 .SearchBarContainer {
     position: absolute;
     height: fit-content;
