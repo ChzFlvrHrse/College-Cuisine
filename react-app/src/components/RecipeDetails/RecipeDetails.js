@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { getOneRecipeThunk } from '../../store/recipe';
+import { getOneRecipeThunk, getAllRecipesThunk } from '../../store/recipe';
 import { newReviewThunk } from '../../store/review';
 import { deleteIngredientThunk, newIngredientThunk } from '../../store/ingredient'
 import { Modal } from '../../context/Modal';
@@ -29,16 +29,17 @@ export default function RecipeDetails() {
 
     const { recipeId } = useParams();
     const recipe = useSelector(state => state.recipe);
+    const allRecipes = useSelector(state => state.recipe)
     const user = useSelector(state => state.session.user)
     const userId = user?.id
     const username = user?.username
-    const recipeOwner = recipe?.userId
+    let recipeOwner = recipe?.userId
 
     const dispatch = useDispatch();
 
     const categories = { 1: "Breakfast", 2: "Lunch", 3: "Dinner", 4: "Beverages", 5: "Dessert", 6: "Healthy", 7: "Snack" }
 
-    const cat = categories[recipe.categoryId];
+    let cat = categories[recipe.categoryId];
 
     let ingredientsArr;
     let reviewsArr;
@@ -70,11 +71,16 @@ export default function RecipeDetails() {
 
     useEffect(() => {
         dispatch(getOneRecipeThunk(recipeId))
-    }, [dispatch, ingredientsArr, reviewsArr, rating, review, ingredient, ingredientsState, showModal, showModalEdit, showModalEdit, showModalDeleteReview]);
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(getOneRecipeThunk(recipeId))
+    }, [dispatch, ingredientsArr, reviewsArr, rating, review, ingredient, ingredientsState, showModal, showModalEdit, showModalEdit, showModalDeleteReview]);
+
+    useEffect(() => {
+        dispatch(getAllRecipesThunk())
     }, [dispatch])
+
 
     ingredientsArr = recipe.ingredients
     reviewsArr = recipe.reviews
@@ -150,6 +156,34 @@ export default function RecipeDetails() {
         setErrorValidations(errors);
     }, [review, rating])
 
+    let allRecipesArr = Object.values(allRecipes)
+    let allRecipesFilter = allRecipesArr?.filter(recipe => recipe.id == recipeId)
+    let backup = allRecipesFilter[0]
+    console.log(backup)
+
+    if (!cat) {
+        cat = categories[backup?.categoryId];
+    }
+
+    if (!ingredientsArr) {
+        ingredientsArr = backup?.ingredients
+    }
+
+    if (!reviewsArr) {
+        reviewsArr = backup?.reviews
+    }
+
+    if (!recipeOwner) {
+        recipeOwner = backup?.userId
+    }
+
+    if (!reviewsArr) {
+        reviewsArr = backup?.reviews
+    }
+
+    if (!sortedReviewsByNewest) {
+        sortedReviewsByNewest = reviewsArr?.sort((a, b) => a.id - b.id);
+    }
 
     const reviewed = reviewsArr?.filter(rev => rev.userId === userId)
 
@@ -178,22 +212,22 @@ export default function RecipeDetails() {
                     <div className='curr-recipe-container'>
                         <div className='visuals'>
                             <div className='user-recipe-info'>
-                                <h1>{recipe.name}</h1>
-                                <div className='username'>By {recipe.username}</div>
+                                <h1>{recipe.name || backup?.name}</h1>
+                                <div className='username'>By {recipe.username || backup?.username}</div>
                             </div>
                             <div className='food-image'>
                                 <div>
                                     <div>
                                         <img
                                             className='food'
-                                            src={recipe.imageUrl}
+                                            src={recipe.imageUrl || backup?.imageUrl}
                                             alt='https://icsnorthernltd.com/images/product-1.jpg'
                                             onError={e => { e.currentTarget.src = 'https://icsnorthernltd.com/images/product-1.jpg' }}
                                         />
                                     </div>
                                     <div className='recipe-description-box'>
                                         <p className='recipe-description'>
-                                            {recipe.description}
+                                            {recipe.description || backup?.description}
                                         </p>
                                     </div>
                                 </div>
@@ -211,11 +245,11 @@ export default function RecipeDetails() {
                             </div>
                             <div className='btns'>
                                 <div className='icon-container'>
-                                    {userId == recipe.userId ? <Link to={`/recipe/${recipeId}/edit`}><i title='edit recipe' class="fa-solid fa-pen-to-square" ></i></Link> : <></>}
+                                    {userId == recipeOwner ? <Link to={`/recipe/${recipeId}/edit`}><i title='edit recipe' class="fa-solid fa-pen-to-square" ></i></Link> : <></>}
 
                                 </div>
                                 <div>
-                                    {userId == recipe.userId ? <i
+                                    {userId == recipeOwner ? <i
                                         onClick={() => {
                                             setShowModal(true);
                                             setRecipeState(recipe)
@@ -238,7 +272,7 @@ export default function RecipeDetails() {
                                         />
                                     </Modal2>
                                 )}
-                                {recipe.reviews?.length > 0 ? <div id='avg-func'>{ratingAvg(recipe.reviews)}</div> :
+                                {reviewsArr?.length > 0 ? <div id='avg-func'>{ratingAvg(reviewsArr)}</div> :
                                     <div id='avg-func' style={{ fontSize: ".9rem", color: 'black' }}>Not Reviewed</div>}
                                 <div><a id="avg-star-rating" class="fas fa-star s5"></a></div>
                                 <div id='total-reviews'>({reviewsArr?.length})</div>
@@ -248,7 +282,7 @@ export default function RecipeDetails() {
                         <div id="ingredients-reviews">
                             <div id='ingredients-container'>
                                 <div>
-                                    {userId == recipe.userId ?
+                                    {userId == recipeOwner ?
                                         <div className='ingredients'>Your Ingredients: ({ingredientsArr?.length})</div>
                                         : <div className='ingredients'>Ingredients: ({ingredientsArr?.length})</div>}
 
@@ -312,7 +346,7 @@ export default function RecipeDetails() {
                                 </div>
                                 <div className='instructions-box'>
                                     <div>
-                                        {recipe.instructions}
+                                        {recipe.instructions || backup?.instructions}
                                     </div>
                                 </div>
                                 <div className='border-3'></div>
