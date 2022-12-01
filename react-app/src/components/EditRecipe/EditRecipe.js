@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Link } from "react-router-dom";
-import { getOneRecipeThunk, updateRecipeThunk } from "../../store/recipe";
+import { getOneRecipeThunk, updateRecipeThunk, getAllRecipesThunk } from "../../store/recipe";
 import "./EditRecipe.css"
 
 export default function EditRecipe() {
     const { recipeId } = useParams();
 
     const target = useSelector(state => state.recipe);
+    const allRecipes = useSelector(state => state.recipe);
     const user = useSelector(state => state.session.user);
 
     const userId = user?.id;
@@ -54,6 +55,10 @@ export default function EditRecipe() {
         dispatch(getOneRecipeThunk(recipeId))
     }, [dispatch, recipeId]);
 
+    useEffect(() => {
+        dispatch(getAllRecipesThunk());
+    }, [dispatch])
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -66,7 +71,18 @@ export default function EditRecipe() {
         history.push(`/recipe/${recipeId}`)
     }
 
-    if (!user || userId !== target.userId) {
+    let allRecipesArr = Object.values(allRecipes);
+    let allRecipesFilter = allRecipesArr?.filter(recipe => recipe.id == recipeId)
+    let backup = allRecipesFilter[0];
+    console.log(backup);
+
+    let owner = target?.userId
+
+    if (!owner) {
+        owner = backup?.userId
+    }
+
+    if (!user || userId !== owner) {
         return (
             <div className="login-containerPNF">
                 <div className="inner-loginPNF">

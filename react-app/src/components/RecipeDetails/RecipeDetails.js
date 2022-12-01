@@ -129,9 +129,7 @@ export default function RecipeDetails() {
             starMap.push(<a class="fas fa-star" style={{ color: "rgba(0, 0, 0, .4)", margin: "0 .2rem" }}></a>)
         }
 
-        return starMap.map(star => {
-            return star
-        })
+        return starMap.map(star => star)
     }
 
     useEffect(() => {
@@ -159,7 +157,6 @@ export default function RecipeDetails() {
     let allRecipesArr = Object.values(allRecipes)
     let allRecipesFilter = allRecipesArr?.filter(recipe => recipe.id == recipeId)
     let backup = allRecipesFilter[0]
-    console.log(backup)
 
     if (!cat) {
         cat = categories[backup?.categoryId];
