@@ -15,7 +15,7 @@ The best place to find affordable options for college kids who are tight fisted 
 
   Hosting:
 
-  ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+  ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
 # Key Functionalities
 
